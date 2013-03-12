@@ -16,15 +16,24 @@
 #define NUM_IO_CHECKED	2
 
 // Button Inputs (HighByte, 0:PORTD 1:PORTA, LowByte, Input Mask)
-#define BTN1	0x0010
-#define BTN2	0x0008
-#define BTN3	0x0004
-#define BTN4	0x0002
-#define BTN5	0x0001
-#define BTN6	0x0080
-#define BTN7	0x0040
-#define BTN8	0x0020
-#define BTN9	0x0104
+//   High Byte:
+//      0: PORTA
+//      1: PORTB
+//      2: PORTC
+//      3: PORTD
+//      4: PORTE
+//      5: PORTF
+//      6: PORTG
+//   Low Byte: pin mask
+#define BTN1	0x0304
+#define BTN2	0x0302
+#define BTN3	0x0301
+#define BTN4	0x0480
+#define BTN5	0x0440
+#define BTN6	0x0420
+#define BTN7	0x0410
+#define BTN8	0x0408
+#define BTN9	0x0404
 
 // LED Outputs (HighByte, 0:PORTC 1:PORTA, LowByte, Input Mask)
 #define R1	0x0020
