@@ -1,16 +1,19 @@
 #include "switch_pods.h"
 
 char checkButton(int row);
-void setOutput(int row, int value);
+void setOutputs(int alwayson, int leftled, int rightled, int relay, int value);
+void setupIO(int row, int direction);
 
 int main(void)
 {
 	//char buttonState = 1;
 	//char ledState = 0;
 	//char state = 0;
-	
+
 	volatile int buttonMask[NUM_IO] = {BTN1,BTN2,BTN3,BTN4,BTN5,BTN6,BTN7,BTN8,BTN9};
-	volatile int outputMask[NUM_IO] = {R1,R2,R3,R4,R5,R6,R7,R8,R9};
+	volatile int leftLEDMask[NUM_IO] = {L1,L2,L3,L4,L5,L6,L7,L8,L9};
+	volatile int rightLEDMask[NUM_IO] = {R1,R2,R3,R4,R5,R6,R7,R8,R9};
+	volatile int relayMask[NUM_IO] = {OUT1,OUT2,OUT3,OUT4,OUT5,OUT6,OUT7,OUT8,OUT9};
 	volatile int buttonDown[NUM_IO] = {0,0,0,0,0,0,0,0,0};
 	volatile int buttonEventDown[NUM_IO] = {0,0,0,0,0,0,0,0,0};
 	volatile int buttonEventUp[NUM_IO] = {0,0,0,0,0,0,0,0,0};
@@ -20,100 +23,37 @@ int main(void)
 	volatile int programState = 0;	// 0: normal, 1: programming mode
 	//volatile int row = 0;
 	//volatile int prevRow = 9;
-	volatile int programCounter = 0;
-	
+	//volatile int programCounter = 0;
+
 
 	// Setup the I/O Ports
-	DDRC = 0xBF;	// 1011 1111 0:input, 1:output
+	/*DDRC = 0xBF;	// 1011 1111 0:input, 1:output
 	DDRA = 0x03;	// 0000 0011 0:input, 1:output
 	DDRD = 0x00;	// 0000 0000 0:input, 1:output
 	PORTD = 0xFF;	// Setup pull-ups on port D
-	PORTA |= 0x04;	// Setup pull-up on PA2
+	PORTA |= 0x04;	// Setup pull-up on PA2*/
 
-	// Read the button latch configuration from EEPROM
+	setupIO(PROGRAM_MODE, 1);
+	setupIO(ALWAYS_ON, 1);
+	setupIO(ANA_BRIGHTNESS, 0);
+
 	for(i=0;i<NUM_IO;i++)
 	{
-		uint8_t address = (uint8_t) i;
-		buttonLatch[i] = (int)( 0x00FF & eeprom_read_byte( address ) );
+		setupIO(buttonMask[i], 1);
+		setupIO(leftLEDMask[i], 0);
+		setupIO(rightLEDMask[i], 0);
+		setupIO(relayMask[i], 0);
+
+		//uint8_t address = (uint8_t) i;
+		//buttonLatch[i] = (int)( 0x00FF & eeprom_read_byte( address ) );
 	}
 
 	for(;;)
 	{
 		_delay_ms(20);
 
-		// Check if trying to enter programming mode
-		if(buttonDown[0] && buttonDown[8])
-		{
-			if(programCounter > 100)
-			{
-				// Change operating mode
-				if(programState == 0)
-				{
-					programState = 1;
-				}
-				else
-				{
-					programState = 0;
-				}
-
-				// Flash all LEDs to show change of state
-				for(i=0;i<NUM_IO;i++)
-				{
-					setOutput(outputMask[i], 1);
-				}
-
-				_delay_ms(1000);
-
-				for(i=0;i<NUM_IO;i++)
-				{
-					setOutput(outputMask[i], 0);
-				}
-
-				_delay_ms(1000);
-
-				buttonDown[0] = 0;
-				buttonDown[8] = 0;
-
-				// Wait until the buttons have been released
-				while(checkButton(buttonMask[0]) || checkButton(buttonMask[8]));
-
-				// Save the latch configuration in EEPROM if exiting programming mode
-				if(programState == 0)
-				{
-					for(i=0;i<NUM_IO;i++)
-					{
-						uint8_t address = (uint8_t) i;
-						uint8_t data = (uint8_t) buttonLatch[i];
-						eeprom_write_byte( address, data );
-					}
-				}				
-
-				// Reset all buttons
-				for(i=0;i<NUM_IO;i++)
-				{
-					buttonEventDown[i] = 0;
-					buttonEventUp[i] = 0;
-					buttonState[i] = 0;
-					buttonDown[i] = 0;
-
-					//if(buttonLatch[i] == 0)
-					//{
-					//	buttonState[i] = 0;
-					//}
-				}
-			}
-			else
-			{
-				programCounter++;
-			}
-		}
-		else
-		{
-			programCounter = 0;
-		}
-		
-		// Check the button inputs
-		for(i=0;i<NUM_IO;i++)
+        // Recalculate button events
+        for(i=0;i<NUM_IO;i++)
 		{
 			if(checkButton(buttonMask[i]) == 1)
 			{
@@ -131,32 +71,91 @@ int main(void)
 				}
 				buttonDown[i] = 0;
 			}
+		}
 
-			//setOutput(outputMask[i], buttonDown[i]);
-			if(programState == 0)
-			{
-				if(buttonLatch[i] == 1)
-				{
-					//buttonEventUp[i] = 0;
+		if( checkButton(PROGRAM_MODE) == 1 )
+		{
+		    // Program mode stuff ...
+		    if( programState == 0 )
+		    {
+		        // Switching from normal mode ...
+		        _delay_ms(500);
 
-					if(buttonEventUp[i] == 1)
-					{
-						if(buttonState[i] == 1)
-						{
-							buttonState[i] = 0;
-						}
-						else
-						{
-							buttonState[i] = 1;
-						}
+		        // Set outputs to the button latch settings
+		        for(i=0;i<NUM_IO;i++)
+		        {
+		            setOutputs( checkButton(ALWAYS_ON), leftLEDMask[i], rightLEDMask[i], NULL_MASK, buttonLatch[i] );
+		            buttonEventUp[i] = 0;   // Clear button events
+		        }
 
-						buttonEventUp[i] = 0;
-					}
-					
-				}
-				else
-				{
-					if(buttonEventDown[i] == 1)
+		        programState = 1;
+		    }
+
+            // Any buttons pushed? if they are then toggle the latching option
+            for(i=0;i<NUM_IO;i++)
+            {
+                if( buttonEventUp[i] == 1 )
+                {
+                    if( buttonLatch[i] == 0 )
+                    {
+                        buttonLatch[i] = 1;
+                    }
+                    else
+                    {
+                        buttonLatch[i] = 0;
+                    }
+
+                    buttonEventUp[i] = 0;
+                }
+
+                setOutputs( checkButton(ALWAYS_ON), leftLEDMask[i], rightLEDMask[i], NULL_MASK, buttonLatch[i] );
+            }
+		}
+		else
+		{
+		    // Normal operation stuff ...
+		    if( programState == 1 )
+		    {
+		        // Switching from program mode ...
+		        _delay_ms(500);
+
+		        // Set outputs to the button latch settings
+		        for(i=0;i<NUM_IO;i++)
+		        {
+		            // SAVE BUTTON LATCH STATE IN EEPROM!!!!!!!!
+
+		            setOutputs( checkButton(ALWAYS_ON), leftLEDMask[i], rightLEDMask[i], relayMask[i], buttonState[i] );
+		            buttonEventDown[i]  = 0;   // Clear button down events
+		            buttonEventUp[i]    = 0;   // Clear button up events
+		        }
+
+		        programState = 0;
+		    }
+
+		    // Any buttons pushed?
+            for(i=0;i<NUM_IO;i++)
+            {
+                if( buttonLatch[i] == 1 )
+                {
+                    // This row uses latching buttons
+                    if( buttonEventUp[i] == 1 )
+                    {
+                        if( buttonState[i] == 0 )
+                        {
+                            buttonState[i] = 1;
+                        }
+                        else
+                        {
+                            buttonState[i] = 0;
+                        }
+
+                        buttonEventUp[i] = 0;
+                    }
+                }
+                else
+                {
+                    // This row uses momentary buttons
+                    if(buttonEventDown[i] == 1)
 					{
 						buttonState[i] = 1;
 						buttonEventDown[i] = 0;
@@ -167,31 +166,12 @@ int main(void)
 						buttonState[i] = 0;
 						buttonEventUp[i] = 0;
 					}
-				}
+                }
 
-				setOutput(outputMask[i], buttonState[i]);
-			}
-			else
-			{
-				// Programming mode
-				if(buttonEventUp[i] == 1)
-				{
-					if(buttonLatch[i] == 0)
-					{
-						buttonLatch[i] = 1;
-					}
-					else
-					{
-						buttonLatch[i] = 0;
-					}
-
-					buttonEventUp[i] = 0;
-				}
-
-				setOutput(outputMask[i], buttonLatch[i]);
-			}
-			//setOutput(outputMask[i], 1);
+                setOutputs( checkButton(ALWAYS_ON), leftLEDMask[i], rightLEDMask[i], relayMask[i], buttonState[i] );
+            }
 		}
+
 	}
 }
 
@@ -199,20 +179,36 @@ char checkButton(int row)
 {
 	volatile int port;
 	volatile unsigned char mask;
-	volatile int state;
+	volatile int state = 0;
 
 	port = (row >> 8);
 	mask = (char)(row & 0x00FF);
 
-	if(port == 0)
+	switch( port )
 	{
-		if( !(PIND & mask) ) 	state = 1;
-		else					state = 0;
-	}
-	else
-	{
-		if( !(PINA & mask) ) 	state = 1;
-		else					state = 0;
+    case 0:
+        state = (LATA & mask) ? 0 : 1;
+        break;
+    case 1:
+        state = (LATB & mask) ? 0 : 1;
+        break;
+    case 2:
+        state = (LATC & mask) ? 0 : 1;
+        break;
+    case 3:
+        state = (LATD & mask) ? 0 : 1;
+        break;
+    case 4:
+        state = (LATE & mask) ? 0 : 1;
+        break;
+    case 5:
+        state = (LATF & mask) ? 0 : 1;
+        break;
+    case 6:
+        state = (LATG & mask) ? 0 : 1;
+        break;
+    default:
+        // ...
 	}
 
 	return state;
@@ -220,34 +216,52 @@ char checkButton(int row)
 
 void setOutput(int row, int value)
 {
-	volatile int port;
+    volatile int port;
 	volatile unsigned char mask;
-	//volatile unsigned char invMask;
 
 	port = (row >> 8);
-	mask = (unsigned char)(row & 0x00FF);
-	//invMask = !mask;
+	mask = (char)(row & 0x00FF);
 
-	if(port == 0)
+	switch( port )
 	{
-		if(value == 1)
-		{
-			PORTC |= mask;
-		}
-		else
-		{
-			PORTC &= (~mask);
-		}
+    case 0:
+        if(value == 1) { PORTA |= mask; } else { PORTA &= (~mask); }
+        break;
+    case 1:
+        if(value == 1) { PORTB |= mask; } else { PORTB &= (~mask); }
+        break;
+    case 2:
+        if(value == 1) { PORTC |= mask; } else { PORTC &= (~mask); }
+        break;
+    case 3:
+        if(value == 1) { PORTD |= mask; } else { PORTD &= (~mask); }
+        break;
+    case 4:
+        if(value == 1) { PORTE |= mask; } else { PORTE &= (~mask); }
+        break;
+    case 5:
+        if(value == 1) { PORTF |= mask; } else { PORTF &= (~mask); }
+        break;
+    case 6:
+        if(value == 1) { PORTG |= mask; } else { PORTG &= (~mask); }
+        break;
+    default:
+        // ...
+	}
+}
+
+void setOutputs(int alwayson, int leftled, int rightled, int relay, int value)
+{
+	if( alwayson == 0 )
+	{
+	    setOutput(leftled, 1);
+	    setOutput(rightled, value);
 	}
 	else
 	{
-		if(value == 1)
-		{
-			PORTA |= mask;
-		}
-		else
-		{
-			PORTA &= (~mask);
-		}
+	    setOutput(leftled, value);
+	    setOutput(rightled, 1);
 	}
+
+	setOutput(relay, value);
 }

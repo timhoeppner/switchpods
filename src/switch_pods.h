@@ -12,8 +12,9 @@
 //#include "buttons.h"
 
 // Misc Constants
-//#define NUM_IO			9   // ????
+#define NUM_IO			9
 //#define NUM_IO_CHECKED	2   // ????
+#define NULL_MASK   0xffff
 
 // Button Inputs
 //   High Byte:
