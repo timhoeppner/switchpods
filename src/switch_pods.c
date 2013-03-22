@@ -1,29 +1,37 @@
+//#include <htc.h>           /* Global Header File */
+#include <stdint.h>        /* For uint8_t definition */
+
 #include "switch_pods.h"
 
-char checkButton(int row);
-void setOutputs(int alwayson, int leftled, int rightled, int relay, int value);
-void setupIO(int row, int direction);
+char checkButton(uint16_t row);
+void setOutputs(uint16_t alwayson, uint16_t leftled, uint16_t rightled, uint16_t relay, uint16_t value);
+void setupIO(uint16_t row, uint16_t direction)
+{
+}
+void _delay_ms(uint16_t ms)
+{
+}
 
-int main(void)
+uint16_t main(void)
 {
 	//char buttonState = 1;
 	//char ledState = 0;
 	//char state = 0;
 
-	volatile int buttonMask[NUM_IO] = {BTN1,BTN2,BTN3,BTN4,BTN5,BTN6,BTN7,BTN8,BTN9};
-	volatile int leftLEDMask[NUM_IO] = {L1,L2,L3,L4,L5,L6,L7,L8,L9};
-	volatile int rightLEDMask[NUM_IO] = {R1,R2,R3,R4,R5,R6,R7,R8,R9};
-	volatile int relayMask[NUM_IO] = {OUT1,OUT2,OUT3,OUT4,OUT5,OUT6,OUT7,OUT8,OUT9};
-	volatile int buttonDown[NUM_IO] = {0,0,0,0,0,0,0,0,0};
-	volatile int buttonEventDown[NUM_IO] = {0,0,0,0,0,0,0,0,0};
-	volatile int buttonEventUp[NUM_IO] = {0,0,0,0,0,0,0,0,0};
-	volatile int buttonLatch[NUM_IO] = {1,1,1,1,1,1,1,1,1};
-	volatile int buttonState[NUM_IO] = {0,0,0,0,0,0,0,0,0};
-	volatile int i;
-	volatile int programState = 0;	// 0: normal, 1: programming mode
-	//volatile int row = 0;
-	//volatile int prevRow = 9;
-	//volatile int programCounter = 0;
+	volatile uint16_t buttonMask[NUM_IO] = {BTN1,BTN2,BTN3,BTN4,BTN5,BTN6,BTN7,BTN8,BTN9};
+	volatile uint16_t leftLEDMask[NUM_IO] = {L1,L2,L3,L4,L5,L6,L7,L8,L9};
+	volatile uint16_t rightLEDMask[NUM_IO] = {R1,R2,R3,R4,R5,R6,R7,R8,R9};
+	volatile uint16_t relayMask[NUM_IO] = {OUT1,OUT2,OUT3,OUT4,OUT5,OUT6,OUT7,OUT8,OUT9};
+	volatile uint16_t buttonDown[NUM_IO] = {0,0,0,0,0,0,0,0,0};
+	volatile uint16_t buttonEventDown[NUM_IO] = {0,0,0,0,0,0,0,0,0};
+	volatile uint16_t buttonEventUp[NUM_IO] = {0,0,0,0,0,0,0,0,0};
+	volatile uint16_t buttonLatch[NUM_IO] = {1,1,1,1,1,1,1,1,1};
+	volatile uint16_t buttonState[NUM_IO] = {0,0,0,0,0,0,0,0,0};
+	volatile uint16_t i;
+	volatile uint16_t programState = 0;	// 0: normal, 1: programming mode
+	//volatile uint16_t row = 0;
+	//volatile uint16_t prevRow = 9;
+	//volatile uint16_t programCounter = 0;
 
 
 	// Setup the I/O Ports
@@ -45,7 +53,7 @@ int main(void)
 		setupIO(relayMask[i], 0);
 
 		//uint8_t address = (uint8_t) i;
-		//buttonLatch[i] = (int)( 0x00FF & eeprom_read_byte( address ) );
+		//buttonLatch[i] = (uint16_t)( 0x00FF & eeprom_read_byte( address ) );
 	}
 
 	for(;;)
@@ -175,11 +183,11 @@ int main(void)
 	}
 }
 
-char checkButton(int row)
+char checkButton(uint16_t row)
 {
-	volatile int port;
+	volatile uint16_t port;
 	volatile unsigned char mask;
-	volatile int state = 0;
+	volatile uint16_t state = 0;
 
 	port = (row >> 8);
 	mask = (char)(row & 0x00FF);
@@ -209,14 +217,15 @@ char checkButton(int row)
         break;
     default:
         // ...
+        break;
 	}
 
 	return state;
 }
 
-void setOutput(int row, int value)
+void setOutput(uint16_t row, uint16_t value)
 {
-    volatile int port;
+    volatile uint16_t port;
 	volatile unsigned char mask;
 
 	port = (row >> 8);
@@ -247,10 +256,11 @@ void setOutput(int row, int value)
         break;
     default:
         // ...
+        break;
 	}
 }
 
-void setOutputs(int alwayson, int leftled, int rightled, int relay, int value)
+void setOutputs(uint16_t alwayson, uint16_t leftled, uint16_t rightled, uint16_t relay, uint16_t value)
 {
 	if( alwayson == 0 )
 	{
