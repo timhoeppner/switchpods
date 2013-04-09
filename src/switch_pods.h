@@ -9,7 +9,7 @@
 #pragma config RETEN = ON       // VREG Sleep Enable bit (Enabled)
 #pragma config INTOSCSEL = HIGH // LF-INTOSC Low-power Enable bit (LF-INTOSC in High-power mode during Sleep)
 #pragma config SOSCSEL = DIG    // SOSC Power Selection and mode Configuration bits (Digital (SCLKI) mode)
-#pragma config XINST = ON       // Extended Instruction Set (Enabled)
+#pragma config XINST = OFF       // Extended Instruction Set (Enabled) <- disabled temporarly
 
 // CONFIG1H
 #pragma config FOSC = INTIO2    // Oscillator (Internal RC oscillator)

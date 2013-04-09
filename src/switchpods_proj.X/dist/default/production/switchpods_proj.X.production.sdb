@@ -1,9 +1,86 @@
-[p LITE_MODE AUTOSTATIC LFSROK ]
+[p LITE_MODE AUTOSTATIC LFSROK EMI_WORD ]
 [d version 1.1 ]
 [d edition pro ]
 [d chip 18F65K22 ]
-"5 /opt/microchip/xc8/v1.00/sources/abdiv.c
-[v ___abdiv `(c  1 e 1 0 ]
+"342 ../switch_pods.c
+[s S131 . 1 `uc 1 RD 1 0 :1:0 
+`uc 1 WR 1 0 :1:1 
+`uc 1 WREN 1 0 :1:2 
+`uc 1 WRERR 1 0 :1:3 
+`uc 1 FREE 1 0 :1:4 
+`uc 1 . 1 0 :1:5 
+`uc 1 CFGS 1 0 :1:6 
+`uc 1 EEPGD 1 0 :1:7 
+]
+[s S140 . 1 `uc 1 . 1 0 :6:0 
+`uc 1 EEFS 1 0 :1:6 
+]
+[u S143 . 1 `S131 1 . 1 0 `S140 1 . 1 0 ]
+"4486 /Volumes/build/bamboo/xml-data/build-dir/XC8-RELEASE-JOB1/nz/build/dist/osx/include/pic18f65k22.h
+[s S170 . 1 `uc 1 RD 1 0 :1:0 
+`uc 1 WR 1 0 :1:1 
+`uc 1 WREN 1 0 :1:2 
+`uc 1 WRERR 1 0 :1:3 
+`uc 1 FREE 1 0 :1:4 
+`uc 1 . 1 0 :1:5 
+`uc 1 CFGS 1 0 :1:6 
+`uc 1 EEPGD 1 0 :1:7 
+]
+[s S179 . 1 `uc 1 . 1 0 :6:0 
+`uc 1 EEFS 1 0 :1:6 
+]
+[u S182 . 1 `S131 1 . 1 0 `S140 1 . 1 0 ]
+"4467
+[s S192 . 1 `uc 1 RD 1 0 :1:0 
+`uc 1 WR 1 0 :1:1 
+`uc 1 WREN 1 0 :1:2 
+`uc 1 WRERR 1 0 :1:3 
+`uc 1 FREE 1 0 :1:4 
+`uc 1 . 1 0 :1:5 
+`uc 1 CFGS 1 0 :1:6 
+`uc 1 EEPGD 1 0 :1:7 
+]
+[s S201 . 1 `uc 1 . 1 0 :6:0 
+`uc 1 EEFS 1 0 :1:6 
+]
+[u S204 . 1 `S131 1 . 1 0 `S140 1 . 1 0 ]
+"6981
+[s S208 . 1 `uc 1 RBIF 1 0 :1:0 
+`uc 1 INT0IF 1 0 :1:1 
+`uc 1 TMR0IF 1 0 :1:2 
+`uc 1 RBIE 1 0 :1:3 
+`uc 1 INT0IE 1 0 :1:4 
+`uc 1 TMR0IE 1 0 :1:5 
+`uc 1 PEIE_GIEL 1 0 :1:6 
+`uc 1 GIE_GIEH 1 0 :1:7 
+]
+[s S217 . 1 `uc 1 . 1 0 :1:0 
+`uc 1 INT0F 1 0 :1:1 
+`uc 1 T0IF 1 0 :1:2 
+`uc 1 . 1 0 :1:3 
+`uc 1 INT0E 1 0 :1:4 
+`uc 1 T0IE 1 0 :1:5 
+`uc 1 PEIE 1 0 :1:6 
+`uc 1 GIE 1 0 :1:7 
+]
+[s S226 . 1 `uc 1 . 1 0 :6:0 
+`uc 1 GIEL 1 0 :1:6 
+`uc 1 GIEH 1 0 :1:7 
+]
+[s S230 . 1 `uc 1 . 1 0 :1:0 
+`uc 1 INT0F 1 0 :1:1 
+`uc 1 T0IF 1 0 :1:2 
+`uc 1 . 1 0 :1:3 
+`uc 1 INT0E 1 0 :1:4 
+`uc 1 T0IE 1 0 :1:5 
+`uc 1 PEIE 1 0 :1:6 
+`uc 1 GIE 1 0 :1:7 
+]
+[s S239 . 1 `uc 1 . 1 0 :6:0 
+`uc 1 GIEL 1 0 :1:6 
+`uc 1 GIEH 1 0 :1:7 
+]
+[u S243 . 1 `S208 1 . 1 0 `S217 1 . 1 0 `S226 1 . 1 0 `S217 1 . 1 0 `S226 1 . 1 0 ]
 "5 ../common/asfladd.c
 [v ___asfladd `(d  1 e 3 0 ]
 "5 ../common/asfldiv.c
@@ -22,220 +99,312 @@
 [v ___asftsub `(f  1 e 3 0 ]
 "5 ../common/aslmul.c
 [v ___aslmul `(ul  1 e 4 0 ]
-"9 ../switch_pods.c
-[v _setupIO `(v  1 e 0 0 ]
-"12
+"13 ../switch_pods.c
+[v _main `(ui  1 e 2 0 ]
+"206
 [v __delay_ms `(v  1 e 0 0 ]
-"16
-[v _main `(ui  1 e 2 0 ]
-"187
+"214
+[v _setupIO `(v  1 e 0 0 ]
+"252
 [v _checkButton `(uc  1 e 1 0 ]
-"227
+"292
 [v _setOutput `(v  1 e 0 0 ]
-"264
+"329
 [v _setOutputs `(v  1 e 0 0 ]
-"5 /opt/microchip/xc8/v1.00/sources/abmod.c
+"5 /opt/microchip/xc8/v1.12/sources/abdiv.c
+[v ___abdiv `(c  1 e 1 0 ]
+"5 /opt/microchip/xc8/v1.12/sources/abmod.c
 [v ___abmod `(c  1 e 1 0 ]
-"32 /opt/microchip/xc8/v1.00/sources/abtofl.c
+"32 /opt/microchip/xc8/v1.12/sources/abtofl.c
 [v ___abtofl `(d  1 e 3 0 ]
-"34 /opt/microchip/xc8/v1.00/sources/abtoft.c
+"34 /opt/microchip/xc8/v1.12/sources/abtoft.c
 [v ___abtoft `(f  1 e 3 0 ]
-"10 /opt/microchip/xc8/v1.00/sources/aldiv.c
+"10 /opt/microchip/xc8/v1.12/sources/aldiv.c
 [v ___aldiv `(l  1 e 4 0 ]
-"10 /opt/microchip/xc8/v1.00/sources/almod.c
+"10 /opt/microchip/xc8/v1.12/sources/almod.c
 [v ___almod `(l  1 e 4 0 ]
-"37 /opt/microchip/xc8/v1.00/sources/altofl.c
+"37 /opt/microchip/xc8/v1.12/sources/altofl.c
 [v ___altofl `(d  1 e 3 0 ]
-"43 /opt/microchip/xc8/v1.00/sources/altoft.c
+"43 /opt/microchip/xc8/v1.12/sources/altoft.c
 [v ___altoft `(f  1 e 3 0 ]
-"10 /opt/microchip/xc8/v1.00/sources/atdiv.c
+"10 /opt/microchip/xc8/v1.12/sources/atdiv.c
 [v ___atdiv `(m  1 e 3 0 ]
-"10 /opt/microchip/xc8/v1.00/sources/atmod.c
+"10 /opt/microchip/xc8/v1.12/sources/atmod.c
 [v ___atmod `(m  1 e 3 0 ]
-"38 /opt/microchip/xc8/v1.00/sources/attofl.c
+"38 /opt/microchip/xc8/v1.12/sources/attofl.c
 [v ___attofl `(d  1 e 3 0 ]
-"38 /opt/microchip/xc8/v1.00/sources/attoft.c
+"38 /opt/microchip/xc8/v1.12/sources/attoft.c
 [v ___attoft `(f  1 e 3 0 ]
-"10 /opt/microchip/xc8/v1.00/sources/awdiv.c
+"10 /opt/microchip/xc8/v1.12/sources/awdiv.c
 [v ___awdiv `(i  1 e 2 0 ]
-"10 /opt/microchip/xc8/v1.00/sources/awmod.c
+"10 /opt/microchip/xc8/v1.12/sources/awmod.c
 [v ___awmod `(i  1 e 2 0 ]
-"32 /opt/microchip/xc8/v1.00/sources/awtofl.c
+"32 /opt/microchip/xc8/v1.12/sources/awtofl.c
 [v ___awtofl `(d  1 e 3 0 ]
-"33 /opt/microchip/xc8/v1.00/sources/awtoft.c
+"33 /opt/microchip/xc8/v1.12/sources/awtoft.c
 [v ___awtoft `(f  1 e 3 0 ]
-"3 /opt/microchip/xc8/v1.00/sources/bmul.c
+"3 /opt/microchip/xc8/v1.12/sources/bmul.c
 [v ___bmul `(uc  1 e 1 0 ]
-"64 /opt/microchip/xc8/v1.00/sources/double.c
+"64 /opt/microchip/xc8/v1.12/sources/double.c
 [v ___flpack `(d  1 e 3 0 ]
-"89 /opt/microchip/xc8/v1.00/sources/fladd.c
+"89 /opt/microchip/xc8/v1.12/sources/fladd.c
 [v ___fladd `(d  1 e 3 0 ]
-"50 /opt/microchip/xc8/v1.00/sources/fldiv.c
+"50 /opt/microchip/xc8/v1.12/sources/fldiv.c
 [v ___fldiv `(d  1 e 3 0 ]
-"5 /opt/microchip/xc8/v1.00/sources/flge.c
+"5 /opt/microchip/xc8/v1.12/sources/flge.c
 [v ___flge `(b  1 e 0 0 ]
-"51 /opt/microchip/xc8/v1.00/sources/flmul.c
+"51 /opt/microchip/xc8/v1.12/sources/flmul.c
 [v ___flmul `(d  1 e 3 0 ]
-"16 /opt/microchip/xc8/v1.00/sources/flneg.c
+"16 /opt/microchip/xc8/v1.12/sources/flneg.c
 [v ___flneg `(d  1 e 3 0 ]
-"63 /opt/microchip/xc8/v1.00/sources/float.c
+"63 /opt/microchip/xc8/v1.12/sources/float.c
 [v ___ftpack `(f  1 e 3 0 ]
-"22 /opt/microchip/xc8/v1.00/sources/flsub.c
+"22 /opt/microchip/xc8/v1.12/sources/flsub.c
 [v ___flsub `(d  1 e 3 0 ]
-"44 /opt/microchip/xc8/v1.00/sources/fltol.c
+"44 /opt/microchip/xc8/v1.12/sources/fltol.c
 [v ___fltol `(l  1 e 4 0 ]
-"87 /opt/microchip/xc8/v1.00/sources/ftadd.c
+"87 /opt/microchip/xc8/v1.12/sources/ftadd.c
 [v ___ftadd `(f  1 e 3 0 ]
-"50 /opt/microchip/xc8/v1.00/sources/ftdiv.c
+"50 /opt/microchip/xc8/v1.12/sources/ftdiv.c
 [v ___ftdiv `(f  1 e 3 0 ]
-"5 /opt/microchip/xc8/v1.00/sources/ftge.c
+"5 /opt/microchip/xc8/v1.12/sources/ftge.c
 [v ___ftge `(b  1 e 0 0 ]
-"52 /opt/microchip/xc8/v1.00/sources/ftmul.c
+"52 /opt/microchip/xc8/v1.12/sources/ftmul.c
 [v ___ftmul `(f  1 e 3 0 ]
-"16 /opt/microchip/xc8/v1.00/sources/ftneg.c
+"16 /opt/microchip/xc8/v1.12/sources/ftneg.c
 [v ___ftneg `(f  1 e 3 0 ]
-"22 /opt/microchip/xc8/v1.00/sources/ftsub.c
+"22 /opt/microchip/xc8/v1.12/sources/ftsub.c
 [v ___ftsub `(f  1 e 3 0 ]
-"45 /opt/microchip/xc8/v1.00/sources/fttol.c
+"45 /opt/microchip/xc8/v1.12/sources/fttol.c
 [v ___fttol `(l  1 e 4 0 ]
-"5 /opt/microchip/xc8/v1.00/sources/lbdiv.c
+"5 /opt/microchip/xc8/v1.12/sources/lbdiv.c
 [v ___lbdiv `(uc  1 e 1 0 ]
-"5 /opt/microchip/xc8/v1.00/sources/lbmod.c
+"5 /opt/microchip/xc8/v1.12/sources/lbmod.c
 [v ___lbmod `(uc  1 e 1 0 ]
-"28 /opt/microchip/xc8/v1.00/sources/lbtofl.c
+"28 /opt/microchip/xc8/v1.12/sources/lbtofl.c
 [v ___lbtofl `(d  1 e 3 0 ]
-"28 /opt/microchip/xc8/v1.00/sources/lbtoft.c
+"28 /opt/microchip/xc8/v1.12/sources/lbtoft.c
 [v ___lbtoft `(f  1 e 3 0 ]
-"10 /opt/microchip/xc8/v1.00/sources/lldiv.c
+"10 /opt/microchip/xc8/v1.12/sources/lldiv.c
 [v ___lldiv `(ul  1 e 4 0 ]
-"10 /opt/microchip/xc8/v1.00/sources/llmod.c
+"10 /opt/microchip/xc8/v1.12/sources/llmod.c
 [v ___llmod `(ul  1 e 4 0 ]
-"31 /opt/microchip/xc8/v1.00/sources/lltofl.c
+"31 /opt/microchip/xc8/v1.12/sources/lltofl.c
 [v ___lltofl `(d  1 e 3 0 ]
-"36 /opt/microchip/xc8/v1.00/sources/lltoft.c
+"36 /opt/microchip/xc8/v1.12/sources/lltoft.c
 [v ___lltoft `(f  1 e 3 0 ]
-"3 /opt/microchip/xc8/v1.00/sources/lmul.c
+"3 /opt/microchip/xc8/v1.12/sources/lmul.c
 [v ___lmul `(ul  1 e 4 0 ]
-"10 /opt/microchip/xc8/v1.00/sources/ltdiv.c
+"10 /opt/microchip/xc8/v1.12/sources/ltdiv.c
 [v ___ltdiv `(um  1 e 3 0 ]
-"10 /opt/microchip/xc8/v1.00/sources/ltmod.c
+"10 /opt/microchip/xc8/v1.12/sources/ltmod.c
 [v ___ltmod `(um  1 e 3 0 ]
-"31 /opt/microchip/xc8/v1.00/sources/lttofl.c
+"31 /opt/microchip/xc8/v1.12/sources/lttofl.c
 [v ___lttofl `(d  1 e 3 0 ]
-"31 /opt/microchip/xc8/v1.00/sources/lttoft.c
+"31 /opt/microchip/xc8/v1.12/sources/lttoft.c
 [v ___lttoft `(f  1 e 3 0 ]
-"10 /opt/microchip/xc8/v1.00/sources/lwdiv.c
+"10 /opt/microchip/xc8/v1.12/sources/lwdiv.c
 [v ___lwdiv `(ui  1 e 2 0 ]
-"10 /opt/microchip/xc8/v1.00/sources/lwmod.c
+"10 /opt/microchip/xc8/v1.12/sources/lwmod.c
 [v ___lwmod `(ui  1 e 2 0 ]
-"29 /opt/microchip/xc8/v1.00/sources/lwtofl.c
+"29 /opt/microchip/xc8/v1.12/sources/lwtofl.c
 [v ___lwtofl `(d  1 e 3 0 ]
-"29 /opt/microchip/xc8/v1.00/sources/lwtoft.c
+"29 /opt/microchip/xc8/v1.12/sources/lwtoft.c
 [v ___lwtoft `(f  1 e 3 0 ]
-"3 /opt/microchip/xc8/v1.00/sources/tmul.c
+"3 /opt/microchip/xc8/v1.12/sources/tmul.c
 [v ___tmul `(um  1 e 3 0 ]
-"3 /opt/microchip/xc8/v1.00/sources/wmul.c
+"3 /opt/microchip/xc8/v1.12/sources/wmul.c
 [v ___wmul `(ui  1 e 2 0 ]
-"2807 /opt/microchip/xc8/v1.00/include/pic18f65k22.h
-[v _PORTA `Vuc  1 e 1 @3968 ]
-"2868
-[v _PORTB `Vuc  1 e 1 @3969 ]
-"2924
-[v _PORTC `Vuc  1 e 1 @3970 ]
-"2979
-[v _PORTD `Vuc  1 e 1 @3971 ]
-"3045
-[v _PORTE `Vuc  1 e 1 @3972 ]
-"3175
-[v _PORTF `Vuc  1 e 1 @3973 ]
-"3236
-[v _PORTG `Vuc  1 e 1 @3974 ]
-"3312
-[v _LATA `Vuc  1 e 1 @3977 ]
-"3365
-[v _LATB `Vuc  1 e 1 @3978 ]
-"3418
-[v _LATC `Vuc  1 e 1 @3979 ]
-"3471
-[v _LATD `Vuc  1 e 1 @3980 ]
-"3524
-[v _LATE `Vuc  1 e 1 @3981 ]
-"3577
-[v _LATF `Vuc  1 e 1 @3982 ]
-"3630
-[v _LATG `Vuc  1 e 1 @3983 ]
-"16 ../switch_pods.c
+"13 plib/EEP/busy_eep.c
+[v _Busy_eep `(v  1 e 0 0 ]
+"36 plib/EEP/read_B.c
+[v _Read_b_eep `(uc  1 e 1 0 ]
+"50 plib/EEP/write_B.c
+[v _Write_b_eep `(v  1 e 0 0 ]
+"1191 /opt/microchip/xc8/v1.12/include/pic18f65k22.h
+[v _ANCON1 `VEuc  1 e 1 @3876 ]
+"1263
+[v _ANCON0 `VEuc  1 e 1 @3877 ]
+"7025
+[v _PORTA `VEuc  1 e 1 @3968 ]
+"7220
+[v _PORTB `VEuc  1 e 1 @3969 ]
+"7405
+[v _PORTC `VEuc  1 e 1 @3970 ]
+"7589
+[v _PORTD `VEuc  1 e 1 @3971 ]
+"7829
+[v _PORTE `VEuc  1 e 1 @3972 ]
+"8223
+[v _PORTF `VEuc  1 e 1 @3973 ]
+"8418
+[v _PORTG `VEuc  1 e 1 @3974 ]
+"8648
+[v _LATA `VEuc  1 e 1 @3977 ]
+"8780
+[v _LATB `VEuc  1 e 1 @3978 ]
+"8912
+[v _LATC `VEuc  1 e 1 @3979 ]
+"9044
+[v _LATD `VEuc  1 e 1 @3980 ]
+"9176
+[v _LATE `VEuc  1 e 1 @3981 ]
+"9308
+[v _LATF `VEuc  1 e 1 @3982 ]
+"9435
+[v _LATG `VEuc  1 e 1 @3983 ]
+"9522
+[v _TRISA `VEuc  1 e 1 @3986 ]
+"9583
+[v _TRISB `VEuc  1 e 1 @3987 ]
+"9644
+[v _TRISC `VEuc  1 e 1 @3988 ]
+"9705
+[v _TRISD `VEuc  1 e 1 @3989 ]
+"9766
+[v _TRISE `VEuc  1 e 1 @3990 ]
+"9827
+[v _TRISF `VEuc  1 e 1 @3991 ]
+"9883
+[v _TRISG `VEuc  1 e 1 @3992 ]
+"4467 /Volumes/build/bamboo/xml-data/build-dir/XC8-RELEASE-JOB1/nz/build/dist/osx/include/pic18f65k22.h
+[v _EEDATA `VEuc  1 e 1 @3937 ]
+"4486
+[v _EEADR `VEuc  1 e 1 @3938 ]
+"4505
+[v _EEADRH `VEuc  1 e 1 @3939 ]
+"6941
+[v _EECON2 `VEuc  1 e 1 @3966 ]
+[s S131 . 1 `uc 1 RD 1 0 :1:0 
+`uc 1 WR 1 0 :1:1 
+`uc 1 WREN 1 0 :1:2 
+`uc 1 WRERR 1 0 :1:3 
+`uc 1 FREE 1 0 :1:4 
+`uc 1 . 1 0 :1:5 
+`uc 1 CFGS 1 0 :1:6 
+`uc 1 EEPGD 1 0 :1:7 
+]
+"6981
+[s S140 . 1 `uc 1 . 1 0 :6:0 
+`uc 1 EEFS 1 0 :1:6 
+]
+[u S143 . 1 `S131 1 . 1 0 `S140 1 . 1 0 ]
+[v _EECON1bits `VES143  1 e 1 @3967 ]
+[s S208 . 1 `uc 1 RBIF 1 0 :1:0 
+`uc 1 INT0IF 1 0 :1:1 
+`uc 1 TMR0IF 1 0 :1:2 
+`uc 1 RBIE 1 0 :1:3 
+`uc 1 INT0IE 1 0 :1:4 
+`uc 1 TMR0IE 1 0 :1:5 
+`uc 1 PEIE_GIEL 1 0 :1:6 
+`uc 1 GIE_GIEH 1 0 :1:7 
+]
+"16597
+[s S217 . 1 `uc 1 . 1 0 :1:0 
+`uc 1 INT0F 1 0 :1:1 
+`uc 1 T0IF 1 0 :1:2 
+`uc 1 . 1 0 :1:3 
+`uc 1 INT0E 1 0 :1:4 
+`uc 1 T0IE 1 0 :1:5 
+`uc 1 PEIE 1 0 :1:6 
+`uc 1 GIE 1 0 :1:7 
+]
+[s S226 . 1 `uc 1 . 1 0 :6:0 
+`uc 1 GIEL 1 0 :1:6 
+`uc 1 GIEH 1 0 :1:7 
+]
+[u S243 . 1 `S208 1 . 1 0 `S217 1 . 1 0 `S226 1 . 1 0 `S217 1 . 1 0 `S226 1 . 1 0 ]
+[v _INTCONbits `VES243  1 e 1 @4082 ]
+"13 ../switch_pods.c
 [v _main `(ui  1 e 2 0 ]
 {
-"27
-[v main@buttonEventUp `V[9]ui  1 a 18 144 ]
-"29
-[v main@buttonState `V[9]ui  1 a 18 126 ]
-"28
-[v main@buttonLatch `V[9]ui  1 a 18 108 ]
 "23
-[v main@rightLEDMask `V[9]ui  1 a 18 90 ]
-"22
-[v main@leftLEDMask `V[9]ui  1 a 18 72 ]
-"26
-[v main@buttonEventDown `V[9]ui  1 a 18 54 ]
+[v main@buttonEventDown `VE[9]ui  1 a 18 144 ]
 "25
-[v main@buttonDown `V[9]ui  1 a 18 36 ]
-"24
-[v main@relayMask `V[9]ui  1 a 18 18 ]
-"21
-[v main@buttonMask `V[9]ui  1 a 18 0 ]
-"30
-[v main@i `Vui  1 a 2 164 ]
-"31
-[v main@programState `Vui  1 a 2 162 ]
-"21
-[v main@F9048 `V[9]ui  1 s 18 F9048 ]
-"22
-[v main@F9050 `V[9]ui  1 s 18 F9050 ]
-"23
-[v main@F9052 `V[9]ui  1 s 18 F9052 ]
-"24
-[v main@F9054 `V[9]ui  1 s 18 F9054 ]
-"25
-[v main@F9056 `V[9]ui  1 s 18 F9056 ]
+[v main@buttonLatch `VE[9]ui  1 a 18 126 ]
 "26
-[v main@F9058 `V[9]ui  1 s 18 F9058 ]
+[v main@buttonState `VE[9]ui  1 a 18 108 ]
+"24
+[v main@buttonEventUp `VE[9]ui  1 a 18 90 ]
+"20
+[v main@rightLEDMask `VE[9]ui  1 a 18 72 ]
+"19
+[v main@leftLEDMask `VE[9]ui  1 a 18 54 ]
+"22
+[v main@buttonDown `VE[9]ui  1 a 18 36 ]
+"21
+[v main@relayMask `VE[9]ui  1 a 18 18 ]
+"18
+[v main@buttonMask `VE[9]ui  1 a 18 0 ]
 "27
-[v main@F9060 `V[9]ui  1 s 18 F9060 ]
+[v main@i `VEui  1 a 2 164 ]
 "28
-[v main@F9062 `V[9]ui  1 s 18 F9062 ]
-"29
-[v main@F9064 `V[9]ui  1 s 18 F9064 ]
-"184
+[v main@programState `VEui  1 a 2 162 ]
+"18
+[v main@F7908 `VE[9]ui  1 s 18 F7908 ]
+"19
+[v main@F7910 `VE[9]ui  1 s 18 F7910 ]
+"20
+[v main@F7912 `VE[9]ui  1 s 18 F7912 ]
+"21
+[v main@F7914 `VE[9]ui  1 s 18 F7914 ]
+"22
+[v main@F7916 `VE[9]ui  1 s 18 F7916 ]
+"23
+[v main@F7918 `VE[9]ui  1 s 18 F7918 ]
+"24
+[v main@F7920 `VE[9]ui  1 s 18 F7920 ]
+"25
+[v main@F7922 `VE[9]ui  1 s 18 F7922 ]
+"26
+[v main@F7924 `VE[9]ui  1 s 18 F7924 ]
+"203
 } 0
-"9
+"214
 [v _setupIO `(v  1 e 0 0 ]
 {
+"215
+[v setupIO@port `VEui  1 a 2 8 ]
+"217
+[v setupIO@state `VEui  1 a 2 6 ]
+"216
+[v setupIO@mask `VEuc  1 a 1 10 ]
+"214
 [v setupIO@row `ui  1 p 2 0 ]
 [v setupIO@direction `ui  1 p 2 2 ]
-"10
+"249
 } 0
-"12
+"36 plib/EEP/read_B.c
+[v _Read_b_eep `(uc  1 e 1 0 ]
+{
+[v Read_b_eep@badd `ui  1 p 2 0 ]
+"45
+} 0
+"206 ../switch_pods.c
 [v __delay_ms `(v  1 e 0 0 ]
 {
+"209
+[v __delay_ms@j `i  1 a 2 4 ]
+"207
+[v __delay_ms@i `i  1 a 2 2 ]
+"206
 [v __delay_ms@ms `ui  1 p 2 0 ]
-"13
+"211
 } 0
-"187
+"252
 [v _checkButton `(uc  1 e 1 0 ]
 {
-"190
-[v checkButton@state `Vui  1 a 2 6 ]
-"188
-[v checkButton@port `Vui  1 a 2 4 ]
-"189
-[v checkButton@mask `Vuc  1 a 1 8 ]
-"187
+"255
+[v checkButton@state `VEui  1 a 2 6 ]
+"253
+[v checkButton@port `VEui  1 a 2 4 ]
+"254
+[v checkButton@mask `VEuc  1 a 1 8 ]
+"252
 [v checkButton@row `ui  1 p 2 0 ]
-"224
+"289
 } 0
-"264
+"329
 [v _setOutputs `(v  1 e 0 0 ]
 {
 [v setOutputs@alwayson `ui  1 p 2 9 ]
@@ -243,17 +412,32 @@
 [v setOutputs@rightled `ui  1 p 2 13 ]
 [v setOutputs@relay `ui  1 p 2 15 ]
 [v setOutputs@value `ui  1 p 2 17 ]
-"277
+"342
 } 0
-"227
+"50 plib/EEP/write_B.c
+[v _Write_b_eep `(v  1 e 0 0 ]
+{
+"51
+[v Write_b_eep@GIE_BIT_VAL `uc  1 a 1 4 ]
+"50
+[v Write_b_eep@badd `ui  1 p 2 0 ]
+[v Write_b_eep@bdat `uc  1 p 1 2 ]
+"66
+} 0
+"13 plib/EEP/busy_eep.c
+[v _Busy_eep `(v  1 e 0 0 ]
+{
+"15
+} 0
+"292 ../switch_pods.c
 [v _setOutput `(v  1 e 0 0 ]
 {
-"228
-[v setOutput@port `Vui  1 a 2 6 ]
-"229
-[v setOutput@mask `Vuc  1 a 1 8 ]
-"227
+"293
+[v setOutput@port `VEui  1 a 2 6 ]
+"294
+[v setOutput@mask `VEuc  1 a 1 8 ]
+"292
 [v setOutput@row `ui  1 p 2 0 ]
 [v setOutput@value `ui  1 p 2 2 ]
-"261
+"326
 } 0

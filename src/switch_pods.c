@@ -1,16 +1,13 @@
 //#include <htc.h>           /* Global Header File */
 #include <stdint.h>        /* For uint8_t definition */
+#include <plib/EEP.h>
 
 #include "switch_pods.h"
 
 char checkButton(uint16_t row);
 void setOutputs(uint16_t alwayson, uint16_t leftled, uint16_t rightled, uint16_t relay, uint16_t value);
-void setupIO(uint16_t row, uint16_t direction)
-{
-}
-void _delay_ms(uint16_t ms)
-{
-}
+void setupIO(uint16_t row, uint16_t direction);
+void _delay_ms(uint16_t ms);
 
 uint16_t main(void)
 {
@@ -41,6 +38,9 @@ uint16_t main(void)
 	PORTD = 0xFF;	// Setup pull-ups on port D
 	PORTA |= 0x04;	// Setup pull-up on PA2*/
 
+        ANCON0 = 0;
+        ANCON1 = 0;
+
 	setupIO(PROGRAM_MODE, 1);
 	setupIO(ALWAYS_ON, 1);
 	setupIO(ANA_BRIGHTNESS, 0);
@@ -53,8 +53,25 @@ uint16_t main(void)
 		setupIO(relayMask[i], 0);
 
 		//uint8_t address = (uint8_t) i;
-		//buttonLatch[i] = (uint16_t)( 0x00FF & eeprom_read_byte( address ) );
+		buttonLatch[i] = (uint16_t)( 0x00FF & Read_b_eep( i ) );
 	}
+
+        /*for(;;)
+        {
+            _delay_ms(1);
+            setOutputs( !checkButton(ALWAYS_ON), leftLEDMask[2], rightLEDMask[2], NULL_MASK, 0 );
+
+            _delay_ms(1);
+            setOutputs( !checkButton(ALWAYS_ON), leftLEDMask[2], rightLEDMask[2], NULL_MASK, 1 );
+
+            _delay_ms(10);
+            setOutputs( !checkButton(ALWAYS_ON), leftLEDMask[2], rightLEDMask[2], NULL_MASK, 0 );
+
+            _delay_ms(10);
+            setOutputs( !checkButton(ALWAYS_ON), leftLEDMask[2], rightLEDMask[2], NULL_MASK, 1 );
+
+            _delay_ms(100);
+        }*/
 
 	for(;;)
 	{
@@ -92,8 +109,9 @@ uint16_t main(void)
 		        // Set outputs to the button latch settings
 		        for(i=0;i<NUM_IO;i++)
 		        {
-		            setOutputs( checkButton(ALWAYS_ON), leftLEDMask[i], rightLEDMask[i], NULL_MASK, buttonLatch[i] );
+		            setOutputs( !checkButton(ALWAYS_ON), leftLEDMask[i], rightLEDMask[i], NULL_MASK, buttonLatch[i] );
 		            buttonEventUp[i] = 0;   // Clear button events
+                            buttonEventDown[i] = 0;
 		        }
 
 		        programState = 1;
@@ -102,7 +120,7 @@ uint16_t main(void)
             // Any buttons pushed? if they are then toggle the latching option
             for(i=0;i<NUM_IO;i++)
             {
-                if( buttonEventUp[i] == 1 )
+                if( buttonEventDown[i] == 1 )
                 {
                     if( buttonLatch[i] == 0 )
                     {
@@ -113,10 +131,10 @@ uint16_t main(void)
                         buttonLatch[i] = 0;
                     }
 
-                    buttonEventUp[i] = 0;
+                    buttonEventDown[i] = 0;
                 }
 
-                setOutputs( checkButton(ALWAYS_ON), leftLEDMask[i], rightLEDMask[i], NULL_MASK, buttonLatch[i] );
+                setOutputs( !checkButton(ALWAYS_ON), leftLEDMask[i], rightLEDMask[i], NULL_MASK, buttonLatch[i] );
             }
 		}
 		else
@@ -125,14 +143,15 @@ uint16_t main(void)
 		    if( programState == 1 )
 		    {
 		        // Switching from program mode ...
-		        _delay_ms(500);
+		        _delay_ms(2000);
 
 		        // Set outputs to the button latch settings
 		        for(i=0;i<NUM_IO;i++)
 		        {
-		            // SAVE BUTTON LATCH STATE IN EEPROM!!!!!!!!
+		            Write_b_eep(i, buttonLatch[i]);
+                            Busy_eep ();
 
-		            setOutputs( checkButton(ALWAYS_ON), leftLEDMask[i], rightLEDMask[i], relayMask[i], buttonState[i] );
+		            setOutputs( !checkButton(ALWAYS_ON), leftLEDMask[i], rightLEDMask[i], relayMask[i], buttonState[i] );
 		            buttonEventDown[i]  = 0;   // Clear button down events
 		            buttonEventUp[i]    = 0;   // Clear button up events
 		        }
@@ -146,7 +165,7 @@ uint16_t main(void)
                 if( buttonLatch[i] == 1 )
                 {
                     // This row uses latching buttons
-                    if( buttonEventUp[i] == 1 )
+                    if( buttonEventDown[i] == 1 )
                     {
                         if( buttonState[i] == 0 )
                         {
@@ -157,7 +176,7 @@ uint16_t main(void)
                             buttonState[i] = 0;
                         }
 
-                        buttonEventUp[i] = 0;
+                        buttonEventDown[i] = 0;
                     }
                 }
                 else
@@ -176,10 +195,56 @@ uint16_t main(void)
 					}
                 }
 
-                setOutputs( checkButton(ALWAYS_ON), leftLEDMask[i], rightLEDMask[i], relayMask[i], buttonState[i] );
+                setOutputs( !checkButton(ALWAYS_ON), leftLEDMask[i], rightLEDMask[i], relayMask[i], buttonState[i] );
             }
 		}
 
+	}
+}
+
+void _delay_ms(uint16_t ms)
+{
+    for(int i=0; i<ms;i++)
+    {
+        for(int j=0; j<145; j++) ;
+    }
+}
+
+void setupIO(uint16_t row, uint16_t direction)
+{
+	volatile uint16_t port;
+	volatile unsigned char mask;
+	volatile uint16_t state = 0;
+
+	port = (row >> 8);
+	mask = (char)(row & 0x00FF);
+
+	switch( port )
+	{
+    case 0:
+        if(direction == 1) { TRISA |= mask; } else { TRISA &= (~mask); }
+        break;
+    case 1:
+        if(direction == 1) { TRISB |= mask; } else { TRISB &= (~mask); }
+        break;
+    case 2:
+        if(direction == 1) { TRISC |= mask; } else { TRISC &= (~mask); }
+        break;
+    case 3:
+        if(direction == 1) { TRISD |= mask; } else { TRISD &= (~mask); }
+        break;
+    case 4:
+        if(direction == 1) { TRISE |= mask; } else { TRISE &= (~mask); }
+        break;
+    case 5:
+        if(direction == 1) { TRISF |= mask; } else { TRISF &= (~mask); }
+        break;
+    case 6:
+        if(direction == 1) { TRISG |= mask; } else { TRISG &= (~mask); }
+        break;
+    default:
+        // ...
+        break;
 	}
 }
 
@@ -195,25 +260,25 @@ char checkButton(uint16_t row)
 	switch( port )
 	{
     case 0:
-        state = (LATA & mask) ? 0 : 1;
+        state = (PORTA & mask) ? 0 : 1;
         break;
     case 1:
-        state = (LATB & mask) ? 0 : 1;
+        state = (PORTB & mask) ? 0 : 1;
         break;
     case 2:
-        state = (LATC & mask) ? 0 : 1;
+        state = (PORTC & mask) ? 0 : 1;
         break;
     case 3:
-        state = (LATD & mask) ? 0 : 1;
+        state = (PORTD & mask) ? 0 : 1;
         break;
     case 4:
-        state = (LATE & mask) ? 0 : 1;
+        state = (PORTE & mask) ? 0 : 1;
         break;
     case 5:
-        state = (LATF & mask) ? 0 : 1;
+        state = (PORTF & mask) ? 0 : 1;
         break;
     case 6:
-        state = (LATG & mask) ? 0 : 1;
+        state = (PORTG & mask) ? 0 : 1;
         break;
     default:
         // ...
@@ -234,25 +299,25 @@ void setOutput(uint16_t row, uint16_t value)
 	switch( port )
 	{
     case 0:
-        if(value == 1) { PORTA |= mask; } else { PORTA &= (~mask); }
+        if(value == 1) { LATA |= mask; } else { LATA &= (~mask); }
         break;
     case 1:
-        if(value == 1) { PORTB |= mask; } else { PORTB &= (~mask); }
+        if(value == 1) { LATB |= mask; } else { LATB &= (~mask); }
         break;
     case 2:
-        if(value == 1) { PORTC |= mask; } else { PORTC &= (~mask); }
+        if(value == 1) { LATC |= mask; } else { LATC &= (~mask); }
         break;
     case 3:
-        if(value == 1) { PORTD |= mask; } else { PORTD &= (~mask); }
+        if(value == 1) { LATD |= mask; } else { LATD &= (~mask); }
         break;
     case 4:
-        if(value == 1) { PORTE |= mask; } else { PORTE &= (~mask); }
+        if(value == 1) { LATE |= mask; } else { LATE &= (~mask); }
         break;
     case 5:
-        if(value == 1) { PORTF |= mask; } else { PORTF &= (~mask); }
+        if(value == 1) { LATF |= mask; } else { LATF &= (~mask); }
         break;
     case 6:
-        if(value == 1) { PORTG |= mask; } else { PORTG &= (~mask); }
+        if(value == 1) { LATG |= mask; } else { LATG &= (~mask); }
         break;
     default:
         // ...
