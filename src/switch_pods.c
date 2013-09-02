@@ -1,13 +1,64 @@
 //#include <htc.h>           /* Global Header File */
 #include <stdint.h>        /* For uint8_t definition */
 #include <plib/EEP.h>
+#include <plib/timers.h>
+#include <plib/adc.h>
 
 #include "switch_pods.h"
 
 char checkButton(uint16_t row);
-void setOutputs(uint16_t alwayson, uint16_t leftled, uint16_t rightled, uint16_t relay, uint16_t value);
+void setOutput(uint16_t row, uint16_t value);
+void setOutputs(uint16_t alwayson, uint16_t ledIndex, uint16_t relay, uint16_t value);
 void setupIO(uint16_t row, uint16_t direction);
 void _delay_ms(uint16_t ms);
+
+volatile uint16_t buttonMask[NUM_IO] = {BTN1,BTN2,BTN3,BTN4,BTN5,BTN6,BTN7,BTN8,BTN9};
+volatile uint16_t leftLEDMask[NUM_IO] = {L1,L2,L3,L4,L5,L6,L7,L8,L9};
+volatile uint16_t rightLEDMask[NUM_IO] = {R1,R2,R3,R4,R5,R6,R7,R8,R9};
+volatile uint16_t relayMask[NUM_IO] = {OUT1,OUT2,OUT3,OUT4,OUT5,OUT6,OUT7,OUT8,OUT9};
+volatile uint16_t outputFlag[NUM_IO] = {0, 0, 0, 0, 0, 0, 0, 0, 0};
+volatile uint16_t outputAlwaysOnFlag = 0;
+volatile uint16_t outputHighLength = OUTPUT_PWM_MIN_HIGH;
+volatile uint16_t outputPWMState = 0;
+
+void interrupt pwm_int(void)
+{
+    uint16_t i;
+
+    if( TMR0IE && TMR0IF )
+    {
+        TMR0IF = 0;
+        if(outputPWMState == 1)
+        {
+            // Set next interrupt for PWM low time
+            WriteTimer0(0xffff - outputHighLength);
+        }
+        else
+        {
+            // Set next interrupt for PWM high time
+            WriteTimer0(0xffff - OUTPUT_PWM_PERIOD + outputHighLength);
+        }
+
+        // Turn the LEDs on or off depending on which PWM state we are in
+        for(i=0;i<NUM_IO;i++)
+        {
+            if( outputAlwaysOnFlag == 0 )
+            {
+                setOutput(leftLEDMask[i], outputPWMState);
+                setOutput(rightLEDMask[i], outputFlag[i] & outputPWMState);
+            }
+            else
+            {
+                setOutput(leftLEDMask[i], outputFlag[i] & outputPWMState);
+                setOutput(rightLEDMask[i], outputPWMState);
+            }
+        }
+
+        outputPWMState = !outputPWMState;
+
+        return;
+    }
+}
 
 uint16_t main(void)
 {
@@ -15,10 +66,6 @@ uint16_t main(void)
 	//char ledState = 0;
 	//char state = 0;
 
-	volatile uint16_t buttonMask[NUM_IO] = {BTN1,BTN2,BTN3,BTN4,BTN5,BTN6,BTN7,BTN8,BTN9};
-	volatile uint16_t leftLEDMask[NUM_IO] = {L1,L2,L3,L4,L5,L6,L7,L8,L9};
-	volatile uint16_t rightLEDMask[NUM_IO] = {R1,R2,R3,R4,R5,R6,R7,R8,R9};
-	volatile uint16_t relayMask[NUM_IO] = {OUT1,OUT2,OUT3,OUT4,OUT5,OUT6,OUT7,OUT8,OUT9};
 	volatile uint16_t buttonDown[NUM_IO] = {0,0,0,0,0,0,0,0,0};
 	volatile uint16_t buttonEventDown[NUM_IO] = {0,0,0,0,0,0,0,0,0};
 	volatile uint16_t buttonEventUp[NUM_IO] = {0,0,0,0,0,0,0,0,0};
@@ -30,6 +77,8 @@ uint16_t main(void)
 	//volatile uint16_t prevRow = 9;
 	//volatile uint16_t programCounter = 0;
 
+        volatile uint16_t adcResult = 0;
+
 
 	// Setup the I/O Ports
 	/*DDRC = 0xBF;	// 1011 1111 0:input, 1:output
@@ -38,12 +87,28 @@ uint16_t main(void)
 	PORTD = 0xFF;	// Setup pull-ups on port D
 	PORTA |= 0x04;	// Setup pull-up on PA2*/
 
-        ANCON0 = 0;
+        // Setup the PWM timer
+        WriteTimer0(0xffff - 0x10); // This should trigger the interrupt almost immediately
+        OpenTimer0(TIMER_INT_ON & T0_16BIT & T0_SOURCE_INT & T0_PS_1_2);
+
+        ANCON0 = 1; // Channel AN0 is analog input
         ANCON1 = 0;
+        ANCON2 = 0;
+
+        // Setup ADC
+        ADCON0 = 0; // Channel AN0, int off, no conversion started
+        ADCON1 = (0x2 << 4) | (0x0 << 3) | (0x0);   // Internal 2.048 reference, AVss VREF-, Negative channel AVss
+        ADCON2 = (0x1 << 7) | (0x7 << 3) | (0x0);   // Right justified, 20 Tad acquisition time (max), Fosc / 2
+
+        // Turn on the ADC
+        ADCON0 = 1;
+
+        // Start our first conversion
+        ConvertADC();
 
 	setupIO(PROGRAM_MODE, 1);
 	setupIO(ALWAYS_ON, 1);
-	setupIO(ANA_BRIGHTNESS, 0);
+	setupIO(ANA_BRIGHTNESS, 1);
 
 	for(i=0;i<NUM_IO;i++)
 	{
@@ -73,9 +138,22 @@ uint16_t main(void)
             _delay_ms(100);
         }*/
 
+        // Enable interrupts
+        ei();
+
 	for(;;)
 	{
 		_delay_ms(20);
+
+                // Check ADC status
+                if(BusyADC() == 0)
+                {
+                    // Conversion ready
+                    adcResult = (uint16_t)(ReadADC() & 0x0fff);
+                    outputHighLength = OUTPUT_PWM_MIN_HIGH + adcResult;
+                    if(outputHighLength >= OUTPUT_PWM_PERIOD) outputHighLength = OUTPUT_PWM_PERIOD - 1 ;
+                    ConvertADC();
+                }
 
         // Recalculate button events
         for(i=0;i<NUM_IO;i++)
@@ -109,7 +187,7 @@ uint16_t main(void)
 		        // Set outputs to the button latch settings
 		        for(i=0;i<NUM_IO;i++)
 		        {
-		            setOutputs( !checkButton(ALWAYS_ON), leftLEDMask[i], rightLEDMask[i], NULL_MASK, buttonLatch[i] );
+		            setOutputs( !checkButton(ALWAYS_ON), i, NULL_MASK, buttonLatch[i] );
 		            buttonEventUp[i] = 0;   // Clear button events
                             buttonEventDown[i] = 0;
 		        }
@@ -134,7 +212,7 @@ uint16_t main(void)
                     buttonEventDown[i] = 0;
                 }
 
-                setOutputs( !checkButton(ALWAYS_ON), leftLEDMask[i], rightLEDMask[i], NULL_MASK, buttonLatch[i] );
+                setOutputs( !checkButton(ALWAYS_ON), i, NULL_MASK, buttonLatch[i] );
             }
 		}
 		else
@@ -151,7 +229,7 @@ uint16_t main(void)
 		            Write_b_eep(i, buttonLatch[i]);
                             Busy_eep ();
 
-		            setOutputs( !checkButton(ALWAYS_ON), leftLEDMask[i], rightLEDMask[i], relayMask[i], buttonState[i] );
+		            setOutputs( !checkButton(ALWAYS_ON), i, relayMask[i], buttonState[i] );
 		            buttonEventDown[i]  = 0;   // Clear button down events
 		            buttonEventUp[i]    = 0;   // Clear button up events
 		        }
@@ -195,7 +273,7 @@ uint16_t main(void)
 					}
                 }
 
-                setOutputs( !checkButton(ALWAYS_ON), leftLEDMask[i], rightLEDMask[i], relayMask[i], buttonState[i] );
+                setOutputs( !checkButton(ALWAYS_ON), i, relayMask[i], buttonState[i] );
             }
 		}
 
@@ -325,18 +403,25 @@ void setOutput(uint16_t row, uint16_t value)
 	}
 }
 
-void setOutputs(uint16_t alwayson, uint16_t leftled, uint16_t rightled, uint16_t relay, uint16_t value)
+void setOutputs(uint16_t alwayson, uint16_t ledIndex, uint16_t relay, uint16_t value)
 {
-	if( alwayson == 0 )
-	{
-	    setOutput(leftled, 1);
-	    setOutput(rightled, value);
-	}
-	else
-	{
-	    setOutput(leftled, value);
-	    setOutput(rightled, 1);
-	}
+    outputAlwaysOnFlag = alwayson;
 
-	setOutput(relay, value);
+    // This flag allows the LEDs to be PWM'ed
+    outputFlag[ledIndex] = value;
+
+    /*if( alwayson == 0 )
+    {
+        setOutput(leftled, 1);
+        setOutput(rightled, value);
+    }
+    else
+    {
+        setOutput(leftled, value);
+        setOutput(rightled, 1);
+    }*/
+
+
+    // Relay output gets set on demand because it's not PWM'ed
+    setOutput(relay, value);
 }

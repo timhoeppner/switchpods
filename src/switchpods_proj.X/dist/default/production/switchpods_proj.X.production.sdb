@@ -2,50 +2,8 @@
 [d version 1.1 ]
 [d edition pro ]
 [d chip 18F65K22 ]
-"342 ../switch_pods.c
-[s S131 . 1 `uc 1 RD 1 0 :1:0 
-`uc 1 WR 1 0 :1:1 
-`uc 1 WREN 1 0 :1:2 
-`uc 1 WRERR 1 0 :1:3 
-`uc 1 FREE 1 0 :1:4 
-`uc 1 . 1 0 :1:5 
-`uc 1 CFGS 1 0 :1:6 
-`uc 1 EEPGD 1 0 :1:7 
-]
-[s S140 . 1 `uc 1 . 1 0 :6:0 
-`uc 1 EEFS 1 0 :1:6 
-]
-[u S143 . 1 `S131 1 . 1 0 `S140 1 . 1 0 ]
-"4486 /Volumes/build/bamboo/xml-data/build-dir/XC8-RELEASE-JOB1/nz/build/dist/osx/include/pic18f65k22.h
-[s S170 . 1 `uc 1 RD 1 0 :1:0 
-`uc 1 WR 1 0 :1:1 
-`uc 1 WREN 1 0 :1:2 
-`uc 1 WRERR 1 0 :1:3 
-`uc 1 FREE 1 0 :1:4 
-`uc 1 . 1 0 :1:5 
-`uc 1 CFGS 1 0 :1:6 
-`uc 1 EEPGD 1 0 :1:7 
-]
-[s S179 . 1 `uc 1 . 1 0 :6:0 
-`uc 1 EEFS 1 0 :1:6 
-]
-[u S182 . 1 `S131 1 . 1 0 `S140 1 . 1 0 ]
-"4467
-[s S192 . 1 `uc 1 RD 1 0 :1:0 
-`uc 1 WR 1 0 :1:1 
-`uc 1 WREN 1 0 :1:2 
-`uc 1 WRERR 1 0 :1:3 
-`uc 1 FREE 1 0 :1:4 
-`uc 1 . 1 0 :1:5 
-`uc 1 CFGS 1 0 :1:6 
-`uc 1 EEPGD 1 0 :1:7 
-]
-[s S201 . 1 `uc 1 . 1 0 :6:0 
-`uc 1 EEFS 1 0 :1:6 
-]
-[u S204 . 1 `S131 1 . 1 0 `S140 1 . 1 0 ]
-"6981
-[s S208 . 1 `uc 1 RBIF 1 0 :1:0 
+"37 /opt/microchip/xc8/v1.12/include/plib/EEP.h
+[s S60 . 1 `uc 1 RBIF 1 0 :1:0 
 `uc 1 INT0IF 1 0 :1:1 
 `uc 1 TMR0IF 1 0 :1:2 
 `uc 1 RBIE 1 0 :1:3 
@@ -54,7 +12,7 @@
 `uc 1 PEIE_GIEL 1 0 :1:6 
 `uc 1 GIE_GIEH 1 0 :1:7 
 ]
-[s S217 . 1 `uc 1 . 1 0 :1:0 
+[s S69 . 1 `uc 1 . 1 0 :1:0 
 `uc 1 INT0F 1 0 :1:1 
 `uc 1 T0IF 1 0 :1:2 
 `uc 1 . 1 0 :1:3 
@@ -63,11 +21,11 @@
 `uc 1 PEIE 1 0 :1:6 
 `uc 1 GIE 1 0 :1:7 
 ]
-[s S226 . 1 `uc 1 . 1 0 :6:0 
+[s S78 . 1 `uc 1 . 1 0 :6:0 
 `uc 1 GIEL 1 0 :1:6 
 `uc 1 GIEH 1 0 :1:7 
 ]
-[s S230 . 1 `uc 1 . 1 0 :1:0 
+[s S82 . 1 `uc 1 . 1 0 :1:0 
 `uc 1 INT0F 1 0 :1:1 
 `uc 1 T0IF 1 0 :1:2 
 `uc 1 . 1 0 :1:3 
@@ -76,11 +34,208 @@
 `uc 1 PEIE 1 0 :1:6 
 `uc 1 GIE 1 0 :1:7 
 ]
-[s S239 . 1 `uc 1 . 1 0 :6:0 
+[s S91 . 1 `uc 1 . 1 0 :6:0 
 `uc 1 GIEL 1 0 :1:6 
 `uc 1 GIEH 1 0 :1:7 
 ]
-[u S243 . 1 `S208 1 . 1 0 `S217 1 . 1 0 `S226 1 . 1 0 `S217 1 . 1 0 `S226 1 . 1 0 ]
+[u S95 . 1 `S60 1 . 1 0 `S69 1 . 1 0 `S78 1 . 1 0 `S69 1 . 1 0 `S78 1 . 1 0 ]
+"25 ../switch_pods.c
+[v F7990 `(v  1 t 0 ]
+"427
+[s S252 . 1 `uc 1 . 1 0 :1:0 
+`uc 1 GO_NOT_DONE 1 0 :1:1 
+]
+[s S255 . 1 `uc 1 ADON 1 0 :1:0 
+`uc 1 GO_nDONE 1 0 :1:1 
+`uc 1 CHS 1 0 :5:2 
+]
+[s S259 . 1 `uc 1 . 1 0 :1:0 
+`uc 1 DONE 1 0 :1:1 
+`uc 1 CHS0 1 0 :1:2 
+`uc 1 CHS1 1 0 :1:3 
+`uc 1 CHS2 1 0 :1:4 
+`uc 1 CHS3 1 0 :1:5 
+`uc 1 CHS4 1 0 :1:6 
+]
+[s S267 . 1 `uc 1 . 1 0 :1:0 
+`uc 1 GO 1 0 :1:1 
+]
+[s S270 . 1 `uc 1 . 1 0 :1:0 
+`uc 1 NOT_DONE 1 0 :1:1 
+]
+[s S273 . 1 `uc 1 . 1 0 :1:0 
+`uc 1 nDONE 1 0 :1:1 
+]
+[s S276 . 1 `uc 1 . 1 0 :1:0 
+`uc 1 GODONE 1 0 :1:1 
+]
+[s S279 . 1 `uc 1 . 1 0 :1:0 
+`uc 1 GO_DONE 1 0 :1:1 
+]
+[u S282 . 1 `S252 1 . 1 0 `S255 1 . 1 0 `S259 1 . 1 0 `S267 1 . 1 0 `S270 1 . 1 0 `S273 1 . 1 0 `S276 1 . 1 0 `S279 1 . 1 0 ]
+"29 plib/ADC/adcbusy.c
+[s S325 . 1 `uc 1 . 1 0 :1:0 
+`uc 1 GO_NOT_DONE 1 0 :1:1 
+]
+[s S328 . 1 `uc 1 ADON 1 0 :1:0 
+`uc 1 GO_nDONE 1 0 :1:1 
+`uc 1 CHS 1 0 :5:2 
+]
+[s S332 . 1 `uc 1 . 1 0 :1:0 
+`uc 1 DONE 1 0 :1:1 
+`uc 1 CHS0 1 0 :1:2 
+`uc 1 CHS1 1 0 :1:3 
+`uc 1 CHS2 1 0 :1:4 
+`uc 1 CHS3 1 0 :1:5 
+`uc 1 CHS4 1 0 :1:6 
+]
+[s S340 . 1 `uc 1 . 1 0 :1:0 
+`uc 1 GO 1 0 :1:1 
+]
+[s S343 . 1 `uc 1 . 1 0 :1:0 
+`uc 1 NOT_DONE 1 0 :1:1 
+]
+[s S346 . 1 `uc 1 . 1 0 :1:0 
+`uc 1 nDONE 1 0 :1:1 
+]
+[s S349 . 1 `uc 1 . 1 0 :1:0 
+`uc 1 GODONE 1 0 :1:1 
+]
+[s S352 . 1 `uc 1 . 1 0 :1:0 
+`uc 1 GO_DONE 1 0 :1:1 
+]
+[u S355 . 1 `S252 1 . 1 0 `S255 1 . 1 0 `S259 1 . 1 0 `S267 1 . 1 0 `S270 1 . 1 0 `S273 1 . 1 0 `S276 1 . 1 0 `S279 1 . 1 0 ]
+"27 plib/ADC/adcread.c
+[s S369 . 1 `uc 1 RD 1 0 :1:0 
+`uc 1 WR 1 0 :1:1 
+`uc 1 WREN 1 0 :1:2 
+`uc 1 WRERR 1 0 :1:3 
+`uc 1 FREE 1 0 :1:4 
+`uc 1 . 1 0 :1:5 
+`uc 1 CFGS 1 0 :1:6 
+`uc 1 EEPGD 1 0 :1:7 
+]
+[s S378 . 1 `uc 1 . 1 0 :6:0 
+`uc 1 EEFS 1 0 :1:6 
+]
+[u S381 . 1 `S369 1 . 1 0 `S378 1 . 1 0 ]
+"4486 /Volumes/build/bamboo/xml-data/build-dir/XC8-RELEASE-JOB1/nz/build/dist/osx/include/pic18f65k22.h
+[s S408 . 1 `uc 1 RD 1 0 :1:0 
+`uc 1 WR 1 0 :1:1 
+`uc 1 WREN 1 0 :1:2 
+`uc 1 WRERR 1 0 :1:3 
+`uc 1 FREE 1 0 :1:4 
+`uc 1 . 1 0 :1:5 
+`uc 1 CFGS 1 0 :1:6 
+`uc 1 EEPGD 1 0 :1:7 
+]
+[s S417 . 1 `uc 1 . 1 0 :6:0 
+`uc 1 EEFS 1 0 :1:6 
+]
+[u S420 . 1 `S369 1 . 1 0 `S378 1 . 1 0 ]
+"4467
+[s S430 . 1 `uc 1 RD 1 0 :1:0 
+`uc 1 WR 1 0 :1:1 
+`uc 1 WREN 1 0 :1:2 
+`uc 1 WRERR 1 0 :1:3 
+`uc 1 FREE 1 0 :1:4 
+`uc 1 . 1 0 :1:5 
+`uc 1 CFGS 1 0 :1:6 
+`uc 1 EEPGD 1 0 :1:7 
+]
+[s S439 . 1 `uc 1 . 1 0 :6:0 
+`uc 1 EEFS 1 0 :1:6 
+]
+[u S442 . 1 `S369 1 . 1 0 `S378 1 . 1 0 ]
+"6981
+[s S446 . 1 `uc 1 RBIF 1 0 :1:0 
+`uc 1 INT0IF 1 0 :1:1 
+`uc 1 TMR0IF 1 0 :1:2 
+`uc 1 RBIE 1 0 :1:3 
+`uc 1 INT0IE 1 0 :1:4 
+`uc 1 TMR0IE 1 0 :1:5 
+`uc 1 PEIE_GIEL 1 0 :1:6 
+`uc 1 GIE_GIEH 1 0 :1:7 
+]
+[s S455 . 1 `uc 1 . 1 0 :1:0 
+`uc 1 INT0F 1 0 :1:1 
+`uc 1 T0IF 1 0 :1:2 
+`uc 1 . 1 0 :1:3 
+`uc 1 INT0E 1 0 :1:4 
+`uc 1 T0IE 1 0 :1:5 
+`uc 1 PEIE 1 0 :1:6 
+`uc 1 GIE 1 0 :1:7 
+]
+[s S464 . 1 `uc 1 . 1 0 :6:0 
+`uc 1 GIEL 1 0 :1:6 
+`uc 1 GIEH 1 0 :1:7 
+]
+[s S468 . 1 `uc 1 . 1 0 :1:0 
+`uc 1 INT0F 1 0 :1:1 
+`uc 1 T0IF 1 0 :1:2 
+`uc 1 . 1 0 :1:3 
+`uc 1 INT0E 1 0 :1:4 
+`uc 1 T0IE 1 0 :1:5 
+`uc 1 PEIE 1 0 :1:6 
+`uc 1 GIE 1 0 :1:7 
+]
+[s S477 . 1 `uc 1 . 1 0 :6:0 
+`uc 1 GIEL 1 0 :1:6 
+`uc 1 GIEH 1 0 :1:7 
+]
+[u S481 . 1 `S60 1 . 1 0 `S69 1 . 1 0 `S78 1 . 1 0 `S69 1 . 1 0 `S78 1 . 1 0 ]
+"15828
+[s S496 . 1 `uc 1 RBIF 1 0 :1:0 
+`uc 1 INT0IF 1 0 :1:1 
+`uc 1 TMR0IF 1 0 :1:2 
+`uc 1 RBIE 1 0 :1:3 
+`uc 1 INT0IE 1 0 :1:4 
+`uc 1 TMR0IE 1 0 :1:5 
+`uc 1 PEIE_GIEL 1 0 :1:6 
+`uc 1 GIE_GIEH 1 0 :1:7 
+]
+[s S505 . 1 `uc 1 . 1 0 :1:0 
+`uc 1 INT0F 1 0 :1:1 
+`uc 1 T0IF 1 0 :1:2 
+`uc 1 . 1 0 :1:3 
+`uc 1 INT0E 1 0 :1:4 
+`uc 1 T0IE 1 0 :1:5 
+`uc 1 PEIE 1 0 :1:6 
+`uc 1 GIE 1 0 :1:7 
+]
+[s S514 . 1 `uc 1 . 1 0 :6:0 
+`uc 1 GIEL 1 0 :1:6 
+`uc 1 GIEH 1 0 :1:7 
+]
+[s S518 . 1 `uc 1 . 1 0 :1:0 
+`uc 1 INT0F 1 0 :1:1 
+`uc 1 T0IF 1 0 :1:2 
+`uc 1 . 1 0 :1:3 
+`uc 1 INT0E 1 0 :1:4 
+`uc 1 T0IE 1 0 :1:5 
+`uc 1 PEIE 1 0 :1:6 
+`uc 1 GIE 1 0 :1:7 
+]
+[s S527 . 1 `uc 1 . 1 0 :6:0 
+`uc 1 GIEL 1 0 :1:6 
+`uc 1 GIEH 1 0 :1:7 
+]
+[u S531 . 1 `S60 1 . 1 0 `S69 1 . 1 0 `S78 1 . 1 0 `S69 1 . 1 0 `S78 1 . 1 0 ]
+"16597
+[s S538 . 1 `uc 1 T0PS 1 0 :3:0 
+`uc 1 PSA 1 0 :1:3 
+`uc 1 T0SE 1 0 :1:4 
+`uc 1 T0CS 1 0 :1:5 
+`uc 1 T08BIT 1 0 :1:6 
+`uc 1 TMR0ON 1 0 :1:7 
+]
+[s S545 . 1 `uc 1 T0PS0 1 0 :1:0 
+`uc 1 T0PS1 1 0 :1:1 
+`uc 1 T0PS2 1 0 :1:2 
+]
+[u S549 . 1 `S538 1 . 1 0 `S545 1 . 1 0 ]
+"31 plib/Timers/t0open.c
+[u S580 Timers 2 `ui 1 lt 2 0 `[2]uc 1 bt 2 0 ]
 "5 ../common/asfladd.c
 [v ___asfladd `(d  1 e 3 0 ]
 "5 ../common/asfldiv.c
@@ -99,17 +254,21 @@
 [v ___asftsub `(f  1 e 3 0 ]
 "5 ../common/aslmul.c
 [v ___aslmul `(ul  1 e 4 0 ]
-"13 ../switch_pods.c
+"25 ../switch_pods.c
+[v _pwm_int `II(v  1 e 0 0 ]
+"64
 [v _main `(ui  1 e 2 0 ]
-"206
+"284
 [v __delay_ms `(v  1 e 0 0 ]
-"214
-[v _setupIO `(v  1 e 0 0 ]
-"252
-[v _checkButton `(uc  1 e 1 0 ]
 "292
+[v _setupIO `(v  1 e 0 0 ]
+"330
+[v _checkButton `(uc  1 e 1 0 ]
+"370
 [v _setOutput `(v  1 e 0 0 ]
-"329
+[v i2_setOutput `(v  1 e 0 0 ]
+[v i2_setOutput `(v  1 e 0 0 ]
+"407
 [v _setOutputs `(v  1 e 0 0 ]
 "5 /opt/microchip/xc8/v1.12/sources/abdiv.c
 [v ___abdiv `(c  1 e 1 0 ]
@@ -215,13 +374,43 @@
 [v ___tmul `(um  1 e 3 0 ]
 "3 /opt/microchip/xc8/v1.12/sources/wmul.c
 [v ___wmul `(ui  1 e 2 0 ]
+"27 plib/ADC/adcbusy.c
+[v _BusyADC `(uc  1 e 1 0 ]
+"23 plib/ADC/adcconv.c
+[v _ConvertADC `(v  1 e 0 0 ]
+"25 plib/ADC/adcread.c
+[v _ReadADC `(i  1 e 2 0 ]
 "13 plib/EEP/busy_eep.c
 [v _Busy_eep `(v  1 e 0 0 ]
 "36 plib/EEP/read_B.c
 [v _Read_b_eep `(uc  1 e 1 0 ]
 "50 plib/EEP/write_B.c
 [v _Write_b_eep `(v  1 e 0 0 ]
-"1191 /opt/microchip/xc8/v1.12/include/pic18f65k22.h
+"19 plib/Timers/t0open.c
+[v _OpenTimer0 `(v  1 e 0 0 ]
+"17 plib/Timers/t0write.c
+[v _WriteTimer0 `(v  1 e 0 0 ]
+[v i2_WriteTimer0 `(v  1 e 0 0 ]
+[v i2_WriteTimer0 `(v  1 e 0 0 ]
+"15 ../switch_pods.c
+[v _buttonMask `VE[9]ui  1 e 18 0 ]
+"16
+[v _leftLEDMask `VE[9]ui  1 e 18 0 ]
+"17
+[v _rightLEDMask `VE[9]ui  1 e 18 0 ]
+"18
+[v _relayMask `VE[9]ui  1 e 18 0 ]
+"19
+[v _outputFlag `VE[9]ui  1 e 18 0 ]
+"20
+[v _outputAlwaysOnFlag `VEui  1 e 2 0 ]
+"21
+[v _outputHighLength `VEui  1 e 2 0 ]
+"22
+[v _outputPWMState `VEui  1 e 2 0 ]
+"1119 /opt/microchip/xc8/v1.12/include/pic18f65k22.h
+[v _ANCON2 `VEuc  1 e 1 @3875 ]
+"1191
 [v _ANCON1 `VEuc  1 e 1 @3876 ]
 "1263
 [v _ANCON0 `VEuc  1 e 1 @3877 ]
@@ -267,30 +456,13 @@
 [v _TRISF `VEuc  1 e 1 @3991 ]
 "9883
 [v _TRISG `VEuc  1 e 1 @3992 ]
-"4467 /Volumes/build/bamboo/xml-data/build-dir/XC8-RELEASE-JOB1/nz/build/dist/osx/include/pic18f65k22.h
-[v _EEDATA `VEuc  1 e 1 @3937 ]
-"4486
-[v _EEADR `VEuc  1 e 1 @3938 ]
-"4505
-[v _EEADRH `VEuc  1 e 1 @3939 ]
-"6941
-[v _EECON2 `VEuc  1 e 1 @3966 ]
-[s S131 . 1 `uc 1 RD 1 0 :1:0 
-`uc 1 WR 1 0 :1:1 
-`uc 1 WREN 1 0 :1:2 
-`uc 1 WRERR 1 0 :1:3 
-`uc 1 FREE 1 0 :1:4 
-`uc 1 . 1 0 :1:5 
-`uc 1 CFGS 1 0 :1:6 
-`uc 1 EEPGD 1 0 :1:7 
-]
-"6981
-[s S140 . 1 `uc 1 . 1 0 :6:0 
-`uc 1 EEFS 1 0 :1:6 
-]
-[u S143 . 1 `S131 1 . 1 0 `S140 1 . 1 0 ]
-[v _EECON1bits `VES143  1 e 1 @3967 ]
-[s S208 . 1 `uc 1 RBIF 1 0 :1:0 
+"12953
+[v _ADCON2 `VEuc  1 e 1 @4032 ]
+"13023
+[v _ADCON1 `VEuc  1 e 1 @4033 ]
+"13132
+[v _ADCON0 `VEuc  1 e 1 @4034 ]
+[s S60 . 1 `uc 1 RBIF 1 0 :1:0 
 `uc 1 INT0IF 1 0 :1:1 
 `uc 1 TMR0IF 1 0 :1:2 
 `uc 1 RBIE 1 0 :1:3 
@@ -300,7 +472,7 @@
 `uc 1 GIE_GIEH 1 0 :1:7 
 ]
 "16597
-[s S217 . 1 `uc 1 . 1 0 :1:0 
+[s S69 . 1 `uc 1 . 1 0 :1:0 
 `uc 1 INT0F 1 0 :1:1 
 `uc 1 T0IF 1 0 :1:2 
 `uc 1 . 1 0 :1:3 
@@ -309,119 +481,231 @@
 `uc 1 PEIE 1 0 :1:6 
 `uc 1 GIE 1 0 :1:7 
 ]
-[s S226 . 1 `uc 1 . 1 0 :6:0 
+[s S78 . 1 `uc 1 . 1 0 :6:0 
 `uc 1 GIEL 1 0 :1:6 
 `uc 1 GIEH 1 0 :1:7 
 ]
-[u S243 . 1 `S208 1 . 1 0 `S217 1 . 1 0 `S226 1 . 1 0 `S217 1 . 1 0 `S226 1 . 1 0 ]
-[v _INTCONbits `VES243  1 e 1 @4082 ]
-"13 ../switch_pods.c
+[u S95 . 1 `S60 1 . 1 0 `S69 1 . 1 0 `S78 1 . 1 0 `S69 1 . 1 0 `S78 1 . 1 0 ]
+[v _INTCONbits `VES95  1 e 1 @4082 ]
+"19134
+[v _TMR0IE `VEb  1 e 0 @32661 ]
+"19136
+[v _TMR0IF `VEb  1 e 0 @32658 ]
+"4467 /Volumes/build/bamboo/xml-data/build-dir/XC8-RELEASE-JOB1/nz/build/dist/osx/include/pic18f65k22.h
+[v _EEDATA `VEuc  1 e 1 @3937 ]
+"4486
+[v _EEADR `VEuc  1 e 1 @3938 ]
+"4505
+[v _EEADRH `VEuc  1 e 1 @3939 ]
+"6941
+[v _EECON2 `VEuc  1 e 1 @3966 ]
+[s S369 . 1 `uc 1 RD 1 0 :1:0 
+`uc 1 WR 1 0 :1:1 
+`uc 1 WREN 1 0 :1:2 
+`uc 1 WRERR 1 0 :1:3 
+`uc 1 FREE 1 0 :1:4 
+`uc 1 . 1 0 :1:5 
+`uc 1 CFGS 1 0 :1:6 
+`uc 1 EEPGD 1 0 :1:7 
+]
+"6981
+[s S378 . 1 `uc 1 . 1 0 :6:0 
+`uc 1 EEFS 1 0 :1:6 
+]
+[u S381 . 1 `S369 1 . 1 0 `S378 1 . 1 0 ]
+[v _EECON1bits `VES381  1 e 1 @3967 ]
+[s S252 . 1 `uc 1 . 1 0 :1:0 
+`uc 1 GO_NOT_DONE 1 0 :1:1 
+]
+"13177
+[s S255 . 1 `uc 1 ADON 1 0 :1:0 
+`uc 1 GO_nDONE 1 0 :1:1 
+`uc 1 CHS 1 0 :5:2 
+]
+[s S259 . 1 `uc 1 . 1 0 :1:0 
+`uc 1 DONE 1 0 :1:1 
+`uc 1 CHS0 1 0 :1:2 
+`uc 1 CHS1 1 0 :1:3 
+`uc 1 CHS2 1 0 :1:4 
+`uc 1 CHS3 1 0 :1:5 
+`uc 1 CHS4 1 0 :1:6 
+]
+[s S267 . 1 `uc 1 . 1 0 :1:0 
+`uc 1 GO 1 0 :1:1 
+]
+[s S270 . 1 `uc 1 . 1 0 :1:0 
+`uc 1 NOT_DONE 1 0 :1:1 
+]
+[s S273 . 1 `uc 1 . 1 0 :1:0 
+`uc 1 nDONE 1 0 :1:1 
+]
+[s S276 . 1 `uc 1 . 1 0 :1:0 
+`uc 1 GODONE 1 0 :1:1 
+]
+[s S279 . 1 `uc 1 . 1 0 :1:0 
+`uc 1 GO_DONE 1 0 :1:1 
+]
+[u S282 . 1 `S252 1 . 1 0 `S255 1 . 1 0 `S259 1 . 1 0 `S267 1 . 1 0 `S270 1 . 1 0 `S273 1 . 1 0 `S276 1 . 1 0 `S279 1 . 1 0 ]
+[v _ADCON0bits `VES282  1 e 1 @4034 ]
+"13262
+[v _ADRESL `VEuc  1 e 1 @4035 ]
+"13281
+[v _ADRESH `VEuc  1 e 1 @4036 ]
+"15753
+[v _T0CON `VEuc  1 e 1 @4053 ]
+[s S538 . 1 `uc 1 T0PS 1 0 :3:0 
+`uc 1 PSA 1 0 :1:3 
+`uc 1 T0SE 1 0 :1:4 
+`uc 1 T0CS 1 0 :1:5 
+`uc 1 T08BIT 1 0 :1:6 
+`uc 1 TMR0ON 1 0 :1:7 
+]
+"15773
+[s S545 . 1 `uc 1 T0PS0 1 0 :1:0 
+`uc 1 T0PS1 1 0 :1:1 
+`uc 1 T0PS2 1 0 :1:2 
+]
+[u S549 . 1 `S538 1 . 1 0 `S545 1 . 1 0 ]
+[v _T0CONbits `VES549  1 e 1 @4053 ]
+"15828
+[v _TMR0L `VEuc  1 e 1 @4054 ]
+"15847
+[v _TMR0H `VEuc  1 e 1 @4055 ]
+"64 ../switch_pods.c
 [v _main `(ui  1 e 2 0 ]
 {
-"23
-[v main@buttonEventDown `VE[9]ui  1 a 18 144 ]
-"25
-[v main@buttonLatch `VE[9]ui  1 a 18 126 ]
-"26
-[v main@buttonState `VE[9]ui  1 a 18 108 ]
-"24
-[v main@buttonEventUp `VE[9]ui  1 a 18 90 ]
-"20
-[v main@rightLEDMask `VE[9]ui  1 a 18 72 ]
-"19
-[v main@leftLEDMask `VE[9]ui  1 a 18 54 ]
-"22
-[v main@buttonDown `VE[9]ui  1 a 18 36 ]
-"21
-[v main@relayMask `VE[9]ui  1 a 18 18 ]
-"18
-[v main@buttonMask `VE[9]ui  1 a 18 0 ]
-"27
-[v main@i `VEui  1 a 2 164 ]
-"28
-[v main@programState `VEui  1 a 2 162 ]
-"18
-[v main@F7908 `VE[9]ui  1 s 18 F7908 ]
-"19
-[v main@F7910 `VE[9]ui  1 s 18 F7910 ]
-"20
-[v main@F7912 `VE[9]ui  1 s 18 F7912 ]
-"21
-[v main@F7914 `VE[9]ui  1 s 18 F7914 ]
-"22
-[v main@F7916 `VE[9]ui  1 s 18 F7916 ]
-"23
-[v main@F7918 `VE[9]ui  1 s 18 F7918 ]
-"24
-[v main@F7920 `VE[9]ui  1 s 18 F7920 ]
-"25
-[v main@F7922 `VE[9]ui  1 s 18 F7922 ]
-"26
-[v main@F7924 `VE[9]ui  1 s 18 F7924 ]
-"203
+"70
+[v main@buttonEventDown `VE[9]ui  1 a 18 72 ]
+"72
+[v main@buttonLatch `VE[9]ui  1 a 18 54 ]
+"73
+[v main@buttonState `VE[9]ui  1 a 18 36 ]
+"71
+[v main@buttonEventUp `VE[9]ui  1 a 18 18 ]
+"69
+[v main@buttonDown `VE[9]ui  1 a 18 0 ]
+"74
+[v main@i `VEui  1 a 2 94 ]
+"75
+[v main@programState `VEui  1 a 2 92 ]
+"80
+[v main@adcResult `VEui  1 a 2 90 ]
+"69
+[v main@F7995 `VE[9]ui  1 s 18 F7995 ]
+"70
+[v main@F7997 `VE[9]ui  1 s 18 F7997 ]
+"71
+[v main@F7999 `VE[9]ui  1 s 18 F7999 ]
+"72
+[v main@F8001 `VE[9]ui  1 s 18 F8001 ]
+"73
+[v main@F8003 `VE[9]ui  1 s 18 F8003 ]
+"281
 } 0
-"214
+"17 plib/Timers/t0write.c
+[v _WriteTimer0 `(v  1 e 0 0 ]
+{
+[u S580 Timers 2 `ui 1 lt 2 0 `[2]uc 1 bt 2 0 ]
+"18
+[v WriteTimer0@timer `S580  1 a 2 33 ]
+"17
+[v WriteTimer0@timer0 `ui  1 p 2 31 ]
+"24
+} 0
+"19 plib/Timers/t0open.c
+[v _OpenTimer0 `(v  1 e 0 0 ]
+{
+[v OpenTimer0@config `uc  1 p 1 31 ]
+"31
+} 0
+"23 plib/ADC/adcconv.c
+[v _ConvertADC `(v  1 e 0 0 ]
+{
+"25
+} 0
+"292 ../switch_pods.c
 [v _setupIO `(v  1 e 0 0 ]
 {
-"215
-[v setupIO@port `VEui  1 a 2 8 ]
-"217
-[v setupIO@state `VEui  1 a 2 6 ]
-"216
-[v setupIO@mask `VEuc  1 a 1 10 ]
-"214
-[v setupIO@row `ui  1 p 2 0 ]
-[v setupIO@direction `ui  1 p 2 2 ]
-"249
+"293
+[v setupIO@port `VEui  1 a 2 2 ]
+"295
+[v setupIO@state `VEui  1 a 2 0 ]
+"294
+[v setupIO@mask `VEuc  1 a 1 4 ]
+"292
+[v setupIO@row `ui  1 p 2 31 ]
+[v setupIO@direction `ui  1 p 2 33 ]
+"327
 } 0
 "36 plib/EEP/read_B.c
 [v _Read_b_eep `(uc  1 e 1 0 ]
 {
-[v Read_b_eep@badd `ui  1 p 2 0 ]
+[v Read_b_eep@badd `ui  1 p 2 31 ]
 "45
 } 0
-"206 ../switch_pods.c
+"284 ../switch_pods.c
 [v __delay_ms `(v  1 e 0 0 ]
 {
-"209
-[v __delay_ms@j `i  1 a 2 4 ]
-"207
-[v __delay_ms@i `i  1 a 2 2 ]
-"206
-[v __delay_ms@ms `ui  1 p 2 0 ]
-"211
-} 0
-"252
-[v _checkButton `(uc  1 e 1 0 ]
-{
-"255
-[v checkButton@state `VEui  1 a 2 6 ]
-"253
-[v checkButton@port `VEui  1 a 2 4 ]
-"254
-[v checkButton@mask `VEuc  1 a 1 8 ]
-"252
-[v checkButton@row `ui  1 p 2 0 ]
+"287
+[v __delay_ms@j `i  1 a 2 35 ]
+"285
+[v __delay_ms@i `i  1 a 2 33 ]
+"284
+[v __delay_ms@ms `ui  1 p 2 31 ]
 "289
 } 0
-"329
+"27 plib/ADC/adcbusy.c
+[v _BusyADC `(uc  1 e 1 0 ]
+{
+"29
+} 0
+"25 plib/ADC/adcread.c
+[v _ReadADC `(i  1 e 2 0 ]
+{
+"27
+} 0
+"330 ../switch_pods.c
+[v _checkButton `(uc  1 e 1 0 ]
+{
+"333
+[v checkButton@state `VEui  1 a 2 37 ]
+"331
+[v checkButton@port `VEui  1 a 2 35 ]
+"332
+[v checkButton@mask `VEuc  1 a 1 39 ]
+"330
+[v checkButton@row `ui  1 p 2 31 ]
+"367
+} 0
+"407
 [v _setOutputs `(v  1 e 0 0 ]
 {
-[v setOutputs@alwayson `ui  1 p 2 9 ]
-[v setOutputs@leftled `ui  1 p 2 11 ]
-[v setOutputs@rightled `ui  1 p 2 13 ]
-[v setOutputs@relay `ui  1 p 2 15 ]
-[v setOutputs@value `ui  1 p 2 17 ]
-"342
+[v setOutputs@alwayson `ui  1 p 2 0 ]
+[v setOutputs@ledIndex `ui  1 p 2 2 ]
+[v setOutputs@relay `ui  1 p 2 4 ]
+[v setOutputs@value `ui  1 p 2 6 ]
+"427
+} 0
+"370
+[v _setOutput `(v  1 e 0 0 ]
+{
+"371
+[v setOutput@port `VEui  1 a 2 37 ]
+"372
+[v setOutput@mask `VEuc  1 a 1 39 ]
+"370
+[v setOutput@row `ui  1 p 2 31 ]
+[v setOutput@value `ui  1 p 2 33 ]
+"404
 } 0
 "50 plib/EEP/write_B.c
 [v _Write_b_eep `(v  1 e 0 0 ]
 {
 "51
-[v Write_b_eep@GIE_BIT_VAL `uc  1 a 1 4 ]
+[v Write_b_eep@GIE_BIT_VAL `uc  1 a 1 35 ]
 "50
-[v Write_b_eep@badd `ui  1 p 2 0 ]
-[v Write_b_eep@bdat `uc  1 p 1 2 ]
+[v Write_b_eep@badd `ui  1 p 2 31 ]
+[v Write_b_eep@bdat `uc  1 p 1 33 ]
 "66
 } 0
 "13 plib/EEP/busy_eep.c
@@ -429,15 +713,26 @@
 {
 "15
 } 0
-"292 ../switch_pods.c
-[v _setOutput `(v  1 e 0 0 ]
+"25 ../switch_pods.c
+[v _pwm_int `II(v  1 e 0 0 ]
 {
-"293
-[v setOutput@port `VEui  1 a 2 6 ]
-"294
-[v setOutput@mask `VEuc  1 a 1 8 ]
-"292
-[v setOutput@row `ui  1 p 2 0 ]
-[v setOutput@value `ui  1 p 2 2 ]
-"326
+"26
+[v pwm_int@i `ui  1 a 2 29 ]
+"61
+} 0
+"370
+[v i2_setOutput `(v  1 e 0 0 ]
+{
+[v i2setOutput@port `VEui  1 a 2 6 ]
+[v i2setOutput@mask `VEuc  1 a 1 8 ]
+[v i2setOutput@row `ui  1 p 2 0 ]
+[v i2setOutput@value `ui  1 p 2 2 ]
+"404
+} 0
+"17 plib/Timers/t0write.c
+[v i2_WriteTimer0 `(v  1 e 0 0 ]
+{
+[v i2WriteTimer0@timer `S580  1 a 2 2 ]
+[v i2WriteTimer0@timer0 `ui  1 p 2 0 ]
+"24
 } 0

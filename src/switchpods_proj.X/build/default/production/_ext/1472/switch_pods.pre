@@ -9470,6 +9470,80 @@ void Busy_eep ( void );
 unsigned char Read_b_eep( unsigned int badd );
 void Write_b_eep( unsigned int badd, unsigned char bdata );
 
+# 36 "/opt/microchip/xc8/v1.12/include/plib/timers.h"
+union Timers
+{
+unsigned int lt;
+char bt[2];
+};
+
+# 118
+void OpenTimer0 ( unsigned char config);
+void CloseTimer0 (void);
+unsigned int ReadTimer0 (void);
+void WriteTimer0 ( unsigned int timer0);
+
+# 185
+void OpenTimer1 ( unsigned char config, unsigned char config1);
+void CloseTimer1 (void);
+unsigned int ReadTimer1 (void);
+void WriteTimer1 ( unsigned int timer1);
+
+# 325
+void OpenTimer2 ( unsigned char config);
+void CloseTimer2 (void);
+
+# 452
+void OpenTimer3 ( unsigned char config, unsigned char config1);
+void CloseTimer3 (void);
+unsigned int ReadTimer3 (void);
+void WriteTimer3 ( unsigned int timer3);
+
+# 541
+void OpenTimer4 ( unsigned char config);
+void CloseTimer4 (void);
+
+# 657
+void OpenTimer5 ( unsigned char config, unsigned char config1);
+void CloseTimer5 (void);
+unsigned int ReadTimer5 (void);
+void WriteTimer5 ( unsigned int Timer5);
+
+# 746
+void OpenTimer6 ( unsigned char config);
+void CloseTimer6 (void);
+
+# 892
+void OpenTimer8 ( unsigned char config);
+void CloseTimer8 (void);
+
+# 2008 "/opt/microchip/xc8/v1.12/include/plib/adc.h"
+union ADCResult
+{
+int lr;
+char br[2];
+};
+
+char BusyADC (void);
+
+void ConvertADC (void);
+
+void CloseADC(void);
+
+# 2026
+int ReadADC(void);
+
+# 2040
+void OpenADC ( unsigned char ,
+unsigned char ,
+unsigned char );
+
+# 2084
+void SetChanADC(unsigned char );
+
+# 2100
+void SelChanConvADC( unsigned char );
+
 
 # 9 "../switch_pods.h"
 #pragma config RETEN = ON
@@ -9535,11 +9609,60 @@ void Write_b_eep( unsigned int badd, unsigned char bdata );
 
 #pragma config EBRTB = OFF
 
-# 7 "../switch_pods.c"
+# 9 "../switch_pods.c"
 char checkButton(uint16_t row);
-void setOutputs(uint16_t alwayson, uint16_t leftled, uint16_t rightled, uint16_t relay, uint16_t value);
+void setOutput(uint16_t row, uint16_t value);
+void setOutputs(uint16_t alwayson, uint16_t ledIndex, uint16_t relay, uint16_t value);
 void setupIO(uint16_t row, uint16_t direction);
 void _delay_ms(uint16_t ms);
+
+volatile uint16_t buttonMask[9] = {0x0304,0x0302,0x0301,0x0480,0x0440,0x0420,0x0410,0x0408,0x0404};
+volatile uint16_t leftLEDMask[9] = {0x0280,0x0240,0x0201,0x0202,0x0010,0x0020,0x0002,0x0004,0x0008};
+volatile uint16_t rightLEDMask[9] = {0x0402,0x0401,0x0601,0x0602,0x0604,0x0608,0x0610,0x0580,0x0540};
+volatile uint16_t relayMask[9] = {0x0308,0x0310,0x0320,0x0340,0x0380,0x0101,0x0102,0x0104,0x0108};
+volatile uint16_t outputFlag[9] = {0, 0, 0, 0, 0, 0, 0, 0, 0};
+volatile uint16_t outputAlwaysOnFlag = 0;
+volatile uint16_t outputHighLength = (0x0100);
+volatile uint16_t outputPWMState = 0;
+
+void interrupt pwm_int(void)
+{
+uint16_t i;
+
+if( TMR0IE && TMR0IF )
+{
+TMR0IF = 0;
+if(outputPWMState == 1)
+{
+
+WriteTimer0(0xffff - outputHighLength);
+}
+else
+{
+
+WriteTimer0(0xffff - (0x1000) + outputHighLength);
+}
+
+
+for(i=0;i<9;i++)
+{
+if( outputAlwaysOnFlag == 0 )
+{
+setOutput(leftLEDMask[i], outputPWMState);
+setOutput(rightLEDMask[i], outputFlag[i] & outputPWMState);
+}
+else
+{
+setOutput(leftLEDMask[i], outputFlag[i] & outputPWMState);
+setOutput(rightLEDMask[i], outputPWMState);
+}
+}
+
+outputPWMState = !outputPWMState;
+
+return;
+}
+}
 
 uint16_t main(void)
 {
@@ -9547,10 +9670,6 @@ uint16_t main(void)
 
 
 
-volatile uint16_t buttonMask[9] = {0x0304,0x0302,0x0301,0x0480,0x0440,0x0420,0x0410,0x0408,0x0404};
-volatile uint16_t leftLEDMask[9] = {0x0280,0x0240,0x0201,0x0202,0x0010,0x0020,0x0002,0x0004,0x0008};
-volatile uint16_t rightLEDMask[9] = {0x0402,0x0401,0x0601,0x0602,0x0604,0x0608,0x0610,0x0580,0x0540};
-volatile uint16_t relayMask[9] = {0x0308,0x0310,0x0320,0x0340,0x0380,0x0101,0x0102,0x0104,0x0108};
 volatile uint16_t buttonDown[9] = {0,0,0,0,0,0,0,0,0};
 volatile uint16_t buttonEventDown[9] = {0,0,0,0,0,0,0,0,0};
 volatile uint16_t buttonEventUp[9] = {0,0,0,0,0,0,0,0,0};
@@ -9559,13 +9678,33 @@ volatile uint16_t buttonState[9] = {0,0,0,0,0,0,0,0,0};
 volatile uint16_t i;
 volatile uint16_t programState = 0;
 
-# 41
-ANCON0 = 0;
+
+
+
+volatile uint16_t adcResult = 0;
+
+# 91
+WriteTimer0(0xffff - 0x10);
+OpenTimer0(0b11111111 & 0b10111111 & 0b11011111 & 0b11110000);
+
+ANCON0 = 1;
 ANCON1 = 0;
+ANCON2 = 0;
+
+
+ADCON0 = 0;
+ADCON1 = (0x2 << 4) | (0x0 << 3) | (0x0);
+ADCON2 = (0x1 << 7) | (0x7 << 3) | (0x0);
+
+
+ADCON0 = 1;
+
+
+ConvertADC();
 
 setupIO(0x0510, 1);
 setupIO(0x0520, 1);
-setupIO(0x0001, 0);
+setupIO(0x0001, 1);
 
 for(i=0;i<9;i++)
 {
@@ -9578,10 +9717,22 @@ setupIO(relayMask[i], 0);
 buttonLatch[i] = (uint16_t)( 0x00FF & Read_b_eep( i ) );
 }
 
-# 76
+# 142
+(INTCONbits.GIE = 1);
+
 for(;;)
 {
 _delay_ms(20);
+
+
+if(BusyADC() == 0)
+{
+
+adcResult = (uint16_t)(ReadADC() & 0x0fff);
+outputHighLength = (0x0100) + adcResult;
+if(outputHighLength >= (0x1000)) outputHighLength = (0x1000) - 1 ;
+ConvertADC();
+}
 
 
 for(i=0;i<9;i++)
@@ -9615,7 +9766,7 @@ _delay_ms(500);
 
 for(i=0;i<9;i++)
 {
-setOutputs( !checkButton(0x0520), leftLEDMask[i], rightLEDMask[i], 0xffff, buttonLatch[i] );
+setOutputs( !checkButton(0x0520), i, 0xffff, buttonLatch[i] );
 buttonEventUp[i] = 0;
 buttonEventDown[i] = 0;
 }
@@ -9640,7 +9791,7 @@ buttonLatch[i] = 0;
 buttonEventDown[i] = 0;
 }
 
-setOutputs( !checkButton(0x0520), leftLEDMask[i], rightLEDMask[i], 0xffff, buttonLatch[i] );
+setOutputs( !checkButton(0x0520), i, 0xffff, buttonLatch[i] );
 }
 }
 else
@@ -9657,7 +9808,7 @@ for(i=0;i<9;i++)
 Write_b_eep(i, buttonLatch[i]);
 Busy_eep ();
 
-setOutputs( !checkButton(0x0520), leftLEDMask[i], rightLEDMask[i], relayMask[i], buttonState[i] );
+setOutputs( !checkButton(0x0520), i, relayMask[i], buttonState[i] );
 buttonEventDown[i] = 0;
 buttonEventUp[i] = 0;
 }
@@ -9701,7 +9852,7 @@ buttonEventUp[i] = 0;
 }
 }
 
-setOutputs( !checkButton(0x0520), leftLEDMask[i], rightLEDMask[i], relayMask[i], buttonState[i] );
+setOutputs( !checkButton(0x0520), i, relayMask[i], buttonState[i] );
 }
 }
 
@@ -9831,18 +9982,13 @@ break;
 }
 }
 
-void setOutputs(uint16_t alwayson, uint16_t leftled, uint16_t rightled, uint16_t relay, uint16_t value)
+void setOutputs(uint16_t alwayson, uint16_t ledIndex, uint16_t relay, uint16_t value)
 {
-if( alwayson == 0 )
-{
-setOutput(leftled, 1);
-setOutput(rightled, value);
-}
-else
-{
-setOutput(leftled, value);
-setOutput(rightled, 1);
-}
+outputAlwaysOnFlag = alwayson;
 
+
+outputFlag[ledIndex] = value;
+
+# 426
 setOutput(relay, value);
 }

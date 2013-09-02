@@ -1,19 +1,57 @@
 Version 3.2 HI-TECH Software Intermediate Code
+"19134 /opt/microchip/xc8/v1.12/include/pic18f65k22.h
+[v _TMR0IE `Vb ~T0 @X0 0 e@32661 ]
+"19136
+[v _TMR0IF `Vb ~T0 @X0 0 e@32658 ]
+"121 /opt/microchip/xc8/v1.12/include/plib/timers.h
+[v _WriteTimer0 `(v ~T0 @X0 0 ef1`ui ]
+"10 ../switch_pods.c
+[v _setOutput `(v ~T0 @X0 0 ef2`ui`ui ]
 [p mainexit ]
+"118 /opt/microchip/xc8/v1.12/include/plib/timers.h
+[v _OpenTimer0 `(v ~T0 @X0 0 ef1`uc ]
 "1263 /opt/microchip/xc8/v1.12/include/pic18f65k22.h
 [v _ANCON0 `Vuc ~T0 @X0 0 e@3877 ]
 "1191
 [v _ANCON1 `Vuc ~T0 @X0 0 e@3876 ]
-"9 ../switch_pods.c
+"1119
+[v _ANCON2 `Vuc ~T0 @X0 0 e@3875 ]
+"13132
+[v _ADCON0 `Vuc ~T0 @X0 0 e@4034 ]
+"13023
+[v _ADCON1 `Vuc ~T0 @X0 0 e@4033 ]
+"12953
+[v _ADCON2 `Vuc ~T0 @X0 0 e@4032 ]
+"2016 /opt/microchip/xc8/v1.12/include/plib/adc.h
+[v _ConvertADC `(v ~T0 @X0 0 ef ]
+"12 ../switch_pods.c
 [v _setupIO `(v ~T0 @X0 0 ef2`ui`ui ]
 "37 /opt/microchip/xc8/v1.12/include/plib/EEP.h
 [v _Read_b_eep `(uc ~T0 @X0 0 ef1`ui ]
-"10 ../switch_pods.c
+[s S1070 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 ]
+[n S1070 . RBIF INT0IF TMR0IF RBIE INT0IE TMR0IE PEIE_GIEL GIE_GIEH ]
+[s S1071 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 ]
+[n S1071 . . INT0F T0IF . INT0E T0IE PEIE GIE ]
+[s S1072 :6 `uc 1 :1 `uc 1 :1 `uc 1 ]
+[n S1072 . . GIEL GIEH ]
+[s S1073 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 ]
+[n S1073 . . INT0F T0IF . INT0E T0IE PEIE GIE ]
+[s S1074 :6 `uc 1 :1 `uc 1 :1 `uc 1 ]
+[n S1074 . . GIEL GIEH ]
+[u S1069 `S1070 1 `S1071 1 `S1072 1 `S1073 1 `S1074 1 ]
+[n S1069 . . . . . . ]
+"16597 /opt/microchip/xc8/v1.12/include/pic18f65k22.h
+[v _INTCONbits `VS1069 ~T0 @X0 0 e@4082 ]
+"13 ../switch_pods.c
 [v __delay_ms `(v ~T0 @X0 0 ef1`ui ]
-"7
+"2014 /opt/microchip/xc8/v1.12/include/plib/adc.h
+[v _BusyADC `(uc ~T0 @X0 0 ef ]
+"2026
+[v _ReadADC `(i ~T0 @X0 0 ef ]
+"9 ../switch_pods.c
 [v _checkButton `(uc ~T0 @X0 0 ef1`ui ]
-"8
-[v _setOutputs `(v ~T0 @X0 0 ef5`ui`ui`ui`ui`ui ]
+"11
+[v _setOutputs `(v ~T0 @X0 0 ef4`ui`ui`ui`ui ]
 "38 /opt/microchip/xc8/v1.12/include/plib/EEP.h
 [v _Write_b_eep `(v ~T0 @X0 0 ef2`ui`Buc ]
 "36
@@ -7427,6 +7465,49 @@ Version 3.2 HI-TECH Software Intermediate Code
 [; ;EEP.h: 36: void Busy_eep ( void );
 [; ;EEP.h: 37: unsigned char Read_b_eep( unsigned int badd );
 [; ;EEP.h: 38: void Write_b_eep( unsigned int badd, unsigned char bdata );
+[; ;timers.h: 36: union Timers
+[; ;timers.h: 37: {
+[; ;timers.h: 38: unsigned int lt;
+[; ;timers.h: 39: char bt[2];
+[; ;timers.h: 40: };
+[; ;timers.h: 118: void OpenTimer0 ( unsigned char config);
+[; ;timers.h: 119: void CloseTimer0 (void);
+[; ;timers.h: 120: unsigned int ReadTimer0 (void);
+[; ;timers.h: 121: void WriteTimer0 ( unsigned int timer0);
+[; ;timers.h: 185: void OpenTimer1 ( unsigned char config, unsigned char config1);
+[; ;timers.h: 186: void CloseTimer1 (void);
+[; ;timers.h: 187: unsigned int ReadTimer1 (void);
+[; ;timers.h: 188: void WriteTimer1 ( unsigned int timer1);
+[; ;timers.h: 325: void OpenTimer2 ( unsigned char config);
+[; ;timers.h: 326: void CloseTimer2 (void);
+[; ;timers.h: 452: void OpenTimer3 ( unsigned char config, unsigned char config1);
+[; ;timers.h: 453: void CloseTimer3 (void);
+[; ;timers.h: 454: unsigned int ReadTimer3 (void);
+[; ;timers.h: 455: void WriteTimer3 ( unsigned int timer3);
+[; ;timers.h: 541: void OpenTimer4 ( unsigned char config);
+[; ;timers.h: 542: void CloseTimer4 (void);
+[; ;timers.h: 657: void OpenTimer5 ( unsigned char config, unsigned char config1);
+[; ;timers.h: 658: void CloseTimer5 (void);
+[; ;timers.h: 659: unsigned int ReadTimer5 (void);
+[; ;timers.h: 660: void WriteTimer5 ( unsigned int Timer5);
+[; ;timers.h: 746: void OpenTimer6 ( unsigned char config);
+[; ;timers.h: 747: void CloseTimer6 (void);
+[; ;timers.h: 892: void OpenTimer8 ( unsigned char config);
+[; ;timers.h: 893: void CloseTimer8 (void);
+[; ;adc.h: 2008: union ADCResult
+[; ;adc.h: 2009: {
+[; ;adc.h: 2010: int lr;
+[; ;adc.h: 2011: char br[2];
+[; ;adc.h: 2012: };
+[; ;adc.h: 2014: char BusyADC (void);
+[; ;adc.h: 2016: void ConvertADC (void);
+[; ;adc.h: 2018: void CloseADC(void);
+[; ;adc.h: 2026: int ReadADC(void);
+[; ;adc.h: 2040: void OpenADC ( unsigned char ,
+[; ;adc.h: 2041: unsigned char ,
+[; ;adc.h: 2042: unsigned char );
+[; ;adc.h: 2084: void SetChanADC(unsigned char );
+[; ;adc.h: 2100: void SelChanConvADC( unsigned char );
 "9 ../switch_pods.h
 [p x RETEN=ON ]
 "10
@@ -7503,20 +7584,14 @@ Version 3.2 HI-TECH Software Intermediate Code
 [p x EBRT3=OFF ]
 "70
 [p x EBRTB=OFF ]
-[; ;switch_pods.c: 7: char checkButton(uint16_t row);
-[; ;switch_pods.c: 8: void setOutputs(uint16_t alwayson, uint16_t leftled, uint16_t rightled, uint16_t relay, uint16_t value);
-[; ;switch_pods.c: 9: void setupIO(uint16_t row, uint16_t direction);
-[; ;switch_pods.c: 10: void _delay_ms(uint16_t ms);
-"13 ../switch_pods.c
-[v _main `(ui ~T0 @X0 1 ef ]
-{
-[; ;switch_pods.c: 12: uint16_t main(void)
-[; ;switch_pods.c: 13: {
-[e :U _main ]
-[f ]
-"18
-[v F7908 `Vui ~T0 @X0 -> 9 `i s ]
-[i F7908
+[; ;switch_pods.c: 9: char checkButton(uint16_t row);
+[; ;switch_pods.c: 10: void setOutput(uint16_t row, uint16_t value);
+[; ;switch_pods.c: 11: void setOutputs(uint16_t alwayson, uint16_t ledIndex, uint16_t relay, uint16_t value);
+[; ;switch_pods.c: 12: void setupIO(uint16_t row, uint16_t direction);
+[; ;switch_pods.c: 13: void _delay_ms(uint16_t ms);
+"15 ../switch_pods.c
+[v _buttonMask `Vui ~T0 @X0 -> 9 `i e ]
+[i _buttonMask
 :U ..
 -> -> 772 `i `ui
 -> -> 770 `i `ui
@@ -7529,12 +7604,10 @@ Version 3.2 HI-TECH Software Intermediate Code
 -> -> 1028 `i `ui
 ..
 ]
-[v _buttonMask `Vui ~T0 @X0 -> 9 `i a ]
-[; ;switch_pods.c: 18: volatile uint16_t buttonMask[9] = {0x0304,0x0302,0x0301,0x0480,0x0440,0x0420,0x0410,0x0408,0x0404};
-[e = _buttonMask F7908 ]
-"19
-[v F7910 `Vui ~T0 @X0 -> 9 `i s ]
-[i F7910
+[; ;switch_pods.c: 15: volatile uint16_t buttonMask[9] = {0x0304,0x0302,0x0301,0x0480,0x0440,0x0420,0x0410,0x0408,0x0404};
+"16
+[v _leftLEDMask `Vui ~T0 @X0 -> 9 `i e ]
+[i _leftLEDMask
 :U ..
 -> -> 640 `i `ui
 -> -> 576 `i `ui
@@ -7547,12 +7620,10 @@ Version 3.2 HI-TECH Software Intermediate Code
 -> -> 8 `i `ui
 ..
 ]
-[v _leftLEDMask `Vui ~T0 @X0 -> 9 `i a ]
-[; ;switch_pods.c: 19: volatile uint16_t leftLEDMask[9] = {0x0280,0x0240,0x0201,0x0202,0x0010,0x0020,0x0002,0x0004,0x0008};
-[e = _leftLEDMask F7910 ]
-"20
-[v F7912 `Vui ~T0 @X0 -> 9 `i s ]
-[i F7912
+[; ;switch_pods.c: 16: volatile uint16_t leftLEDMask[9] = {0x0280,0x0240,0x0201,0x0202,0x0010,0x0020,0x0002,0x0004,0x0008};
+"17
+[v _rightLEDMask `Vui ~T0 @X0 -> 9 `i e ]
+[i _rightLEDMask
 :U ..
 -> -> 1026 `i `ui
 -> -> 1025 `i `ui
@@ -7565,12 +7636,10 @@ Version 3.2 HI-TECH Software Intermediate Code
 -> -> 1344 `i `ui
 ..
 ]
-[v _rightLEDMask `Vui ~T0 @X0 -> 9 `i a ]
-[; ;switch_pods.c: 20: volatile uint16_t rightLEDMask[9] = {0x0402,0x0401,0x0601,0x0602,0x0604,0x0608,0x0610,0x0580,0x0540};
-[e = _rightLEDMask F7912 ]
-"21
-[v F7914 `Vui ~T0 @X0 -> 9 `i s ]
-[i F7914
+[; ;switch_pods.c: 17: volatile uint16_t rightLEDMask[9] = {0x0402,0x0401,0x0601,0x0602,0x0604,0x0608,0x0610,0x0580,0x0540};
+"18
+[v _relayMask `Vui ~T0 @X0 -> 9 `i e ]
+[i _relayMask
 :U ..
 -> -> 776 `i `ui
 -> -> 784 `i `ui
@@ -7583,12 +7652,162 @@ Version 3.2 HI-TECH Software Intermediate Code
 -> -> 264 `i `ui
 ..
 ]
-[v _relayMask `Vui ~T0 @X0 -> 9 `i a ]
-[; ;switch_pods.c: 21: volatile uint16_t relayMask[9] = {0x0308,0x0310,0x0320,0x0340,0x0380,0x0101,0x0102,0x0104,0x0108};
-[e = _relayMask F7914 ]
+[; ;switch_pods.c: 18: volatile uint16_t relayMask[9] = {0x0308,0x0310,0x0320,0x0340,0x0380,0x0101,0x0102,0x0104,0x0108};
+"19
+[v _outputFlag `Vui ~T0 @X0 -> 9 `i e ]
+[i _outputFlag
+:U ..
+-> -> 0 `i `ui
+-> -> 0 `i `ui
+-> -> 0 `i `ui
+-> -> 0 `i `ui
+-> -> 0 `i `ui
+-> -> 0 `i `ui
+-> -> 0 `i `ui
+-> -> 0 `i `ui
+-> -> 0 `i `ui
+..
+]
+[; ;switch_pods.c: 19: volatile uint16_t outputFlag[9] = {0, 0, 0, 0, 0, 0, 0, 0, 0};
+"20
+[v _outputAlwaysOnFlag `Vui ~T0 @X0 1 e ]
+[i _outputAlwaysOnFlag
+-> -> 0 `i `ui
+]
+[; ;switch_pods.c: 20: volatile uint16_t outputAlwaysOnFlag = 0;
+"21
+[v _outputHighLength `Vui ~T0 @X0 1 e ]
+[i _outputHighLength
+-> -> 256 `i `ui
+]
+[; ;switch_pods.c: 21: volatile uint16_t outputHighLength = (0x0100);
 "22
-[v F7916 `Vui ~T0 @X0 -> 9 `i s ]
-[i F7916
+[v _outputPWMState `Vui ~T0 @X0 1 e ]
+[i _outputPWMState
+-> -> 0 `i `ui
+]
+[; ;switch_pods.c: 22: volatile uint16_t outputPWMState = 0;
+"25
+[v F7990 `(v ~T0 @X0 1 tf ]
+[v _pwm_int `IF7990 ~T0 @X0 1 e ]
+{
+[; ;switch_pods.c: 24: void interrupt pwm_int(void)
+[; ;switch_pods.c: 25: {
+[e :U _pwm_int ]
+[f ]
+"26
+[v _i `ui ~T0 @X0 1 a ]
+[; ;switch_pods.c: 26: uint16_t i;
+[; ;switch_pods.c: 28: if( TMR0IE && TMR0IF )
+"28
+[e $ ! && _TMR0IE _TMR0IF 1099  ]
+[; ;switch_pods.c: 29: {
+"29
+{
+[; ;switch_pods.c: 30: TMR0IF = 0;
+"30
+[e = _TMR0IF -> -> 0 `i `b ]
+[; ;switch_pods.c: 31: if(outputPWMState == 1)
+"31
+[e $ ! == _outputPWMState -> -> 1 `i `ui 1100  ]
+[; ;switch_pods.c: 32: {
+"32
+{
+[; ;switch_pods.c: 34: WriteTimer0(0xffff - outputHighLength);
+"34
+[e ( _WriteTimer0 (1 - -> 65535 `ui _outputHighLength ]
+"35
+}
+[; ;switch_pods.c: 35: }
+[e $U 1101  ]
+"36
+[e :U 1100 ]
+[; ;switch_pods.c: 36: else
+[; ;switch_pods.c: 37: {
+"37
+{
+[; ;switch_pods.c: 39: WriteTimer0(0xffff - (0x1000) + outputHighLength);
+"39
+[e ( _WriteTimer0 (1 + - -> 65535 `ui -> -> 4096 `i `ui _outputHighLength ]
+"40
+}
+[e :U 1101 ]
+[; ;switch_pods.c: 40: }
+[; ;switch_pods.c: 43: for(i=0;i<9;i++)
+"43
+{
+[e = _i -> -> 0 `i `ui ]
+[e $ < _i -> -> 9 `i `ui 1102  ]
+[e $U 1103  ]
+"44
+[e :U 1102 ]
+[; ;switch_pods.c: 44: {
+{
+[; ;switch_pods.c: 45: if( outputAlwaysOnFlag == 0 )
+"45
+[e $ ! == _outputAlwaysOnFlag -> -> 0 `i `ui 1105  ]
+[; ;switch_pods.c: 46: {
+"46
+{
+[; ;switch_pods.c: 47: setOutput(leftLEDMask[i], outputPWMState);
+"47
+[e ( _setOutput (2 , *U + &U _leftLEDMask * -> _i `ux -> -> # *U &U _leftLEDMask `ui `ux _outputPWMState ]
+[; ;switch_pods.c: 48: setOutput(rightLEDMask[i], outputFlag[i] & outputPWMState);
+"48
+[e ( _setOutput (2 , *U + &U _rightLEDMask * -> _i `ux -> -> # *U &U _rightLEDMask `ui `ux & *U + &U _outputFlag * -> _i `ux -> -> # *U &U _outputFlag `ui `ux _outputPWMState ]
+"49
+}
+[; ;switch_pods.c: 49: }
+[e $U 1106  ]
+"50
+[e :U 1105 ]
+[; ;switch_pods.c: 50: else
+[; ;switch_pods.c: 51: {
+"51
+{
+[; ;switch_pods.c: 52: setOutput(leftLEDMask[i], outputFlag[i] & outputPWMState);
+"52
+[e ( _setOutput (2 , *U + &U _leftLEDMask * -> _i `ux -> -> # *U &U _leftLEDMask `ui `ux & *U + &U _outputFlag * -> _i `ux -> -> # *U &U _outputFlag `ui `ux _outputPWMState ]
+[; ;switch_pods.c: 53: setOutput(rightLEDMask[i], outputPWMState);
+"53
+[e ( _setOutput (2 , *U + &U _rightLEDMask * -> _i `ux -> -> # *U &U _rightLEDMask `ui `ux _outputPWMState ]
+"54
+}
+[e :U 1106 ]
+"55
+}
+"43
+[e ++ _i -> -> 1 `i `ui ]
+[e $ < _i -> -> 9 `i `ui 1102  ]
+[e :U 1103 ]
+"55
+}
+[; ;switch_pods.c: 54: }
+[; ;switch_pods.c: 55: }
+[; ;switch_pods.c: 57: outputPWMState = !outputPWMState;
+"57
+[e = _outputPWMState -> -> ! != _outputPWMState -> -> 0 `i `Vui `i `ui ]
+[; ;switch_pods.c: 59: return;
+"59
+[e $UE 1098  ]
+"60
+}
+[e :U 1099 ]
+[; ;switch_pods.c: 60: }
+[; ;switch_pods.c: 61: }
+"61
+[e :UE 1098 ]
+}
+"64
+[v _main `(ui ~T0 @X0 1 ef ]
+{
+[; ;switch_pods.c: 63: uint16_t main(void)
+[; ;switch_pods.c: 64: {
+[e :U _main ]
+[f ]
+"69
+[v F7995 `Vui ~T0 @X0 -> 9 `i s ]
+[i F7995
 :U ..
 -> -> 0 `i `ui
 -> -> 0 `i `ui
@@ -7602,11 +7821,11 @@ Version 3.2 HI-TECH Software Intermediate Code
 ..
 ]
 [v _buttonDown `Vui ~T0 @X0 -> 9 `i a ]
-[; ;switch_pods.c: 22: volatile uint16_t buttonDown[9] = {0,0,0,0,0,0,0,0,0};
-[e = _buttonDown F7916 ]
-"23
-[v F7918 `Vui ~T0 @X0 -> 9 `i s ]
-[i F7918
+[; ;switch_pods.c: 69: volatile uint16_t buttonDown[9] = {0,0,0,0,0,0,0,0,0};
+[e = _buttonDown F7995 ]
+"70
+[v F7997 `Vui ~T0 @X0 -> 9 `i s ]
+[i F7997
 :U ..
 -> -> 0 `i `ui
 -> -> 0 `i `ui
@@ -7620,11 +7839,11 @@ Version 3.2 HI-TECH Software Intermediate Code
 ..
 ]
 [v _buttonEventDown `Vui ~T0 @X0 -> 9 `i a ]
-[; ;switch_pods.c: 23: volatile uint16_t buttonEventDown[9] = {0,0,0,0,0,0,0,0,0};
-[e = _buttonEventDown F7918 ]
-"24
-[v F7920 `Vui ~T0 @X0 -> 9 `i s ]
-[i F7920
+[; ;switch_pods.c: 70: volatile uint16_t buttonEventDown[9] = {0,0,0,0,0,0,0,0,0};
+[e = _buttonEventDown F7997 ]
+"71
+[v F7999 `Vui ~T0 @X0 -> 9 `i s ]
+[i F7999
 :U ..
 -> -> 0 `i `ui
 -> -> 0 `i `ui
@@ -7638,11 +7857,11 @@ Version 3.2 HI-TECH Software Intermediate Code
 ..
 ]
 [v _buttonEventUp `Vui ~T0 @X0 -> 9 `i a ]
-[; ;switch_pods.c: 24: volatile uint16_t buttonEventUp[9] = {0,0,0,0,0,0,0,0,0};
-[e = _buttonEventUp F7920 ]
-"25
-[v F7922 `Vui ~T0 @X0 -> 9 `i s ]
-[i F7922
+[; ;switch_pods.c: 71: volatile uint16_t buttonEventUp[9] = {0,0,0,0,0,0,0,0,0};
+[e = _buttonEventUp F7999 ]
+"72
+[v F8001 `Vui ~T0 @X0 -> 9 `i s ]
+[i F8001
 :U ..
 -> -> 1 `i `ui
 -> -> 1 `i `ui
@@ -7656,11 +7875,11 @@ Version 3.2 HI-TECH Software Intermediate Code
 ..
 ]
 [v _buttonLatch `Vui ~T0 @X0 -> 9 `i a ]
-[; ;switch_pods.c: 25: volatile uint16_t buttonLatch[9] = {1,1,1,1,1,1,1,1,1};
-[e = _buttonLatch F7922 ]
-"26
-[v F7924 `Vui ~T0 @X0 -> 9 `i s ]
-[i F7924
+[; ;switch_pods.c: 72: volatile uint16_t buttonLatch[9] = {1,1,1,1,1,1,1,1,1};
+[e = _buttonLatch F8001 ]
+"73
+[v F8003 `Vui ~T0 @X0 -> 9 `i s ]
+[i F8003
 :U ..
 -> -> 0 `i `ui
 -> -> 0 `i `ui
@@ -7674,1020 +7893,1048 @@ Version 3.2 HI-TECH Software Intermediate Code
 ..
 ]
 [v _buttonState `Vui ~T0 @X0 -> 9 `i a ]
-[; ;switch_pods.c: 26: volatile uint16_t buttonState[9] = {0,0,0,0,0,0,0,0,0};
-[e = _buttonState F7924 ]
-"27
+[; ;switch_pods.c: 73: volatile uint16_t buttonState[9] = {0,0,0,0,0,0,0,0,0};
+[e = _buttonState F8003 ]
+"74
 [v _i `Vui ~T0 @X0 1 a ]
-"28
+"75
 [v _programState `Vui ~T0 @X0 1 a ]
-[; ;switch_pods.c: 27: volatile uint16_t i;
-[; ;switch_pods.c: 28: volatile uint16_t programState = 0;
+[; ;switch_pods.c: 74: volatile uint16_t i;
+[; ;switch_pods.c: 75: volatile uint16_t programState = 0;
 [e = _programState -> -> 0 `i `ui ]
-[; ;switch_pods.c: 41: ANCON0 = 0;
-"41
-[e = _ANCON0 -> -> 0 `i `uc ]
-[; ;switch_pods.c: 42: ANCON1 = 0;
-"42
-[e = _ANCON1 -> -> 0 `i `uc ]
-[; ;switch_pods.c: 44: setupIO(0x0510, 1);
-"44
-[e ( _setupIO (2 , -> -> 1296 `i `ui -> -> 1 `i `ui ]
-[; ;switch_pods.c: 45: setupIO(0x0520, 1);
-"45
-[e ( _setupIO (2 , -> -> 1312 `i `ui -> -> 1 `i `ui ]
-[; ;switch_pods.c: 46: setupIO(0x0001, 0);
-"46
-[e ( _setupIO (2 , -> -> 1 `i `ui -> -> 0 `i `ui ]
-[; ;switch_pods.c: 48: for(i=0;i<9;i++)
-"48
-{
-[e = _i -> -> 0 `i `ui ]
-[e $ < _i -> -> 9 `i `ui 1097  ]
-[e $U 1098  ]
-"49
-[e :U 1097 ]
-[; ;switch_pods.c: 49: {
-{
-[; ;switch_pods.c: 50: setupIO(buttonMask[i], 1);
-"50
-[e ( _setupIO (2 , *U + &U _buttonMask * -> _i `ux -> -> # *U &U _buttonMask `ui `ux -> -> 1 `i `ui ]
-[; ;switch_pods.c: 51: setupIO(leftLEDMask[i], 0);
-"51
-[e ( _setupIO (2 , *U + &U _leftLEDMask * -> _i `ux -> -> # *U &U _leftLEDMask `ui `ux -> -> 0 `i `ui ]
-[; ;switch_pods.c: 52: setupIO(rightLEDMask[i], 0);
-"52
-[e ( _setupIO (2 , *U + &U _rightLEDMask * -> _i `ux -> -> # *U &U _rightLEDMask `ui `ux -> -> 0 `i `ui ]
-[; ;switch_pods.c: 53: setupIO(relayMask[i], 0);
-"53
-[e ( _setupIO (2 , *U + &U _relayMask * -> _i `ux -> -> # *U &U _relayMask `ui `ux -> -> 0 `i `ui ]
-[; ;switch_pods.c: 56: buttonLatch[i] = (uint16_t)( 0x00FF & Read_b_eep( i ) );
-"56
-[e = *U + &U _buttonLatch * -> _i `ux -> -> # *U &U _buttonLatch `ui `ux -> & -> 255 `i -> ( _Read_b_eep (1 _i `i `ui ]
-"57
-}
-"48
-[e ++ _i -> -> 1 `i `ui ]
-[e $ < _i -> -> 9 `i `ui 1097  ]
-[e :U 1098 ]
-"57
-}
-[; ;switch_pods.c: 57: }
-[; ;switch_pods.c: 76: for(;;)
-"76
-{
-"77
-[e :U 1100 ]
-[; ;switch_pods.c: 77: {
-{
-[; ;switch_pods.c: 78: _delay_ms(20);
-"78
-[e ( __delay_ms (1 -> -> 20 `i `ui ]
-[; ;switch_pods.c: 81: for(i=0;i<9;i++)
-"81
-{
-[e = _i -> -> 0 `i `ui ]
-[e $ < _i -> -> 9 `i `ui 1103  ]
-[e $U 1104  ]
-"82
-[e :U 1103 ]
-[; ;switch_pods.c: 82: {
-{
-[; ;switch_pods.c: 83: if(checkButton(buttonMask[i]) == 1)
-"83
-[e $ ! == -> ( _checkButton (1 *U + &U _buttonMask * -> _i `ux -> -> # *U &U _buttonMask `ui `ux `i -> 1 `i 1106  ]
-[; ;switch_pods.c: 84: {
-"84
-{
-[; ;switch_pods.c: 85: if(!buttonDown[i])
-"85
-[e $ ! ! != *U + &U _buttonDown * -> _i `ux -> -> # *U &U _buttonDown `ui `ux -> -> 0 `i `Vui 1107  ]
-[; ;switch_pods.c: 86: {
-"86
-{
-[; ;switch_pods.c: 87: buttonEventDown[i] = 1;
-"87
-[e = *U + &U _buttonEventDown * -> _i `ux -> -> # *U &U _buttonEventDown `ui `ux -> -> 1 `i `ui ]
-"88
-}
-[e :U 1107 ]
-[; ;switch_pods.c: 88: }
-[; ;switch_pods.c: 89: buttonDown[i] = 1;
-"89
-[e = *U + &U _buttonDown * -> _i `ux -> -> # *U &U _buttonDown `ui `ux -> -> 1 `i `ui ]
-"90
-}
-[; ;switch_pods.c: 90: }
-[e $U 1108  ]
+"80
+[v _adcResult `Vui ~T0 @X0 1 a ]
+[; ;switch_pods.c: 80: volatile uint16_t adcResult = 0;
+[e = _adcResult -> -> 0 `i `ui ]
+[; ;switch_pods.c: 91: WriteTimer0(0xffff - 0x10);
 "91
-[e :U 1106 ]
-[; ;switch_pods.c: 91: else
-[; ;switch_pods.c: 92: {
+[e ( _WriteTimer0 (1 - -> 65535 `ui -> -> 16 `i `ui ]
+[; ;switch_pods.c: 92: OpenTimer0(0b11111111 & 0b10111111 & 0b11011111 & 0b11110000);
 "92
-{
-[; ;switch_pods.c: 93: if(buttonDown[i] == 1)
-"93
-[e $ ! == *U + &U _buttonDown * -> _i `ux -> -> # *U &U _buttonDown `ui `ux -> -> 1 `i `ui 1109  ]
-[; ;switch_pods.c: 94: {
+[e ( _OpenTimer0 (1 -> & & & -> 255 `i -> 191 `i -> 223 `i -> 240 `i `uc ]
+[; ;switch_pods.c: 94: ANCON0 = 1;
 "94
-{
-[; ;switch_pods.c: 95: buttonEventUp[i] = 1;
+[e = _ANCON0 -> -> 1 `i `uc ]
+[; ;switch_pods.c: 95: ANCON1 = 0;
 "95
-[e = *U + &U _buttonEventUp * -> _i `ux -> -> # *U &U _buttonEventUp `ui `ux -> -> 1 `i `ui ]
+[e = _ANCON1 -> -> 0 `i `uc ]
+[; ;switch_pods.c: 96: ANCON2 = 0;
 "96
-}
-[e :U 1109 ]
-[; ;switch_pods.c: 96: }
-[; ;switch_pods.c: 97: buttonDown[i] = 0;
-"97
-[e = *U + &U _buttonDown * -> _i `ux -> -> # *U &U _buttonDown `ui `ux -> -> 0 `i `ui ]
-"98
-}
-[e :U 1108 ]
+[e = _ANCON2 -> -> 0 `i `uc ]
+[; ;switch_pods.c: 99: ADCON0 = 0;
 "99
-}
-"81
-[e ++ _i -> -> 1 `i `ui ]
-[e $ < _i -> -> 9 `i `ui 1103  ]
-[e :U 1104 ]
-"99
-}
-[; ;switch_pods.c: 98: }
-[; ;switch_pods.c: 99: }
-[; ;switch_pods.c: 101: if( checkButton(0x0510) == 1 )
+[e = _ADCON0 -> -> 0 `i `uc ]
+[; ;switch_pods.c: 100: ADCON1 = (0x2 << 4) | (0x0 << 3) | (0x0);
+"100
+[e = _ADCON1 -> | | << -> 2 `i -> 4 `i << -> 0 `i -> 3 `i -> 0 `i `uc ]
+[; ;switch_pods.c: 101: ADCON2 = (0x1 << 7) | (0x7 << 3) | (0x0);
 "101
-[e $ ! == -> ( _checkButton (1 -> -> 1296 `i `ui `i -> 1 `i 1110  ]
-[; ;switch_pods.c: 102: {
-"102
-{
-[; ;switch_pods.c: 104: if( programState == 0 )
+[e = _ADCON2 -> | | << -> 1 `i -> 7 `i << -> 7 `i -> 3 `i -> 0 `i `uc ]
+[; ;switch_pods.c: 104: ADCON0 = 1;
 "104
-[e $ ! == _programState -> -> 0 `i `ui 1111  ]
-[; ;switch_pods.c: 105: {
-"105
-{
-[; ;switch_pods.c: 107: _delay_ms(500);
+[e = _ADCON0 -> -> 1 `i `uc ]
+[; ;switch_pods.c: 107: ConvertADC();
 "107
-[e ( __delay_ms (1 -> -> 500 `i `ui ]
-[; ;switch_pods.c: 110: for(i=0;i<9;i++)
+[e ( _ConvertADC ..  ]
+[; ;switch_pods.c: 109: setupIO(0x0510, 1);
+"109
+[e ( _setupIO (2 , -> -> 1296 `i `ui -> -> 1 `i `ui ]
+[; ;switch_pods.c: 110: setupIO(0x0520, 1);
 "110
-{
-[e = _i -> -> 0 `i `ui ]
-[e $ < _i -> -> 9 `i `ui 1112  ]
-[e $U 1113  ]
+[e ( _setupIO (2 , -> -> 1312 `i `ui -> -> 1 `i `ui ]
+[; ;switch_pods.c: 111: setupIO(0x0001, 1);
 "111
-[e :U 1112 ]
-[; ;switch_pods.c: 111: {
-{
-[; ;switch_pods.c: 112: setOutputs( !checkButton(0x0520), leftLEDMask[i], rightLEDMask[i], 0xffff, buttonLatch[i] );
-"112
-[e ( _setOutputs (4 , , , , -> -> ! != -> ( _checkButton (1 -> -> 1312 `i `ui `i -> -> -> 0 `i `uc `i `i `ui *U + &U _leftLEDMask * -> _i `ux -> -> # *U &U _leftLEDMask `ui `ux *U + &U _rightLEDMask * -> _i `ux -> -> # *U &U _rightLEDMask `ui `ux -> 65535 `ui *U + &U _buttonLatch * -> _i `ux -> -> # *U &U _buttonLatch `ui `ux ]
-[; ;switch_pods.c: 113: buttonEventUp[i] = 0;
+[e ( _setupIO (2 , -> -> 1 `i `ui -> -> 1 `i `ui ]
+[; ;switch_pods.c: 113: for(i=0;i<9;i++)
 "113
-[e = *U + &U _buttonEventUp * -> _i `ux -> -> # *U &U _buttonEventUp `ui `ux -> -> 0 `i `ui ]
-[; ;switch_pods.c: 114: buttonEventDown[i] = 0;
-"114
-[e = *U + &U _buttonEventDown * -> _i `ux -> -> # *U &U _buttonEventDown `ui `ux -> -> 0 `i `ui ]
-"115
-}
-"110
-[e ++ _i -> -> 1 `i `ui ]
-[e $ < _i -> -> 9 `i `ui 1112  ]
-[e :U 1113 ]
-"115
-}
-[; ;switch_pods.c: 115: }
-[; ;switch_pods.c: 117: programState = 1;
-"117
-[e = _programState -> -> 1 `i `ui ]
-"118
-}
-[e :U 1111 ]
-[; ;switch_pods.c: 118: }
-[; ;switch_pods.c: 121: for(i=0;i<9;i++)
-"121
 {
 [e = _i -> -> 0 `i `ui ]
-[e $ < _i -> -> 9 `i `ui 1115  ]
-[e $U 1116  ]
-"122
-[e :U 1115 ]
-[; ;switch_pods.c: 122: {
+[e $ < _i -> -> 9 `i `ui 1108  ]
+[e $U 1109  ]
+"114
+[e :U 1108 ]
+[; ;switch_pods.c: 114: {
 {
-[; ;switch_pods.c: 123: if( buttonEventDown[i] == 1 )
-"123
-[e $ ! == *U + &U _buttonEventDown * -> _i `ux -> -> # *U &U _buttonEventDown `ui `ux -> -> 1 `i `ui 1118  ]
-[; ;switch_pods.c: 124: {
-"124
-{
-[; ;switch_pods.c: 125: if( buttonLatch[i] == 0 )
-"125
-[e $ ! == *U + &U _buttonLatch * -> _i `ux -> -> # *U &U _buttonLatch `ui `ux -> -> 0 `i `ui 1119  ]
-[; ;switch_pods.c: 126: {
-"126
-{
-[; ;switch_pods.c: 127: buttonLatch[i] = 1;
-"127
-[e = *U + &U _buttonLatch * -> _i `ux -> -> # *U &U _buttonLatch `ui `ux -> -> 1 `i `ui ]
-"128
-}
-[; ;switch_pods.c: 128: }
-[e $U 1120  ]
-"129
-[e :U 1119 ]
-[; ;switch_pods.c: 129: else
-[; ;switch_pods.c: 130: {
-"130
-{
-[; ;switch_pods.c: 131: buttonLatch[i] = 0;
-"131
-[e = *U + &U _buttonLatch * -> _i `ux -> -> # *U &U _buttonLatch `ui `ux -> -> 0 `i `ui ]
-"132
-}
-[e :U 1120 ]
-[; ;switch_pods.c: 132: }
-[; ;switch_pods.c: 134: buttonEventDown[i] = 0;
-"134
-[e = *U + &U _buttonEventDown * -> _i `ux -> -> # *U &U _buttonEventDown `ui `ux -> -> 0 `i `ui ]
-"135
-}
-[e :U 1118 ]
-[; ;switch_pods.c: 135: }
-[; ;switch_pods.c: 137: setOutputs( !checkButton(0x0520), leftLEDMask[i], rightLEDMask[i], 0xffff, buttonLatch[i] );
-"137
-[e ( _setOutputs (4 , , , , -> -> ! != -> ( _checkButton (1 -> -> 1312 `i `ui `i -> -> -> 0 `i `uc `i `i `ui *U + &U _leftLEDMask * -> _i `ux -> -> # *U &U _leftLEDMask `ui `ux *U + &U _rightLEDMask * -> _i `ux -> -> # *U &U _rightLEDMask `ui `ux -> 65535 `ui *U + &U _buttonLatch * -> _i `ux -> -> # *U &U _buttonLatch `ui `ux ]
-"138
-}
+[; ;switch_pods.c: 115: setupIO(buttonMask[i], 1);
+"115
+[e ( _setupIO (2 , *U + &U _buttonMask * -> _i `ux -> -> # *U &U _buttonMask `ui `ux -> -> 1 `i `ui ]
+[; ;switch_pods.c: 116: setupIO(leftLEDMask[i], 0);
+"116
+[e ( _setupIO (2 , *U + &U _leftLEDMask * -> _i `ux -> -> # *U &U _leftLEDMask `ui `ux -> -> 0 `i `ui ]
+[; ;switch_pods.c: 117: setupIO(rightLEDMask[i], 0);
+"117
+[e ( _setupIO (2 , *U + &U _rightLEDMask * -> _i `ux -> -> # *U &U _rightLEDMask `ui `ux -> -> 0 `i `ui ]
+[; ;switch_pods.c: 118: setupIO(relayMask[i], 0);
+"118
+[e ( _setupIO (2 , *U + &U _relayMask * -> _i `ux -> -> # *U &U _relayMask `ui `ux -> -> 0 `i `ui ]
+[; ;switch_pods.c: 121: buttonLatch[i] = (uint16_t)( 0x00FF & Read_b_eep( i ) );
 "121
+[e = *U + &U _buttonLatch * -> _i `ux -> -> # *U &U _buttonLatch `ui `ux -> & -> 255 `i -> ( _Read_b_eep (1 _i `i `ui ]
+"122
+}
+"113
 [e ++ _i -> -> 1 `i `ui ]
-[e $ < _i -> -> 9 `i `ui 1115  ]
-[e :U 1116 ]
-"138
+[e $ < _i -> -> 9 `i `ui 1108  ]
+[e :U 1109 ]
+"122
 }
-"139
-}
-[; ;switch_pods.c: 138: }
-[; ;switch_pods.c: 139: }
-[e $U 1121  ]
-"140
-[e :U 1110 ]
-[; ;switch_pods.c: 140: else
-[; ;switch_pods.c: 141: {
-"141
-{
-[; ;switch_pods.c: 143: if( programState == 1 )
-"143
-[e $ ! == _programState -> -> 1 `i `ui 1122  ]
-[; ;switch_pods.c: 144: {
+[; ;switch_pods.c: 122: }
+[; ;switch_pods.c: 142: (INTCONbits.GIE = 1);
+"142
+[e = . . _INTCONbits 1 7 -> -> 1 `i `uc ]
+[; ;switch_pods.c: 144: for(;;)
 "144
 {
-[; ;switch_pods.c: 146: _delay_ms(2000);
+"145
+[e :U 1111 ]
+[; ;switch_pods.c: 145: {
+{
+[; ;switch_pods.c: 146: _delay_ms(20);
 "146
-[e ( __delay_ms (1 -> -> 2000 `i `ui ]
-[; ;switch_pods.c: 149: for(i=0;i<9;i++)
+[e ( __delay_ms (1 -> -> 20 `i `ui ]
+[; ;switch_pods.c: 149: if(BusyADC() == 0)
 "149
+[e $ ! == -> ( _BusyADC ..  `i -> 0 `i 1114  ]
+[; ;switch_pods.c: 150: {
+"150
+{
+[; ;switch_pods.c: 152: adcResult = (uint16_t)(ReadADC() & 0x0fff);
+"152
+[e = _adcResult -> & ( _ReadADC ..  -> 4095 `i `ui ]
+[; ;switch_pods.c: 153: outputHighLength = (0x0100) + adcResult;
+"153
+[e = _outputHighLength + -> -> 256 `i `ui _adcResult ]
+[; ;switch_pods.c: 154: if(outputHighLength >= (0x1000)) outputHighLength = (0x1000) - 1 ;
+"154
+[e $ ! >= _outputHighLength -> -> 4096 `i `ui 1115  ]
+[e = _outputHighLength -> - -> 4096 `i -> 1 `i `ui ]
+[e :U 1115 ]
+[; ;switch_pods.c: 155: ConvertADC();
+"155
+[e ( _ConvertADC ..  ]
+"156
+}
+[e :U 1114 ]
+[; ;switch_pods.c: 156: }
+[; ;switch_pods.c: 159: for(i=0;i<9;i++)
+"159
 {
 [e = _i -> -> 0 `i `ui ]
-[e $ < _i -> -> 9 `i `ui 1123  ]
-[e $U 1124  ]
-"150
-[e :U 1123 ]
-[; ;switch_pods.c: 150: {
-{
-[; ;switch_pods.c: 151: Write_b_eep(i, buttonLatch[i]);
-"151
-[e ( _Write_b_eep (2 , _i -> *U + &U _buttonLatch * -> _i `ux -> -> # *U &U _buttonLatch `ui `ux `uc ]
-[; ;switch_pods.c: 152: Busy_eep ();
-"152
-[e ( _Busy_eep ..  ]
-[; ;switch_pods.c: 154: setOutputs( !checkButton(0x0520), leftLEDMask[i], rightLEDMask[i], relayMask[i], buttonState[i] );
-"154
-[e ( _setOutputs (4 , , , , -> -> ! != -> ( _checkButton (1 -> -> 1312 `i `ui `i -> -> -> 0 `i `uc `i `i `ui *U + &U _leftLEDMask * -> _i `ux -> -> # *U &U _leftLEDMask `ui `ux *U + &U _rightLEDMask * -> _i `ux -> -> # *U &U _rightLEDMask `ui `ux *U + &U _relayMask * -> _i `ux -> -> # *U &U _relayMask `ui `ux *U + &U _buttonState * -> _i `ux -> -> # *U &U _buttonState `ui `ux ]
-[; ;switch_pods.c: 155: buttonEventDown[i] = 0;
-"155
-[e = *U + &U _buttonEventDown * -> _i `ux -> -> # *U &U _buttonEventDown `ui `ux -> -> 0 `i `ui ]
-[; ;switch_pods.c: 156: buttonEventUp[i] = 0;
-"156
-[e = *U + &U _buttonEventUp * -> _i `ux -> -> # *U &U _buttonEventUp `ui `ux -> -> 0 `i `ui ]
-"157
-}
-"149
-[e ++ _i -> -> 1 `i `ui ]
-[e $ < _i -> -> 9 `i `ui 1123  ]
-[e :U 1124 ]
-"157
-}
-[; ;switch_pods.c: 157: }
-[; ;switch_pods.c: 159: programState = 0;
-"159
-[e = _programState -> -> 0 `i `ui ]
+[e $ < _i -> -> 9 `i `ui 1116  ]
+[e $U 1117  ]
 "160
+[e :U 1116 ]
+[; ;switch_pods.c: 160: {
+{
+[; ;switch_pods.c: 161: if(checkButton(buttonMask[i]) == 1)
+"161
+[e $ ! == -> ( _checkButton (1 *U + &U _buttonMask * -> _i `ux -> -> # *U &U _buttonMask `ui `ux `i -> 1 `i 1119  ]
+[; ;switch_pods.c: 162: {
+"162
+{
+[; ;switch_pods.c: 163: if(!buttonDown[i])
+"163
+[e $ ! ! != *U + &U _buttonDown * -> _i `ux -> -> # *U &U _buttonDown `ui `ux -> -> 0 `i `Vui 1120  ]
+[; ;switch_pods.c: 164: {
+"164
+{
+[; ;switch_pods.c: 165: buttonEventDown[i] = 1;
+"165
+[e = *U + &U _buttonEventDown * -> _i `ux -> -> # *U &U _buttonEventDown `ui `ux -> -> 1 `i `ui ]
+"166
+}
+[e :U 1120 ]
+[; ;switch_pods.c: 166: }
+[; ;switch_pods.c: 167: buttonDown[i] = 1;
+"167
+[e = *U + &U _buttonDown * -> _i `ux -> -> # *U &U _buttonDown `ui `ux -> -> 1 `i `ui ]
+"168
+}
+[; ;switch_pods.c: 168: }
+[e $U 1121  ]
+"169
+[e :U 1119 ]
+[; ;switch_pods.c: 169: else
+[; ;switch_pods.c: 170: {
+"170
+{
+[; ;switch_pods.c: 171: if(buttonDown[i] == 1)
+"171
+[e $ ! == *U + &U _buttonDown * -> _i `ux -> -> # *U &U _buttonDown `ui `ux -> -> 1 `i `ui 1122  ]
+[; ;switch_pods.c: 172: {
+"172
+{
+[; ;switch_pods.c: 173: buttonEventUp[i] = 1;
+"173
+[e = *U + &U _buttonEventUp * -> _i `ux -> -> # *U &U _buttonEventUp `ui `ux -> -> 1 `i `ui ]
+"174
 }
 [e :U 1122 ]
-[; ;switch_pods.c: 160: }
-[; ;switch_pods.c: 163: for(i=0;i<9;i++)
-"163
-{
-[e = _i -> -> 0 `i `ui ]
-[e $ < _i -> -> 9 `i `ui 1126  ]
-[e $U 1127  ]
-"164
-[e :U 1126 ]
-[; ;switch_pods.c: 164: {
-{
-[; ;switch_pods.c: 165: if( buttonLatch[i] == 1 )
-"165
-[e $ ! == *U + &U _buttonLatch * -> _i `ux -> -> # *U &U _buttonLatch `ui `ux -> -> 1 `i `ui 1129  ]
-[; ;switch_pods.c: 166: {
-"166
-{
-[; ;switch_pods.c: 168: if( buttonEventDown[i] == 1 )
-"168
-[e $ ! == *U + &U _buttonEventDown * -> _i `ux -> -> # *U &U _buttonEventDown `ui `ux -> -> 1 `i `ui 1130  ]
-[; ;switch_pods.c: 169: {
-"169
-{
-[; ;switch_pods.c: 170: if( buttonState[i] == 0 )
-"170
-[e $ ! == *U + &U _buttonState * -> _i `ux -> -> # *U &U _buttonState `ui `ux -> -> 0 `i `ui 1131  ]
-[; ;switch_pods.c: 171: {
-"171
-{
-[; ;switch_pods.c: 172: buttonState[i] = 1;
-"172
-[e = *U + &U _buttonState * -> _i `ux -> -> # *U &U _buttonState `ui `ux -> -> 1 `i `ui ]
-"173
-}
-[; ;switch_pods.c: 173: }
-[e $U 1132  ]
-"174
-[e :U 1131 ]
-[; ;switch_pods.c: 174: else
-[; ;switch_pods.c: 175: {
+[; ;switch_pods.c: 174: }
+[; ;switch_pods.c: 175: buttonDown[i] = 0;
 "175
-{
-[; ;switch_pods.c: 176: buttonState[i] = 0;
+[e = *U + &U _buttonDown * -> _i `ux -> -> # *U &U _buttonDown `ui `ux -> -> 0 `i `ui ]
 "176
-[e = *U + &U _buttonState * -> _i `ux -> -> # *U &U _buttonState `ui `ux -> -> 0 `i `ui ]
+}
+[e :U 1121 ]
 "177
 }
-[e :U 1132 ]
+"159
+[e ++ _i -> -> 1 `i `ui ]
+[e $ < _i -> -> 9 `i `ui 1116  ]
+[e :U 1117 ]
+"177
+}
+[; ;switch_pods.c: 176: }
 [; ;switch_pods.c: 177: }
-[; ;switch_pods.c: 179: buttonEventDown[i] = 0;
+[; ;switch_pods.c: 179: if( checkButton(0x0510) == 1 )
 "179
-[e = *U + &U _buttonEventDown * -> _i `ux -> -> # *U &U _buttonEventDown `ui `ux -> -> 0 `i `ui ]
+[e $ ! == -> ( _checkButton (1 -> -> 1296 `i `ui `i -> 1 `i 1123  ]
+[; ;switch_pods.c: 180: {
 "180
-}
-[e :U 1130 ]
-"181
-}
-[; ;switch_pods.c: 180: }
-[; ;switch_pods.c: 181: }
-[e $U 1133  ]
+{
+[; ;switch_pods.c: 182: if( programState == 0 )
 "182
-[e :U 1129 ]
-[; ;switch_pods.c: 182: else
+[e $ ! == _programState -> -> 0 `i `ui 1124  ]
 [; ;switch_pods.c: 183: {
 "183
 {
-[; ;switch_pods.c: 185: if(buttonEventDown[i] == 1)
+[; ;switch_pods.c: 185: _delay_ms(500);
 "185
-[e $ ! == *U + &U _buttonEventDown * -> _i `ux -> -> # *U &U _buttonEventDown `ui `ux -> -> 1 `i `ui 1134  ]
-[; ;switch_pods.c: 186: {
-"186
-{
-[; ;switch_pods.c: 187: buttonState[i] = 1;
-"187
-[e = *U + &U _buttonState * -> _i `ux -> -> # *U &U _buttonState `ui `ux -> -> 1 `i `ui ]
-[; ;switch_pods.c: 188: buttonEventDown[i] = 0;
+[e ( __delay_ms (1 -> -> 500 `i `ui ]
+[; ;switch_pods.c: 188: for(i=0;i<9;i++)
 "188
-[e = *U + &U _buttonEventDown * -> _i `ux -> -> # *U &U _buttonEventDown `ui `ux -> -> 0 `i `ui ]
-"189
-}
-[e :U 1134 ]
-[; ;switch_pods.c: 189: }
-[; ;switch_pods.c: 191: if(buttonEventUp[i] == 1)
-"191
-[e $ ! == *U + &U _buttonEventUp * -> _i `ux -> -> # *U &U _buttonEventUp `ui `ux -> -> 1 `i `ui 1135  ]
-[; ;switch_pods.c: 192: {
-"192
 {
-[; ;switch_pods.c: 193: buttonState[i] = 0;
-"193
-[e = *U + &U _buttonState * -> _i `ux -> -> # *U &U _buttonState `ui `ux -> -> 0 `i `ui ]
-[; ;switch_pods.c: 194: buttonEventUp[i] = 0;
-"194
+[e = _i -> -> 0 `i `ui ]
+[e $ < _i -> -> 9 `i `ui 1125  ]
+[e $U 1126  ]
+"189
+[e :U 1125 ]
+[; ;switch_pods.c: 189: {
+{
+[; ;switch_pods.c: 190: setOutputs( !checkButton(0x0520), i, 0xffff, buttonLatch[i] );
+"190
+[e ( _setOutputs (4 , , , -> -> ! != -> ( _checkButton (1 -> -> 1312 `i `ui `i -> -> -> 0 `i `uc `i `i `ui _i -> 65535 `ui *U + &U _buttonLatch * -> _i `ux -> -> # *U &U _buttonLatch `ui `ux ]
+[; ;switch_pods.c: 191: buttonEventUp[i] = 0;
+"191
 [e = *U + &U _buttonEventUp * -> _i `ux -> -> # *U &U _buttonEventUp `ui `ux -> -> 0 `i `ui ]
-"195
+[; ;switch_pods.c: 192: buttonEventDown[i] = 0;
+"192
+[e = *U + &U _buttonEventDown * -> _i `ux -> -> # *U &U _buttonEventDown `ui `ux -> -> 0 `i `ui ]
+"193
 }
-[e :U 1135 ]
+"188
+[e ++ _i -> -> 1 `i `ui ]
+[e $ < _i -> -> 9 `i `ui 1125  ]
+[e :U 1126 ]
+"193
+}
+[; ;switch_pods.c: 193: }
+[; ;switch_pods.c: 195: programState = 1;
+"195
+[e = _programState -> -> 1 `i `ui ]
 "196
 }
-[e :U 1133 ]
-[; ;switch_pods.c: 195: }
+[e :U 1124 ]
 [; ;switch_pods.c: 196: }
-[; ;switch_pods.c: 198: setOutputs( !checkButton(0x0520), leftLEDMask[i], rightLEDMask[i], relayMask[i], buttonState[i] );
-"198
-[e ( _setOutputs (4 , , , , -> -> ! != -> ( _checkButton (1 -> -> 1312 `i `ui `i -> -> -> 0 `i `uc `i `i `ui *U + &U _leftLEDMask * -> _i `ux -> -> # *U &U _leftLEDMask `ui `ux *U + &U _rightLEDMask * -> _i `ux -> -> # *U &U _rightLEDMask `ui `ux *U + &U _relayMask * -> _i `ux -> -> # *U &U _relayMask `ui `ux *U + &U _buttonState * -> _i `ux -> -> # *U &U _buttonState `ui `ux ]
+[; ;switch_pods.c: 199: for(i=0;i<9;i++)
 "199
-}
-"163
-[e ++ _i -> -> 1 `i `ui ]
-[e $ < _i -> -> 9 `i `ui 1126  ]
-[e :U 1127 ]
-"199
-}
+{
+[e = _i -> -> 0 `i `ui ]
+[e $ < _i -> -> 9 `i `ui 1128  ]
+[e $U 1129  ]
 "200
-}
-[e :U 1121 ]
+[e :U 1128 ]
+[; ;switch_pods.c: 200: {
+{
+[; ;switch_pods.c: 201: if( buttonEventDown[i] == 1 )
+"201
+[e $ ! == *U + &U _buttonEventDown * -> _i `ux -> -> # *U &U _buttonEventDown `ui `ux -> -> 1 `i `ui 1131  ]
+[; ;switch_pods.c: 202: {
 "202
-}
-[; ;switch_pods.c: 199: }
-[; ;switch_pods.c: 200: }
-[; ;switch_pods.c: 202: }
-[e $U 1100  ]
-[e :U 1101 ]
-}
-[; ;switch_pods.c: 203: }
+{
+[; ;switch_pods.c: 203: if( buttonLatch[i] == 0 )
 "203
-[e :UE 1096 ]
-}
+[e $ ! == *U + &U _buttonLatch * -> _i `ux -> -> # *U &U _buttonLatch `ui `ux -> -> 0 `i `ui 1132  ]
+[; ;switch_pods.c: 204: {
+"204
+{
+[; ;switch_pods.c: 205: buttonLatch[i] = 1;
+"205
+[e = *U + &U _buttonLatch * -> _i `ux -> -> # *U &U _buttonLatch `ui `ux -> -> 1 `i `ui ]
 "206
-[v __delay_ms `(v ~T0 @X0 1 ef1`ui ]
-{
-[; ;switch_pods.c: 205: void _delay_ms(uint16_t ms)
-[; ;switch_pods.c: 206: {
-[e :U __delay_ms ]
-[v _ms `ui ~T0 @X0 1 r1 ]
-[f ]
-[; ;switch_pods.c: 207: for(int i=0; i<ms;i++)
+}
+[; ;switch_pods.c: 206: }
+[e $U 1133  ]
 "207
-{
-[v _i `i ~T0 @X0 1 a ]
-[e = _i -> 0 `i ]
-[e $U 1140  ]
-"208
-[e :U 1137 ]
+[e :U 1132 ]
+[; ;switch_pods.c: 207: else
 [; ;switch_pods.c: 208: {
+"208
 {
-[; ;switch_pods.c: 209: for(int j=0; j<145; j++) ;
+[; ;switch_pods.c: 209: buttonLatch[i] = 0;
 "209
-{
-[v _j `i ~T0 @X0 1 a ]
-[e = _j -> 0 `i ]
-[e $ < _j -> 145 `i 1141  ]
-[e $U 1142  ]
-[e :U 1141 ]
-[e ++ _j -> 1 `i ]
-[e $ < _j -> 145 `i 1141  ]
-[e :U 1142 ]
-}
+[e = *U + &U _buttonLatch * -> _i `ux -> -> # *U &U _buttonLatch `ui `ux -> -> 0 `i `ui ]
 "210
 }
-"207
-[e ++ _i -> 1 `i ]
-[e :U 1140 ]
-[e $ < -> _i `ui _ms 1137  ]
-[e :U 1138 ]
-"210
-}
+[e :U 1133 ]
 [; ;switch_pods.c: 210: }
-[; ;switch_pods.c: 211: }
-"211
-[e :UE 1136 ]
+[; ;switch_pods.c: 212: buttonEventDown[i] = 0;
+"212
+[e = *U + &U _buttonEventDown * -> _i `ux -> -> # *U &U _buttonEventDown `ui `ux -> -> 0 `i `ui ]
+"213
 }
-"214
-[v _setupIO `(v ~T0 @X0 1 ef2`ui`ui ]
-{
-[; ;switch_pods.c: 213: void setupIO(uint16_t row, uint16_t direction)
-[; ;switch_pods.c: 214: {
-[e :U _setupIO ]
-[v _row `ui ~T0 @X0 1 r1 ]
-[v _direction `ui ~T0 @X0 1 r2 ]
-[f ]
+[e :U 1131 ]
+[; ;switch_pods.c: 213: }
+[; ;switch_pods.c: 215: setOutputs( !checkButton(0x0520), i, 0xffff, buttonLatch[i] );
 "215
-[v _port `Vui ~T0 @X0 1 a ]
+[e ( _setOutputs (4 , , , -> -> ! != -> ( _checkButton (1 -> -> 1312 `i `ui `i -> -> -> 0 `i `uc `i `i `ui _i -> 65535 `ui *U + &U _buttonLatch * -> _i `ux -> -> # *U &U _buttonLatch `ui `ux ]
 "216
-[v _mask `Vuc ~T0 @X0 1 a ]
+}
+"199
+[e ++ _i -> -> 1 `i `ui ]
+[e $ < _i -> -> 9 `i `ui 1128  ]
+[e :U 1129 ]
+"216
+}
 "217
-[v _state `Vui ~T0 @X0 1 a ]
-[; ;switch_pods.c: 215: volatile uint16_t port;
-[; ;switch_pods.c: 216: volatile unsigned char mask;
-[; ;switch_pods.c: 217: volatile uint16_t state = 0;
-[e = _state -> -> 0 `i `ui ]
-[; ;switch_pods.c: 219: port = (row >> 8);
+}
+[; ;switch_pods.c: 216: }
+[; ;switch_pods.c: 217: }
+[e $U 1134  ]
+"218
+[e :U 1123 ]
+[; ;switch_pods.c: 218: else
+[; ;switch_pods.c: 219: {
 "219
-[e = _port >> _row -> 8 `i ]
-[; ;switch_pods.c: 220: mask = (char)(row & 0x00FF);
-"220
-[e = _mask -> & _row -> -> 255 `i `ui `uc ]
-[; ;switch_pods.c: 222: switch( port )
-"222
-[e $U 1146  ]
-[; ;switch_pods.c: 223: {
-"223
 {
-[; ;switch_pods.c: 224: case 0:
+[; ;switch_pods.c: 221: if( programState == 1 )
+"221
+[e $ ! == _programState -> -> 1 `i `ui 1135  ]
+[; ;switch_pods.c: 222: {
+"222
+{
+[; ;switch_pods.c: 224: _delay_ms(2000);
 "224
-[e :U 1147 ]
-[; ;switch_pods.c: 225: if(direction == 1) { TRISA |= mask; } else { TRISA &= (~mask); }
-"225
-[e $ ! == _direction -> -> 1 `i `ui 1148  ]
-{
-[e =| _TRISA _mask ]
-}
-[e $U 1149  ]
-[e :U 1148 ]
-{
-[e =& _TRISA -> ~ -> _mask `i `uc ]
-}
-[e :U 1149 ]
-[; ;switch_pods.c: 226: break;
-"226
-[e $U 1145  ]
-[; ;switch_pods.c: 227: case 1:
+[e ( __delay_ms (1 -> -> 2000 `i `ui ]
+[; ;switch_pods.c: 227: for(i=0;i<9;i++)
 "227
-[e :U 1150 ]
-[; ;switch_pods.c: 228: if(direction == 1) { TRISB |= mask; } else { TRISB &= (~mask); }
+{
+[e = _i -> -> 0 `i `ui ]
+[e $ < _i -> -> 9 `i `ui 1136  ]
+[e $U 1137  ]
 "228
-[e $ ! == _direction -> -> 1 `i `ui 1151  ]
+[e :U 1136 ]
+[; ;switch_pods.c: 228: {
 {
-[e =| _TRISB _mask ]
-}
-[e $U 1152  ]
-[e :U 1151 ]
-{
-[e =& _TRISB -> ~ -> _mask `i `uc ]
-}
-[e :U 1152 ]
-[; ;switch_pods.c: 229: break;
+[; ;switch_pods.c: 229: Write_b_eep(i, buttonLatch[i]);
 "229
-[e $U 1145  ]
-[; ;switch_pods.c: 230: case 2:
+[e ( _Write_b_eep (2 , _i -> *U + &U _buttonLatch * -> _i `ux -> -> # *U &U _buttonLatch `ui `ux `uc ]
+[; ;switch_pods.c: 230: Busy_eep ();
 "230
-[e :U 1153 ]
-[; ;switch_pods.c: 231: if(direction == 1) { TRISC |= mask; } else { TRISC &= (~mask); }
-"231
-[e $ ! == _direction -> -> 1 `i `ui 1154  ]
-{
-[e =| _TRISC _mask ]
-}
-[e $U 1155  ]
-[e :U 1154 ]
-{
-[e =& _TRISC -> ~ -> _mask `i `uc ]
-}
-[e :U 1155 ]
-[; ;switch_pods.c: 232: break;
+[e ( _Busy_eep ..  ]
+[; ;switch_pods.c: 232: setOutputs( !checkButton(0x0520), i, relayMask[i], buttonState[i] );
 "232
-[e $U 1145  ]
-[; ;switch_pods.c: 233: case 3:
+[e ( _setOutputs (4 , , , -> -> ! != -> ( _checkButton (1 -> -> 1312 `i `ui `i -> -> -> 0 `i `uc `i `i `ui _i *U + &U _relayMask * -> _i `ux -> -> # *U &U _relayMask `ui `ux *U + &U _buttonState * -> _i `ux -> -> # *U &U _buttonState `ui `ux ]
+[; ;switch_pods.c: 233: buttonEventDown[i] = 0;
 "233
-[e :U 1156 ]
-[; ;switch_pods.c: 234: if(direction == 1) { TRISD |= mask; } else { TRISD &= (~mask); }
+[e = *U + &U _buttonEventDown * -> _i `ux -> -> # *U &U _buttonEventDown `ui `ux -> -> 0 `i `ui ]
+[; ;switch_pods.c: 234: buttonEventUp[i] = 0;
 "234
-[e $ ! == _direction -> -> 1 `i `ui 1157  ]
-{
-[e =| _TRISD _mask ]
-}
-[e $U 1158  ]
-[e :U 1157 ]
-{
-[e =& _TRISD -> ~ -> _mask `i `uc ]
-}
-[e :U 1158 ]
-[; ;switch_pods.c: 235: break;
+[e = *U + &U _buttonEventUp * -> _i `ux -> -> # *U &U _buttonEventUp `ui `ux -> -> 0 `i `ui ]
 "235
-[e $U 1145  ]
-[; ;switch_pods.c: 236: case 4:
-"236
-[e :U 1159 ]
-[; ;switch_pods.c: 237: if(direction == 1) { TRISE |= mask; } else { TRISE &= (~mask); }
+}
+"227
+[e ++ _i -> -> 1 `i `ui ]
+[e $ < _i -> -> 9 `i `ui 1136  ]
+[e :U 1137 ]
+"235
+}
+[; ;switch_pods.c: 235: }
+[; ;switch_pods.c: 237: programState = 0;
 "237
-[e $ ! == _direction -> -> 1 `i `ui 1160  ]
-{
-[e =| _TRISE _mask ]
-}
-[e $U 1161  ]
-[e :U 1160 ]
-{
-[e =& _TRISE -> ~ -> _mask `i `uc ]
-}
-[e :U 1161 ]
-[; ;switch_pods.c: 238: break;
+[e = _programState -> -> 0 `i `ui ]
 "238
-[e $U 1145  ]
-[; ;switch_pods.c: 239: case 5:
-"239
-[e :U 1162 ]
-[; ;switch_pods.c: 240: if(direction == 1) { TRISF |= mask; } else { TRISF &= (~mask); }
-"240
-[e $ ! == _direction -> -> 1 `i `ui 1163  ]
-{
-[e =| _TRISF _mask ]
 }
-[e $U 1164  ]
-[e :U 1163 ]
-{
-[e =& _TRISF -> ~ -> _mask `i `uc ]
-}
-[e :U 1164 ]
-[; ;switch_pods.c: 241: break;
+[e :U 1135 ]
+[; ;switch_pods.c: 238: }
+[; ;switch_pods.c: 241: for(i=0;i<9;i++)
 "241
-[e $U 1145  ]
-[; ;switch_pods.c: 242: case 6:
+{
+[e = _i -> -> 0 `i `ui ]
+[e $ < _i -> -> 9 `i `ui 1139  ]
+[e $U 1140  ]
 "242
-[e :U 1165 ]
-[; ;switch_pods.c: 243: if(direction == 1) { TRISG |= mask; } else { TRISG &= (~mask); }
+[e :U 1139 ]
+[; ;switch_pods.c: 242: {
+{
+[; ;switch_pods.c: 243: if( buttonLatch[i] == 1 )
 "243
-[e $ ! == _direction -> -> 1 `i `ui 1166  ]
-{
-[e =| _TRISG _mask ]
-}
-[e $U 1167  ]
-[e :U 1166 ]
-{
-[e =& _TRISG -> ~ -> _mask `i `uc ]
-}
-[e :U 1167 ]
-[; ;switch_pods.c: 244: break;
+[e $ ! == *U + &U _buttonLatch * -> _i `ux -> -> # *U &U _buttonLatch `ui `ux -> -> 1 `i `ui 1142  ]
+[; ;switch_pods.c: 244: {
 "244
-[e $U 1145  ]
-[; ;switch_pods.c: 245: default:
-"245
-[e :U 1168 ]
-[; ;switch_pods.c: 247: break;
-"247
-[e $U 1145  ]
-"248
-}
-[; ;switch_pods.c: 248: }
-[e $U 1145  ]
-"222
-[e :U 1146 ]
-[e [\ _port , $ -> -> 0 `i `ui 1147
- , $ -> -> 1 `i `ui 1150
- , $ -> -> 2 `i `ui 1153
- , $ -> -> 3 `i `ui 1156
- , $ -> -> 4 `i `ui 1159
- , $ -> -> 5 `i `ui 1162
- , $ -> -> 6 `i `ui 1165
- 1168 ]
-"248
-[e :U 1145 ]
-[; ;switch_pods.c: 249: }
-"249
-[e :UE 1144 ]
-}
-"252
-[v _checkButton `(uc ~T0 @X0 1 ef1`ui ]
 {
-[; ;switch_pods.c: 251: char checkButton(uint16_t row)
-[; ;switch_pods.c: 252: {
-[e :U _checkButton ]
-[v _row `ui ~T0 @X0 1 r1 ]
-[f ]
+[; ;switch_pods.c: 246: if( buttonEventDown[i] == 1 )
+"246
+[e $ ! == *U + &U _buttonEventDown * -> _i `ux -> -> # *U &U _buttonEventDown `ui `ux -> -> 1 `i `ui 1143  ]
+[; ;switch_pods.c: 247: {
+"247
+{
+[; ;switch_pods.c: 248: if( buttonState[i] == 0 )
+"248
+[e $ ! == *U + &U _buttonState * -> _i `ux -> -> # *U &U _buttonState `ui `ux -> -> 0 `i `ui 1144  ]
+[; ;switch_pods.c: 249: {
+"249
+{
+[; ;switch_pods.c: 250: buttonState[i] = 1;
+"250
+[e = *U + &U _buttonState * -> _i `ux -> -> # *U &U _buttonState `ui `ux -> -> 1 `i `ui ]
+"251
+}
+[; ;switch_pods.c: 251: }
+[e $U 1145  ]
+"252
+[e :U 1144 ]
+[; ;switch_pods.c: 252: else
+[; ;switch_pods.c: 253: {
 "253
-[v _port `Vui ~T0 @X0 1 a ]
+{
+[; ;switch_pods.c: 254: buttonState[i] = 0;
 "254
-[v _mask `Vuc ~T0 @X0 1 a ]
+[e = *U + &U _buttonState * -> _i `ux -> -> # *U &U _buttonState `ui `ux -> -> 0 `i `ui ]
 "255
-[v _state `Vui ~T0 @X0 1 a ]
-[; ;switch_pods.c: 253: volatile uint16_t port;
-[; ;switch_pods.c: 254: volatile unsigned char mask;
-[; ;switch_pods.c: 255: volatile uint16_t state = 0;
-[e = _state -> -> 0 `i `ui ]
-[; ;switch_pods.c: 257: port = (row >> 8);
+}
+[e :U 1145 ]
+[; ;switch_pods.c: 255: }
+[; ;switch_pods.c: 257: buttonEventDown[i] = 0;
 "257
-[e = _port >> _row -> 8 `i ]
-[; ;switch_pods.c: 258: mask = (char)(row & 0x00FF);
+[e = *U + &U _buttonEventDown * -> _i `ux -> -> # *U &U _buttonEventDown `ui `ux -> -> 0 `i `ui ]
 "258
-[e = _mask -> & _row -> -> 255 `i `ui `uc ]
-[; ;switch_pods.c: 260: switch( port )
+}
+[e :U 1143 ]
+"259
+}
+[; ;switch_pods.c: 258: }
+[; ;switch_pods.c: 259: }
+[e $U 1146  ]
 "260
-[e $U 1171  ]
+[e :U 1142 ]
+[; ;switch_pods.c: 260: else
 [; ;switch_pods.c: 261: {
 "261
 {
-[; ;switch_pods.c: 262: case 0:
-"262
-[e :U 1172 ]
-[; ;switch_pods.c: 263: state = (PORTA & mask) ? 0 : 1;
+[; ;switch_pods.c: 263: if(buttonEventDown[i] == 1)
 "263
-[e = _state -> ? != & -> _PORTA `i -> _mask `i -> 0 `i : -> 0 `i -> 1 `i `ui ]
-[; ;switch_pods.c: 264: break;
+[e $ ! == *U + &U _buttonEventDown * -> _i `ux -> -> # *U &U _buttonEventDown `ui `ux -> -> 1 `i `ui 1147  ]
+[; ;switch_pods.c: 264: {
 "264
-[e $U 1170  ]
-[; ;switch_pods.c: 265: case 1:
+{
+[; ;switch_pods.c: 265: buttonState[i] = 1;
 "265
-[e :U 1173 ]
-[; ;switch_pods.c: 266: state = (PORTB & mask) ? 0 : 1;
+[e = *U + &U _buttonState * -> _i `ux -> -> # *U &U _buttonState `ui `ux -> -> 1 `i `ui ]
+[; ;switch_pods.c: 266: buttonEventDown[i] = 0;
 "266
-[e = _state -> ? != & -> _PORTB `i -> _mask `i -> 0 `i : -> 0 `i -> 1 `i `ui ]
-[; ;switch_pods.c: 267: break;
+[e = *U + &U _buttonEventDown * -> _i `ux -> -> # *U &U _buttonEventDown `ui `ux -> -> 0 `i `ui ]
 "267
-[e $U 1170  ]
-[; ;switch_pods.c: 268: case 2:
-"268
-[e :U 1174 ]
-[; ;switch_pods.c: 269: state = (PORTC & mask) ? 0 : 1;
-"269
-[e = _state -> ? != & -> _PORTC `i -> _mask `i -> 0 `i : -> 0 `i -> 1 `i `ui ]
-[; ;switch_pods.c: 270: break;
-"270
-[e $U 1170  ]
-[; ;switch_pods.c: 271: case 3:
-"271
-[e :U 1175 ]
-[; ;switch_pods.c: 272: state = (PORTD & mask) ? 0 : 1;
-"272
-[e = _state -> ? != & -> _PORTD `i -> _mask `i -> 0 `i : -> 0 `i -> 1 `i `ui ]
-[; ;switch_pods.c: 273: break;
-"273
-[e $U 1170  ]
-[; ;switch_pods.c: 274: case 4:
-"274
-[e :U 1176 ]
-[; ;switch_pods.c: 275: state = (PORTE & mask) ? 0 : 1;
-"275
-[e = _state -> ? != & -> _PORTE `i -> _mask `i -> 0 `i : -> 0 `i -> 1 `i `ui ]
-[; ;switch_pods.c: 276: break;
-"276
-[e $U 1170  ]
-[; ;switch_pods.c: 277: case 5:
-"277
-[e :U 1177 ]
-[; ;switch_pods.c: 278: state = (PORTF & mask) ? 0 : 1;
-"278
-[e = _state -> ? != & -> _PORTF `i -> _mask `i -> 0 `i : -> 0 `i -> 1 `i `ui ]
-[; ;switch_pods.c: 279: break;
-"279
-[e $U 1170  ]
-[; ;switch_pods.c: 280: case 6:
-"280
-[e :U 1178 ]
-[; ;switch_pods.c: 281: state = (PORTG & mask) ? 0 : 1;
-"281
-[e = _state -> ? != & -> _PORTG `i -> _mask `i -> 0 `i : -> 0 `i -> 1 `i `ui ]
-[; ;switch_pods.c: 282: break;
-"282
-[e $U 1170  ]
-[; ;switch_pods.c: 283: default:
-"283
-[e :U 1179 ]
-[; ;switch_pods.c: 285: break;
-"285
-[e $U 1170  ]
-"286
 }
-[; ;switch_pods.c: 286: }
-[e $U 1170  ]
-"260
-[e :U 1171 ]
-[e [\ _port , $ -> -> 0 `i `ui 1172
- , $ -> -> 1 `i `ui 1173
- , $ -> -> 2 `i `ui 1174
- , $ -> -> 3 `i `ui 1175
- , $ -> -> 4 `i `ui 1176
- , $ -> -> 5 `i `ui 1177
- , $ -> -> 6 `i `ui 1178
- 1179 ]
+[e :U 1147 ]
+[; ;switch_pods.c: 267: }
+[; ;switch_pods.c: 269: if(buttonEventUp[i] == 1)
+"269
+[e $ ! == *U + &U _buttonEventUp * -> _i `ux -> -> # *U &U _buttonEventUp `ui `ux -> -> 1 `i `ui 1148  ]
+[; ;switch_pods.c: 270: {
+"270
+{
+[; ;switch_pods.c: 271: buttonState[i] = 0;
+"271
+[e = *U + &U _buttonState * -> _i `ux -> -> # *U &U _buttonState `ui `ux -> -> 0 `i `ui ]
+[; ;switch_pods.c: 272: buttonEventUp[i] = 0;
+"272
+[e = *U + &U _buttonEventUp * -> _i `ux -> -> # *U &U _buttonEventUp `ui `ux -> -> 0 `i `ui ]
+"273
+}
+[e :U 1148 ]
+"274
+}
+[e :U 1146 ]
+[; ;switch_pods.c: 273: }
+[; ;switch_pods.c: 274: }
+[; ;switch_pods.c: 276: setOutputs( !checkButton(0x0520), i, relayMask[i], buttonState[i] );
+"276
+[e ( _setOutputs (4 , , , -> -> ! != -> ( _checkButton (1 -> -> 1312 `i `ui `i -> -> -> 0 `i `uc `i `i `ui _i *U + &U _relayMask * -> _i `ux -> -> # *U &U _relayMask `ui `ux *U + &U _buttonState * -> _i `ux -> -> # *U &U _buttonState `ui `ux ]
+"277
+}
+"241
+[e ++ _i -> -> 1 `i `ui ]
+[e $ < _i -> -> 9 `i `ui 1139  ]
+[e :U 1140 ]
+"277
+}
+"278
+}
+[e :U 1134 ]
+"280
+}
+[; ;switch_pods.c: 277: }
+[; ;switch_pods.c: 278: }
+[; ;switch_pods.c: 280: }
+[e $U 1111  ]
+[e :U 1112 ]
+}
+[; ;switch_pods.c: 281: }
+"281
+[e :UE 1107 ]
+}
+"284
+[v __delay_ms `(v ~T0 @X0 1 ef1`ui ]
+{
+[; ;switch_pods.c: 283: void _delay_ms(uint16_t ms)
+[; ;switch_pods.c: 284: {
+[e :U __delay_ms ]
+[v _ms `ui ~T0 @X0 1 r1 ]
+[f ]
+[; ;switch_pods.c: 285: for(int i=0; i<ms;i++)
+"285
+{
+[v _i `i ~T0 @X0 1 a ]
+[e = _i -> 0 `i ]
+[e $U 1153  ]
 "286
-[e :U 1170 ]
-[; ;switch_pods.c: 288: return state;
+[e :U 1150 ]
+[; ;switch_pods.c: 286: {
+{
+[; ;switch_pods.c: 287: for(int j=0; j<145; j++) ;
+"287
+{
+[v _j `i ~T0 @X0 1 a ]
+[e = _j -> 0 `i ]
+[e $ < _j -> 145 `i 1154  ]
+[e $U 1155  ]
+[e :U 1154 ]
+[e ++ _j -> 1 `i ]
+[e $ < _j -> 145 `i 1154  ]
+[e :U 1155 ]
+}
 "288
-[e ) -> _state `uc ]
-[e $UE 1169  ]
+}
+"285
+[e ++ _i -> 1 `i ]
+[e :U 1153 ]
+[e $ < -> _i `ui _ms 1150  ]
+[e :U 1151 ]
+"288
+}
+[; ;switch_pods.c: 288: }
 [; ;switch_pods.c: 289: }
 "289
-[e :UE 1169 ]
+[e :UE 1149 ]
 }
 "292
-[v _setOutput `(v ~T0 @X0 1 ef2`ui`ui ]
+[v _setupIO `(v ~T0 @X0 1 ef2`ui`ui ]
 {
-[; ;switch_pods.c: 291: void setOutput(uint16_t row, uint16_t value)
+[; ;switch_pods.c: 291: void setupIO(uint16_t row, uint16_t direction)
 [; ;switch_pods.c: 292: {
-[e :U _setOutput ]
+[e :U _setupIO ]
 [v _row `ui ~T0 @X0 1 r1 ]
-[v _value `ui ~T0 @X0 1 r2 ]
+[v _direction `ui ~T0 @X0 1 r2 ]
 [f ]
 "293
 [v _port `Vui ~T0 @X0 1 a ]
 "294
 [v _mask `Vuc ~T0 @X0 1 a ]
+"295
+[v _state `Vui ~T0 @X0 1 a ]
 [; ;switch_pods.c: 293: volatile uint16_t port;
 [; ;switch_pods.c: 294: volatile unsigned char mask;
-[; ;switch_pods.c: 296: port = (row >> 8);
-"296
-[e = _port >> _row -> 8 `i ]
-[; ;switch_pods.c: 297: mask = (char)(row & 0x00FF);
+[; ;switch_pods.c: 295: volatile uint16_t state = 0;
+[e = _state -> -> 0 `i `ui ]
+[; ;switch_pods.c: 297: port = (row >> 8);
 "297
+[e = _port >> _row -> 8 `i ]
+[; ;switch_pods.c: 298: mask = (char)(row & 0x00FF);
+"298
 [e = _mask -> & _row -> -> 255 `i `ui `uc ]
-[; ;switch_pods.c: 299: switch( port )
-"299
-[e $U 1182  ]
-[; ;switch_pods.c: 300: {
+[; ;switch_pods.c: 300: switch( port )
 "300
-{
-[; ;switch_pods.c: 301: case 0:
+[e $U 1159  ]
+[; ;switch_pods.c: 301: {
 "301
-[e :U 1183 ]
-[; ;switch_pods.c: 302: if(value == 1) { LATA |= mask; } else { LATA &= (~mask); }
+{
+[; ;switch_pods.c: 302: case 0:
 "302
-[e $ ! == _value -> -> 1 `i `ui 1184  ]
+[e :U 1160 ]
+[; ;switch_pods.c: 303: if(direction == 1) { TRISA |= mask; } else { TRISA &= (~mask); }
+"303
+[e $ ! == _direction -> -> 1 `i `ui 1161  ]
+{
+[e =| _TRISA _mask ]
+}
+[e $U 1162  ]
+[e :U 1161 ]
+{
+[e =& _TRISA -> ~ -> _mask `i `uc ]
+}
+[e :U 1162 ]
+[; ;switch_pods.c: 304: break;
+"304
+[e $U 1158  ]
+[; ;switch_pods.c: 305: case 1:
+"305
+[e :U 1163 ]
+[; ;switch_pods.c: 306: if(direction == 1) { TRISB |= mask; } else { TRISB &= (~mask); }
+"306
+[e $ ! == _direction -> -> 1 `i `ui 1164  ]
+{
+[e =| _TRISB _mask ]
+}
+[e $U 1165  ]
+[e :U 1164 ]
+{
+[e =& _TRISB -> ~ -> _mask `i `uc ]
+}
+[e :U 1165 ]
+[; ;switch_pods.c: 307: break;
+"307
+[e $U 1158  ]
+[; ;switch_pods.c: 308: case 2:
+"308
+[e :U 1166 ]
+[; ;switch_pods.c: 309: if(direction == 1) { TRISC |= mask; } else { TRISC &= (~mask); }
+"309
+[e $ ! == _direction -> -> 1 `i `ui 1167  ]
+{
+[e =| _TRISC _mask ]
+}
+[e $U 1168  ]
+[e :U 1167 ]
+{
+[e =& _TRISC -> ~ -> _mask `i `uc ]
+}
+[e :U 1168 ]
+[; ;switch_pods.c: 310: break;
+"310
+[e $U 1158  ]
+[; ;switch_pods.c: 311: case 3:
+"311
+[e :U 1169 ]
+[; ;switch_pods.c: 312: if(direction == 1) { TRISD |= mask; } else { TRISD &= (~mask); }
+"312
+[e $ ! == _direction -> -> 1 `i `ui 1170  ]
+{
+[e =| _TRISD _mask ]
+}
+[e $U 1171  ]
+[e :U 1170 ]
+{
+[e =& _TRISD -> ~ -> _mask `i `uc ]
+}
+[e :U 1171 ]
+[; ;switch_pods.c: 313: break;
+"313
+[e $U 1158  ]
+[; ;switch_pods.c: 314: case 4:
+"314
+[e :U 1172 ]
+[; ;switch_pods.c: 315: if(direction == 1) { TRISE |= mask; } else { TRISE &= (~mask); }
+"315
+[e $ ! == _direction -> -> 1 `i `ui 1173  ]
+{
+[e =| _TRISE _mask ]
+}
+[e $U 1174  ]
+[e :U 1173 ]
+{
+[e =& _TRISE -> ~ -> _mask `i `uc ]
+}
+[e :U 1174 ]
+[; ;switch_pods.c: 316: break;
+"316
+[e $U 1158  ]
+[; ;switch_pods.c: 317: case 5:
+"317
+[e :U 1175 ]
+[; ;switch_pods.c: 318: if(direction == 1) { TRISF |= mask; } else { TRISF &= (~mask); }
+"318
+[e $ ! == _direction -> -> 1 `i `ui 1176  ]
+{
+[e =| _TRISF _mask ]
+}
+[e $U 1177  ]
+[e :U 1176 ]
+{
+[e =& _TRISF -> ~ -> _mask `i `uc ]
+}
+[e :U 1177 ]
+[; ;switch_pods.c: 319: break;
+"319
+[e $U 1158  ]
+[; ;switch_pods.c: 320: case 6:
+"320
+[e :U 1178 ]
+[; ;switch_pods.c: 321: if(direction == 1) { TRISG |= mask; } else { TRISG &= (~mask); }
+"321
+[e $ ! == _direction -> -> 1 `i `ui 1179  ]
+{
+[e =| _TRISG _mask ]
+}
+[e $U 1180  ]
+[e :U 1179 ]
+{
+[e =& _TRISG -> ~ -> _mask `i `uc ]
+}
+[e :U 1180 ]
+[; ;switch_pods.c: 322: break;
+"322
+[e $U 1158  ]
+[; ;switch_pods.c: 323: default:
+"323
+[e :U 1181 ]
+[; ;switch_pods.c: 325: break;
+"325
+[e $U 1158  ]
+"326
+}
+[; ;switch_pods.c: 326: }
+[e $U 1158  ]
+"300
+[e :U 1159 ]
+[e [\ _port , $ -> -> 0 `i `ui 1160
+ , $ -> -> 1 `i `ui 1163
+ , $ -> -> 2 `i `ui 1166
+ , $ -> -> 3 `i `ui 1169
+ , $ -> -> 4 `i `ui 1172
+ , $ -> -> 5 `i `ui 1175
+ , $ -> -> 6 `i `ui 1178
+ 1181 ]
+"326
+[e :U 1158 ]
+[; ;switch_pods.c: 327: }
+"327
+[e :UE 1157 ]
+}
+"330
+[v _checkButton `(uc ~T0 @X0 1 ef1`ui ]
+{
+[; ;switch_pods.c: 329: char checkButton(uint16_t row)
+[; ;switch_pods.c: 330: {
+[e :U _checkButton ]
+[v _row `ui ~T0 @X0 1 r1 ]
+[f ]
+"331
+[v _port `Vui ~T0 @X0 1 a ]
+"332
+[v _mask `Vuc ~T0 @X0 1 a ]
+"333
+[v _state `Vui ~T0 @X0 1 a ]
+[; ;switch_pods.c: 331: volatile uint16_t port;
+[; ;switch_pods.c: 332: volatile unsigned char mask;
+[; ;switch_pods.c: 333: volatile uint16_t state = 0;
+[e = _state -> -> 0 `i `ui ]
+[; ;switch_pods.c: 335: port = (row >> 8);
+"335
+[e = _port >> _row -> 8 `i ]
+[; ;switch_pods.c: 336: mask = (char)(row & 0x00FF);
+"336
+[e = _mask -> & _row -> -> 255 `i `ui `uc ]
+[; ;switch_pods.c: 338: switch( port )
+"338
+[e $U 1184  ]
+[; ;switch_pods.c: 339: {
+"339
+{
+[; ;switch_pods.c: 340: case 0:
+"340
+[e :U 1185 ]
+[; ;switch_pods.c: 341: state = (PORTA & mask) ? 0 : 1;
+"341
+[e = _state -> ? != & -> _PORTA `i -> _mask `i -> 0 `i : -> 0 `i -> 1 `i `ui ]
+[; ;switch_pods.c: 342: break;
+"342
+[e $U 1183  ]
+[; ;switch_pods.c: 343: case 1:
+"343
+[e :U 1186 ]
+[; ;switch_pods.c: 344: state = (PORTB & mask) ? 0 : 1;
+"344
+[e = _state -> ? != & -> _PORTB `i -> _mask `i -> 0 `i : -> 0 `i -> 1 `i `ui ]
+[; ;switch_pods.c: 345: break;
+"345
+[e $U 1183  ]
+[; ;switch_pods.c: 346: case 2:
+"346
+[e :U 1187 ]
+[; ;switch_pods.c: 347: state = (PORTC & mask) ? 0 : 1;
+"347
+[e = _state -> ? != & -> _PORTC `i -> _mask `i -> 0 `i : -> 0 `i -> 1 `i `ui ]
+[; ;switch_pods.c: 348: break;
+"348
+[e $U 1183  ]
+[; ;switch_pods.c: 349: case 3:
+"349
+[e :U 1188 ]
+[; ;switch_pods.c: 350: state = (PORTD & mask) ? 0 : 1;
+"350
+[e = _state -> ? != & -> _PORTD `i -> _mask `i -> 0 `i : -> 0 `i -> 1 `i `ui ]
+[; ;switch_pods.c: 351: break;
+"351
+[e $U 1183  ]
+[; ;switch_pods.c: 352: case 4:
+"352
+[e :U 1189 ]
+[; ;switch_pods.c: 353: state = (PORTE & mask) ? 0 : 1;
+"353
+[e = _state -> ? != & -> _PORTE `i -> _mask `i -> 0 `i : -> 0 `i -> 1 `i `ui ]
+[; ;switch_pods.c: 354: break;
+"354
+[e $U 1183  ]
+[; ;switch_pods.c: 355: case 5:
+"355
+[e :U 1190 ]
+[; ;switch_pods.c: 356: state = (PORTF & mask) ? 0 : 1;
+"356
+[e = _state -> ? != & -> _PORTF `i -> _mask `i -> 0 `i : -> 0 `i -> 1 `i `ui ]
+[; ;switch_pods.c: 357: break;
+"357
+[e $U 1183  ]
+[; ;switch_pods.c: 358: case 6:
+"358
+[e :U 1191 ]
+[; ;switch_pods.c: 359: state = (PORTG & mask) ? 0 : 1;
+"359
+[e = _state -> ? != & -> _PORTG `i -> _mask `i -> 0 `i : -> 0 `i -> 1 `i `ui ]
+[; ;switch_pods.c: 360: break;
+"360
+[e $U 1183  ]
+[; ;switch_pods.c: 361: default:
+"361
+[e :U 1192 ]
+[; ;switch_pods.c: 363: break;
+"363
+[e $U 1183  ]
+"364
+}
+[; ;switch_pods.c: 364: }
+[e $U 1183  ]
+"338
+[e :U 1184 ]
+[e [\ _port , $ -> -> 0 `i `ui 1185
+ , $ -> -> 1 `i `ui 1186
+ , $ -> -> 2 `i `ui 1187
+ , $ -> -> 3 `i `ui 1188
+ , $ -> -> 4 `i `ui 1189
+ , $ -> -> 5 `i `ui 1190
+ , $ -> -> 6 `i `ui 1191
+ 1192 ]
+"364
+[e :U 1183 ]
+[; ;switch_pods.c: 366: return state;
+"366
+[e ) -> _state `uc ]
+[e $UE 1182  ]
+[; ;switch_pods.c: 367: }
+"367
+[e :UE 1182 ]
+}
+"370
+[v _setOutput `(v ~T0 @X0 1 ef2`ui`ui ]
+{
+[; ;switch_pods.c: 369: void setOutput(uint16_t row, uint16_t value)
+[; ;switch_pods.c: 370: {
+[e :U _setOutput ]
+[v _row `ui ~T0 @X0 1 r1 ]
+[v _value `ui ~T0 @X0 1 r2 ]
+[f ]
+"371
+[v _port `Vui ~T0 @X0 1 a ]
+"372
+[v _mask `Vuc ~T0 @X0 1 a ]
+[; ;switch_pods.c: 371: volatile uint16_t port;
+[; ;switch_pods.c: 372: volatile unsigned char mask;
+[; ;switch_pods.c: 374: port = (row >> 8);
+"374
+[e = _port >> _row -> 8 `i ]
+[; ;switch_pods.c: 375: mask = (char)(row & 0x00FF);
+"375
+[e = _mask -> & _row -> -> 255 `i `ui `uc ]
+[; ;switch_pods.c: 377: switch( port )
+"377
+[e $U 1195  ]
+[; ;switch_pods.c: 378: {
+"378
+{
+[; ;switch_pods.c: 379: case 0:
+"379
+[e :U 1196 ]
+[; ;switch_pods.c: 380: if(value == 1) { LATA |= mask; } else { LATA &= (~mask); }
+"380
+[e $ ! == _value -> -> 1 `i `ui 1197  ]
 {
 [e =| _LATA _mask ]
 }
-[e $U 1185  ]
-[e :U 1184 ]
+[e $U 1198  ]
+[e :U 1197 ]
 {
 [e =& _LATA -> ~ -> _mask `i `uc ]
 }
-[e :U 1185 ]
-[; ;switch_pods.c: 303: break;
-"303
-[e $U 1181  ]
-[; ;switch_pods.c: 304: case 1:
-"304
-[e :U 1186 ]
-[; ;switch_pods.c: 305: if(value == 1) { LATB |= mask; } else { LATB &= (~mask); }
-"305
-[e $ ! == _value -> -> 1 `i `ui 1187  ]
+[e :U 1198 ]
+[; ;switch_pods.c: 381: break;
+"381
+[e $U 1194  ]
+[; ;switch_pods.c: 382: case 1:
+"382
+[e :U 1199 ]
+[; ;switch_pods.c: 383: if(value == 1) { LATB |= mask; } else { LATB &= (~mask); }
+"383
+[e $ ! == _value -> -> 1 `i `ui 1200  ]
 {
 [e =| _LATB _mask ]
 }
-[e $U 1188  ]
-[e :U 1187 ]
+[e $U 1201  ]
+[e :U 1200 ]
 {
 [e =& _LATB -> ~ -> _mask `i `uc ]
 }
-[e :U 1188 ]
-[; ;switch_pods.c: 306: break;
-"306
-[e $U 1181  ]
-[; ;switch_pods.c: 307: case 2:
-"307
-[e :U 1189 ]
-[; ;switch_pods.c: 308: if(value == 1) { LATC |= mask; } else { LATC &= (~mask); }
-"308
-[e $ ! == _value -> -> 1 `i `ui 1190  ]
+[e :U 1201 ]
+[; ;switch_pods.c: 384: break;
+"384
+[e $U 1194  ]
+[; ;switch_pods.c: 385: case 2:
+"385
+[e :U 1202 ]
+[; ;switch_pods.c: 386: if(value == 1) { LATC |= mask; } else { LATC &= (~mask); }
+"386
+[e $ ! == _value -> -> 1 `i `ui 1203  ]
 {
 [e =| _LATC _mask ]
 }
-[e $U 1191  ]
-[e :U 1190 ]
+[e $U 1204  ]
+[e :U 1203 ]
 {
 [e =& _LATC -> ~ -> _mask `i `uc ]
 }
-[e :U 1191 ]
-[; ;switch_pods.c: 309: break;
-"309
-[e $U 1181  ]
-[; ;switch_pods.c: 310: case 3:
-"310
-[e :U 1192 ]
-[; ;switch_pods.c: 311: if(value == 1) { LATD |= mask; } else { LATD &= (~mask); }
-"311
-[e $ ! == _value -> -> 1 `i `ui 1193  ]
+[e :U 1204 ]
+[; ;switch_pods.c: 387: break;
+"387
+[e $U 1194  ]
+[; ;switch_pods.c: 388: case 3:
+"388
+[e :U 1205 ]
+[; ;switch_pods.c: 389: if(value == 1) { LATD |= mask; } else { LATD &= (~mask); }
+"389
+[e $ ! == _value -> -> 1 `i `ui 1206  ]
 {
 [e =| _LATD _mask ]
 }
-[e $U 1194  ]
-[e :U 1193 ]
+[e $U 1207  ]
+[e :U 1206 ]
 {
 [e =& _LATD -> ~ -> _mask `i `uc ]
 }
-[e :U 1194 ]
-[; ;switch_pods.c: 312: break;
-"312
-[e $U 1181  ]
-[; ;switch_pods.c: 313: case 4:
-"313
-[e :U 1195 ]
-[; ;switch_pods.c: 314: if(value == 1) { LATE |= mask; } else { LATE &= (~mask); }
-"314
-[e $ ! == _value -> -> 1 `i `ui 1196  ]
+[e :U 1207 ]
+[; ;switch_pods.c: 390: break;
+"390
+[e $U 1194  ]
+[; ;switch_pods.c: 391: case 4:
+"391
+[e :U 1208 ]
+[; ;switch_pods.c: 392: if(value == 1) { LATE |= mask; } else { LATE &= (~mask); }
+"392
+[e $ ! == _value -> -> 1 `i `ui 1209  ]
 {
 [e =| _LATE _mask ]
 }
-[e $U 1197  ]
-[e :U 1196 ]
+[e $U 1210  ]
+[e :U 1209 ]
 {
 [e =& _LATE -> ~ -> _mask `i `uc ]
 }
-[e :U 1197 ]
-[; ;switch_pods.c: 315: break;
-"315
-[e $U 1181  ]
-[; ;switch_pods.c: 316: case 5:
-"316
-[e :U 1198 ]
-[; ;switch_pods.c: 317: if(value == 1) { LATF |= mask; } else { LATF &= (~mask); }
-"317
-[e $ ! == _value -> -> 1 `i `ui 1199  ]
+[e :U 1210 ]
+[; ;switch_pods.c: 393: break;
+"393
+[e $U 1194  ]
+[; ;switch_pods.c: 394: case 5:
+"394
+[e :U 1211 ]
+[; ;switch_pods.c: 395: if(value == 1) { LATF |= mask; } else { LATF &= (~mask); }
+"395
+[e $ ! == _value -> -> 1 `i `ui 1212  ]
 {
 [e =| _LATF _mask ]
 }
-[e $U 1200  ]
-[e :U 1199 ]
+[e $U 1213  ]
+[e :U 1212 ]
 {
 [e =& _LATF -> ~ -> _mask `i `uc ]
 }
-[e :U 1200 ]
-[; ;switch_pods.c: 318: break;
-"318
-[e $U 1181  ]
-[; ;switch_pods.c: 319: case 6:
-"319
-[e :U 1201 ]
-[; ;switch_pods.c: 320: if(value == 1) { LATG |= mask; } else { LATG &= (~mask); }
-"320
-[e $ ! == _value -> -> 1 `i `ui 1202  ]
+[e :U 1213 ]
+[; ;switch_pods.c: 396: break;
+"396
+[e $U 1194  ]
+[; ;switch_pods.c: 397: case 6:
+"397
+[e :U 1214 ]
+[; ;switch_pods.c: 398: if(value == 1) { LATG |= mask; } else { LATG &= (~mask); }
+"398
+[e $ ! == _value -> -> 1 `i `ui 1215  ]
 {
 [e =| _LATG _mask ]
 }
-[e $U 1203  ]
-[e :U 1202 ]
+[e $U 1216  ]
+[e :U 1215 ]
 {
 [e =& _LATG -> ~ -> _mask `i `uc ]
 }
-[e :U 1203 ]
-[; ;switch_pods.c: 321: break;
-"321
-[e $U 1181  ]
-[; ;switch_pods.c: 322: default:
-"322
-[e :U 1204 ]
-[; ;switch_pods.c: 324: break;
-"324
-[e $U 1181  ]
-"325
+[e :U 1216 ]
+[; ;switch_pods.c: 399: break;
+"399
+[e $U 1194  ]
+[; ;switch_pods.c: 400: default:
+"400
+[e :U 1217 ]
+[; ;switch_pods.c: 402: break;
+"402
+[e $U 1194  ]
+"403
 }
-[; ;switch_pods.c: 325: }
-[e $U 1181  ]
-"299
-[e :U 1182 ]
-[e [\ _port , $ -> -> 0 `i `ui 1183
- , $ -> -> 1 `i `ui 1186
- , $ -> -> 2 `i `ui 1189
- , $ -> -> 3 `i `ui 1192
- , $ -> -> 4 `i `ui 1195
- , $ -> -> 5 `i `ui 1198
- , $ -> -> 6 `i `ui 1201
- 1204 ]
-"325
-[e :U 1181 ]
-[; ;switch_pods.c: 326: }
-"326
-[e :UE 1180 ]
+[; ;switch_pods.c: 403: }
+[e $U 1194  ]
+"377
+[e :U 1195 ]
+[e [\ _port , $ -> -> 0 `i `ui 1196
+ , $ -> -> 1 `i `ui 1199
+ , $ -> -> 2 `i `ui 1202
+ , $ -> -> 3 `i `ui 1205
+ , $ -> -> 4 `i `ui 1208
+ , $ -> -> 5 `i `ui 1211
+ , $ -> -> 6 `i `ui 1214
+ 1217 ]
+"403
+[e :U 1194 ]
+[; ;switch_pods.c: 404: }
+"404
+[e :UE 1193 ]
 }
-"329
-[v _setOutputs `(v ~T0 @X0 1 ef5`ui`ui`ui`ui`ui ]
+"407
+[v _setOutputs `(v ~T0 @X0 1 ef4`ui`ui`ui`ui ]
 {
-[; ;switch_pods.c: 328: void setOutputs(uint16_t alwayson, uint16_t leftled, uint16_t rightled, uint16_t relay, uint16_t value)
-[; ;switch_pods.c: 329: {
+[; ;switch_pods.c: 406: void setOutputs(uint16_t alwayson, uint16_t ledIndex, uint16_t relay, uint16_t value)
+[; ;switch_pods.c: 407: {
 [e :U _setOutputs ]
 [v _alwayson `ui ~T0 @X0 1 r1 ]
-[v _leftled `ui ~T0 @X0 1 r2 ]
-[v _rightled `ui ~T0 @X0 1 r3 ]
-[v _relay `ui ~T0 @X0 1 r4 ]
-[v _value `ui ~T0 @X0 1 r5 ]
+[v _ledIndex `ui ~T0 @X0 1 r2 ]
+[v _relay `ui ~T0 @X0 1 r3 ]
+[v _value `ui ~T0 @X0 1 r4 ]
 [f ]
-[; ;switch_pods.c: 330: if( alwayson == 0 )
-"330
-[e $ ! == _alwayson -> -> 0 `i `ui 1206  ]
-[; ;switch_pods.c: 331: {
-"331
-{
-[; ;switch_pods.c: 332: setOutput(leftled, 1);
-"332
-[e ( _setOutput (2 , _leftled -> -> 1 `i `ui ]
-[; ;switch_pods.c: 333: setOutput(rightled, value);
-"333
-[e ( _setOutput (2 , _rightled _value ]
-"334
-}
-[; ;switch_pods.c: 334: }
-[e $U 1207  ]
-"335
-[e :U 1206 ]
-[; ;switch_pods.c: 335: else
-[; ;switch_pods.c: 336: {
-"336
-{
-[; ;switch_pods.c: 337: setOutput(leftled, value);
-"337
-[e ( _setOutput (2 , _leftled _value ]
-[; ;switch_pods.c: 338: setOutput(rightled, 1);
-"338
-[e ( _setOutput (2 , _rightled -> -> 1 `i `ui ]
-"339
-}
-[e :U 1207 ]
-[; ;switch_pods.c: 339: }
-[; ;switch_pods.c: 341: setOutput(relay, value);
-"341
+[; ;switch_pods.c: 408: outputAlwaysOnFlag = alwayson;
+"408
+[e = _outputAlwaysOnFlag _alwayson ]
+[; ;switch_pods.c: 411: outputFlag[ledIndex] = value;
+"411
+[e = *U + &U _outputFlag * -> _ledIndex `ux -> -> # *U &U _outputFlag `ui `ux _value ]
+[; ;switch_pods.c: 426: setOutput(relay, value);
+"426
 [e ( _setOutput (2 , _relay _value ]
-[; ;switch_pods.c: 342: }
-"342
-[e :UE 1205 ]
+[; ;switch_pods.c: 427: }
+"427
+[e :UE 1218 ]
 }
