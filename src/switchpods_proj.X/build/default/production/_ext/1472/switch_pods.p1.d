@@ -1,4 +1,1 @@
- build/default/production/_ext/1472/switch_pods.d  \
- build/default/production/_ext/1472/switch_pods.p1:  \
- ../switch_pods.c  \
-../switch_pods.h 
+build/default/production/_ext/1472/switch_pods.d build/default/production/_ext/1472/switch_pods.p1: ../switch_pods.c /opt/microchip/xc8/v1.00/include/plib/EEP.h /opt/microchip/xc8/v1.00/include/p18cxxx.h /opt/microchip/xc8/v1.00/include/htc.h /opt/microchip/xc8/v1.00/include/stdint.h /opt/microchip/xc8/v1.00/include/plib.h /opt/microchip/xc8/v1.00/include/plib/adc.h /opt/microchip/xc8/v1.00/include/plib/timers.h /opt/microchip/xc8/v1.00/include/pic18_chip_select.h /opt/microchip/xc8/v1.00/include/pic18f65k22.h /opt/microchip/xc8/v1.00/include/plib/pconfig.h /opt/microchip/xc8/v1.00/include/xc.h /opt/microchip/xc8/v1.00/include/errata.h ../switch_pods.h /opt/microchip/xc8/v1.00/include/pic18.h

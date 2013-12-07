@@ -146,7 +146,7 @@
 #define OUT8    0x0104
 #define OUT9    0x0108
 
-#define OUTPUT_PWM_PERIOD   (0x1000)
+#define OUTPUT_PWM_PERIOD   (0x2000)
 #define OUTPUT_PWM_MIN_HIGH (0x0100)
 
 #endif

@@ -1,19 +1,18 @@
-_Busy_eep: CODE, 5550 0 14
-_setupIO: CODE, 3844 0 358
-_main: CODE, 544 0 3300
-_BusyADC: CODE, 5576 0 8
-_Read_b_eep: CODE, 5468 0 26
-_setOutput: CODE, 4202 0 278
-_setOutputs: CODE, 5206 0 84
-_pwm_int: CODE, 8 0 532
-_Write_b_eep: CODE, 5290 0 72
-_ConvertADC: CODE, 5584 0 4
-_WriteTimer0: CODE, 5514 0 18
-__initialization: CODE, 4978 0 128
-__delay_ms: CODE, 5112 0 94
-_ReadADC: CODE, 5564 0 12
-_OpenTimer0: CODE, 5434 0 34
-i2_WriteTimer0: CODE, 5532 0 18
-_checkButton: CODE, 4758 0 220
-i2_setOutput: CODE, 4480 0 278
-Total: 5478
+_Busy_eep: CODE, 5454 0 14
+_setupIO: CODE, 3470 0 394
+_main: CODE, 512 0 2958
+_BusyADC: CODE, 5468 0 8
+_Read_b_eep: CODE, 5352 0 30
+_setOutput: CODE, 3864 0 380
+_setOutputs: CODE, 5112 0 72
+_pwm_int: CODE, 8 0 500
+_Write_b_eep: CODE, 5184 0 52
+_ConvertADC: CODE, 5476 0 4
+_WriteTimer0: CODE, 5400 0 18
+__delay_ms: CODE, 4840 0 138
+_ReadADC: CODE, 5418 0 18
+_OpenTimer0: CODE, 5236 0 42
+i2_WriteTimer0: CODE, 5436 0 18
+_checkButton: CODE, 4244 0 318
+i2_setOutput: CODE, 4562 0 278
+Total: 5242
