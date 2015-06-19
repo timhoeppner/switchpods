@@ -115,6 +115,8 @@ uint16_t main(void)
 		setupIO(buttonMask[i], 1);
 		setupIO(leftLEDMask[i], 0);
 		setupIO(rightLEDMask[i], 0);
+		
+		setOutput(relayMask[i], 0);
 		setupIO(relayMask[i], 0);
 
 		//uint8_t address = (uint8_t) i;
